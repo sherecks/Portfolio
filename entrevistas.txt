@@ -1,0 +1,40 @@
+oq é dom?
+
+O Modelo de Documento por Objetos é uma convenção multiplataforma e independente de linguagem de programação,
+fiscalizada pela entidade World Wide Web Consortium, para representação e interação com objetos em documentos HTML
+
+Tags h1 a h6
+
+a tag span serve ao código a nível de linha, a tag div serve ao código a nível de bloco
+
+Search Engine Optimization
+
+Pesquisa de palavras-chave. ...
+Conteúdo de qualidade. ...
+URL amigável. ...
+Título da página. ...
+Meta tag description. ...
+Estrutura da página: h1, h2, h3… ...
+Use um sitemap. ...
+Nome das imagens e atributo alt...
+
+Cite técnicas pra deixar um site mais performático.
+
+Minimização de arquivos (CSS, JavaScript, HTML)
+Uso de imagens com otimização de tamanho
+Compressão de arquivos (gzip)
+Lazy Loading de imagens
+Utilização de recursos de cache do navegador
+Minificação de JavaScript
+Concatenação de arquivos CSS e JavaScript
+Utilização de servidores CDN (Content Delivery Network)
+Otimização do código SQL
+Utilização de protocolo HTTP/2.
+
+
+Sass (Syntactically Awesome Style Sheets) é uma linguagem de estilo para a web que é uma
+extensão do CSS (Cascading Style Sheets). É usada para adicionar recursos avançados ao CSS,
+como variáveis, aninhamentos, mixins, herança, entre outros,
+tornando o desenvolvimento de estilos mais produtivo e fácil de manter.
+Sass é compilado em CSS puro, que é interpretado pelos navegadores da web.
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+        <link rel="preload" href="estilo.css" as="style">
+        <link rel="stylesheet" href="static/stylegallery.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <title>Portfólio João Pedro</title>
+        <script src="https://kit.fontawesome.com/0db4c44db2.js" crossorigin="anonymous"></script>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Portfólio João Pedro" />
+    </head>
+
+    <div id="preloader">
+        <svg width="550" height="550" viewBox="12 -25 60 150">
+            <polygon
+              class="triangle"
+              fill="none"
+              stroke="#3aae6d"
+              stroke-width="1"
+              points="24,1 24,24 1,12"
+            />
+            <polygon
+            class="triangle"
+            fill="none"
+            stroke="#3aae6d"
+            stroke-width="1"
+            points="48,1 48,48 1,24"
+            />
+            <polygon
+                class="triangle"
+                fill="none"
+                stroke="#3aae6d"
+                stroke-width="1"
+                points="96,1 96,96 1,48"
+            />
+          </svg>
+    </div>
+
+
+    <header> 
+
+        <a href="index.html"><h1>João Pedro</h1> </a> 
+
+        <ul>
+            <a href="indexcontact.html"><li href="#"><i class="fa-solid fa-phone"></i></li></a>  
+            <a href="https://www.instagram.com/joaopedro_pn/" target="_blank"><li href="#"><i class="fab fa-instagram"></i></li></a>
+            <a href="https://www.linkedin.com/in/joão-pedro-patrício-do-nascimento-5b042a180/" target="_blank"><li href="#"><i class="fab fa-linkedin-in"></i></li></a>
+            <a href="https://www.youtube.com/channel/UCrhlG_5rwOCTssLg2879lyQ" target="_blank"><li href="#"><i class="fab fa-youtube"></i></li></a>
+            <a href="https://github.com/sherecks?tab=repositories" target="_blank"><li href="#"><i class="fa fa-github"></i></li></a>
+        </ul>
+     
+    </header>
+ 
+    <br/>
+
+    <main>
+        <script type="module">
+            import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+
+            var canvasHeight = 825;
+            
+            //Camera
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+                15,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 7;
+            camera.position.y = -0.2;
+
+             //sphere 
+            const top = new THREE.SphereGeometry( 0.3, 25, 15 );
+            const mat = new THREE.PointsMaterial({
+                size: 0.015,
+                color: 0xF5FFFA
+            });
+            const sphere = new THREE.Points(top, mat);
+            scene.add(sphere);
+
+            //sphere 01
+            const top1 = new THREE.TorusGeometry( 0.42, 0.03, 50, 200 );
+            const mat1 = new THREE.MeshPhysicalMaterial({
+                color: 0x575757,
+                emissive: 0x0032FF,
+                flatShading: true,
+                wireframe: true
+            });
+            mat1.reflectivity = 2
+            mat1.roughness = 0
+            mat1.metalness = 1
+            mat1.clearcoat = 0.2
+            const sphere01 = new THREE.Mesh(top1, mat1);
+            scene.add(sphere01);
+
+            //sphere 2
+            const txp = new THREE.TorusGeometry( 0.23, 0.035, 20, 200 );
+            const mzt = new THREE.MeshPhysicalMaterial({
+                color: 0xDCDCDC,
+                emissive: 0x808080,
+                
+            });
+            mzt.reflectivity = 0.8
+            mzt.roughness = 0.3
+            mzt.metalness = 2
+            mzt.clearcoat = 0.5
+            const sphere2 = new THREE.Mesh(txp, mzt);
+            scene.add(sphere2);
+
+            //Circle
+            const tip = new THREE.SphereGeometry( 0.1, 8, 8 );
+            const mut = new THREE.MeshPhysicalMaterial( {
+                color: 0x0032FF,
+                emissive: 0x000000,
+                wireframe: true
+            } );
+            mut.reflectivity = 1
+            mut.roughness = 0
+            mut.metalness = 0.2
+            mut.clearcoat = 0
+            const circle = new THREE.Mesh(tip, mut);
+            scene.add(circle);
+
+            //Circle1
+            const tip1 = new THREE.IcosahedronGeometry( 0.06, 0 );
+            const mut1 = new THREE.MeshPhysicalMaterial( {
+                color: 0xDC143C,
+                emissive: 0x0032FF,
+                flatShading: true,
+                
+            } );
+            mut1.reflectivity = 2
+            mut1.roughness = 0
+            mut1.metalness = 0.4
+            mut1.clearcoat = 0
+            const circle1 = new THREE.Mesh(tip1, mut1);
+            scene.add(circle1);
+
+            //Light
+            const directionalLight = new THREE.DirectionalLight( 0xFFFFFF, 1.68 );
+            scene.add( directionalLight );
+
+            const light = new THREE.PointLight( 0xF, 1.5, 50 );
+            light.position.set( 2.5, 5, 20 );
+            scene.add( light );
+    
+            const light1 = new THREE.PointLight( 0xFFFFFF, 0.85, 50 );
+            light1.position.set( -20, -15, 20 );
+            scene.add( light1 );
+    
+
+            //Renderer
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, canvasHeight );
+            document.body.appendChild( renderer.domElement );
+
+
+            //Animate
+            function animate() {
+
+                circle.rotation.z -= 0.02;
+                circle.rotation.x += 0.02;
+
+                circle1.rotation.z -= 0.02;
+                circle1.rotation.x += 0.02;
+
+                sphere.rotation.z += 0.01;
+                sphere.rotation.x += 0.01;
+                sphere.rotation.y -= 0.002;
+
+                sphere01.rotation.z += 0.002;
+                sphere01.rotation.x += 0.02;
+                sphere01.rotation.y -= 0.015;
+
+                sphere2.rotation.y -= 0.017;
+                sphere2.rotation.x -= 0.02;
+                sphere2.rotation.z -= 0.002;
+
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        </script>
+    </main>
+
+    <div class="textfield">
+
+        <p style="color: white;">
+            Videomaker, Front-end Developer, and Computer Science Student at UDESC Joinville.
+            I'm passionate about technology and design, I work with video production, and I'm on my way to combining all my experience in this area of web development.
+        </p>
+
+    </div>
+
+    <script>
+        var loaderer = document.getElementById("preloader");
+
+        window.addEventListener("load", function(){
+            loaderer.style.display = "none";
+        })
+    </script>
+    
+</body>
+
+</html>
