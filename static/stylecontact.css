@@ -29,14 +29,17 @@ form {
   padding: 20px;
 }
 
-.header {
+.testHeaderFooter {
+  width: 850px;
+  margin: 0 auto;
+}
+
+header {
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding-top: 10px;
-  margin-left: 500px;
-  margin-right: 500px;
-  margin-top: 0;
+  padding: 10px 20px;
+  flex-wrap: wrap;
 }
 
 h1 {
@@ -125,9 +128,8 @@ textarea {
 footer {
   display: flex;
   justify-content: space-between;
-  margin-left: 500px;
-  margin-right: 550px;
-  bottom: 0;
+  padding: 10px 20px;
+  flex-wrap: wrap;
 }
 
 ul {
@@ -197,45 +199,24 @@ video {
   color: transparent;
 }
 
-@media (min-width: 1024px) and (max-width: 1580px) {
-  .header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding-top: 10px;
-    margin-left: 220px;
-    margin-right: 220px;
-    margin-top: 0;
-  }
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 220px;
-    margin-right: 280px;
-    bottom: 0;
-  }
-}
-@media (min-width: 300px) and (max-width: 1024px) {
+@media (max-width: 999px) {
   .nome {
     width: 400px;
     height: 60px;
     font-size: 35px;
   }
-  .header {
+  header {
     display: flex;
     justify-content: space-between;
     position: relative;
-    padding-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 0;
+    padding: 10px 20px;
+    flex-wrap: wrap;
   }
   footer {
     display: flex;
     justify-content: space-between;
-    margin-left: 60px;
-    margin-right: 120px;
-    bottom: 0;
+    padding: 10px 20px;
+    flex-wrap: wrap;
   }
   .email {
     width: 600px;

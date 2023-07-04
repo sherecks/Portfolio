@@ -1,6 +1,6 @@
 *{
     font-family: "Staatliches", cursive;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; 
 }
 
 body::-webkit-scrollbar {
@@ -11,16 +11,23 @@ body {
   background-color: #000000;
   margin: 0px;
   text-align: center;
+  overflow: hidden;
+}
+
+.testHeaderFooter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 header {
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding-top: 10px;
-  margin-left: 500px;
-  margin-right: 500px;
-  margin-top: 0;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  margin: 0 auto; 
 }
 
 ul {
@@ -55,7 +62,7 @@ ul li:hover {
 h1 {
   color: white;
   text-shadow: 5px 5px 0px black;
-  font-size: 65px;
+  font-size: 60px;
   margin: 0px;
   padding-top: 15px;
 }
@@ -124,55 +131,33 @@ p{
   100%{
     stroke: #2d5ff5;
   }
-  }
-
-
-
-@media (min-width: 1024px) and (max-width: 1580px){
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding-top: 10px;
-    margin-left: 220px;
-    margin-right: 220px;
-    margin-top: 0;
-
-  }
-
 }
-
-
-@media (min-width: 1000px) and (max-width: 1024px) {
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 0;
-  }
-    
-}
-
-
 
 @media (min-width: 300px) and (max-width: 1000px) {
 
   header {
     display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 0;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  margin: 0 auto; 
   }
 
   h2{
     font-size: 45px;
   }
+
+  h1{
+    font-size: 80px;
+  }
+
+  ul li {
+ 
+    font-size: 40px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+  }
+    
 }
