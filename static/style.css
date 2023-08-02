@@ -283,8 +283,8 @@ video::-webkit-media-controls-start-playback-button {
   margin-left: 15px;
   margin-right: 15px;
   border-radius: 10px;
-  width: 685px;
-  height: 295px;
+  width: 665px;
+  height: 205px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(145, 185, 207, 0.4);
   -webkit-backdrop-filter: blur(5px);
