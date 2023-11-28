@@ -335,6 +335,13 @@ video::-webkit-media-controls-start-playback-button {
   box-shadow: 5px 5px 0px black;
 }
 
+.video-web {
+  width: 850px;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 5px 5px 0px black;
+}
+
 .foto-web3d {
   width: 650px;
   border-radius: 10px;
