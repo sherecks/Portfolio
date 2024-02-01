@@ -37,8 +37,6 @@
     border: 1px solid rgba(109, 142, 161, 0.2);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-    background: linear-gradient(135deg, #3aae6d, #2d5ff5);
-    opacity: 0.8;
     margin: 0 auto;
     width: 800px;
   }
@@ -47,25 +45,21 @@
     padding: 20px;
   }
   
-  .testHeaderFooter{
-    width: 850px;
-    margin: 0 auto;
-  }
-  
   header {
     display: flex;
     justify-content: space-between;
     position: relative;
     padding: 10px 20px; 
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    margin: 0 auto;
   }
   
   h1 {
     color: white;
     text-shadow: 5px 5px 0px black;
     font-size: 65px;
-    margin: 0px;
     padding-top: 15px;
+    margin: 0px;
   }
   
   h1:hover{
@@ -185,14 +179,12 @@
     box-shadow: 5px 5px 0px black;
   }
   
-  
   .nome {
     width: 300px;
     height: 40px;
     text-align: left;
     border-radius: 5px;
   }
-  
   
   .sub {
     width: 150px;
@@ -213,7 +205,9 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 20px; 
+    position: relative;
     flex-wrap: wrap;
+    margin: 0 auto;
   }
   
   ul {
@@ -264,13 +258,6 @@
   .finaltext {
     font-size: 30px;
     margin: 10px;
-  }
-  
-  .footertext {
-    text-align: right;
-    color: white;
-    text-shadow: 5px 5px 0px black;
-    font-size: 32px;
   }
   
   .styletext {
