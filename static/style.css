@@ -162,47 +162,8 @@ video::-webkit-media-controls-start-playback-button {
   margin: 10px;
 }
 
-.webSiteBox {
-  width: 400px;
-  margin: 10px;
-  text-align: left;
-}
-
 .webSiteProject {
   margin: 10px;
-}
-
-.webSiteText {
-  font-size: 22px;
-  font-family: "Kanit", sans-serif;
-  text-align: left;
-  margin: 2px;
-  color: white;
-  text-shadow: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  text-shadow: 3px 3px 0px rgb(54, 54, 54);
-  position: relative;
-}
-
-.experience {
-  font-family: "Kanit", sans-serif;
-  color: white;
-  font-size: 16px;
-  margin: 4px;
-  visibility: hidden;
-  transition: visibility 0s, opacity 0.5s;
-}
-
-.webTextLook:hover .experience {
-  visibility: visible;
-  opacity: 1;
-}
-
-.webTextLook:hover {
-  background-color: #2d5ff5;
-  transition: ease-in-out 0.4s;
 }
 
 .foto-web {
@@ -213,12 +174,10 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .video-web {
+  width: 100%;
   display: flex;
-  justify-content: left;
-  width: 850px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 0px black;
+  opacity: 0.4;
+  filter: grayscale(1);
 }
 
 .foto-web3d {
