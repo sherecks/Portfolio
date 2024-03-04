@@ -108,6 +108,7 @@
   .back:hover {
     background-color: #2d5ff5;
     transition: ease-in-out 0.4s;
+    border-radius: 10px;
   }
 
   .exptext {
@@ -144,6 +145,7 @@
   .artigo1:hover {
     background-color: #2d5ff5;
     transition: ease-in-out 0.4s;
+    border-radius: 10px;
   }
   
   .artigo2 {
@@ -163,7 +165,24 @@
     user-select: none;
     text-shadow: 3px 3px 0px rgb(54, 54, 54);
   }
-  
+
+  .backBeach{
+    margin: 10px;
+  }
+
+  .beach{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Kanit', sans-serif;
+    text-shadow: none;
+  }
+
+  .beach:hover{
+    background-color: #2d5ff5;
+    transition: ease-in-out 0.4s;
+    border-radius: 10px;
+    padding: 2px;
+  }
   
   .web {
     display: flex;

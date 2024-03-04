@@ -90,6 +90,7 @@ video::-webkit-media-controls-start-playback-button {
 .back:hover {
   background-color: #2d5ff5;
   transition: ease-in-out 0.4s;
+  border-radius: 10px;
 }
 
 .exptext {
@@ -128,6 +129,7 @@ video::-webkit-media-controls-start-playback-button {
 .artigo1:hover {
   background-color: #2d5ff5;
   transition: ease-in-out 0.4s;
+  border-radius: 10px;
 }
 
 .artigo2 {
@@ -148,6 +150,24 @@ video::-webkit-media-controls-start-playback-button {
      -moz-user-select: none;
           user-select: none;
   text-shadow: 3px 3px 0px rgb(54, 54, 54);
+}
+
+.backBeach {
+  margin: 10px;
+}
+
+.beach {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Kanit", sans-serif;
+  text-shadow: none;
+}
+
+.beach:hover {
+  background-color: #2d5ff5;
+  transition: ease-in-out 0.4s;
+  border-radius: 10px;
+  padding: 2px;
 }
 
 .web {
