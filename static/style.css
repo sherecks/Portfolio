@@ -201,6 +201,7 @@ video::-webkit-media-controls-start-playback-button {
   display: flex;
   opacity: 0.4;
   filter: grayscale(1);
+  box-shadow: 5px -5px black;
 }
 
 .foto-web3d {
