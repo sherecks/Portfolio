@@ -215,8 +215,6 @@
     display: flex;
     opacity: 0.4;
     filter: grayscale(1);
-    box-shadow:5px -5px black;
-    border: 5px #000;
   }
 
   .foto-web3d{
@@ -237,6 +235,24 @@
 
   hr{
     border-radius: 100%;
+  }
+
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .TextProject {
+    font-size: 40px;
+    font-family: 'Kanit', sans-serif;
+    text-align: left;
+    margin: 4px;
+    color: white;
+    text-shadow: none;
+    user-select: none;
+    text-shadow: 3px 3px 0px rgb(54, 54, 54);
   }
 
   footer {
