@@ -196,6 +196,13 @@ video::-webkit-media-controls-start-playback-button {
   box-shadow: 5px 5px 0px black;
 }
 
+.foto-web3 {
+  width: 320px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px black;
+}
+
 .video-web {
   width: 100%;
   display: flex;
