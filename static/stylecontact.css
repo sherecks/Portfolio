@@ -21,6 +21,8 @@ form {
   backdrop-filter: blur(20px);
   margin: 0 auto;
   width: 800px;
+  background-image: url(../images/fundocontact.png);
+  background-position: center;
 }
 
 .space-label {
@@ -138,7 +140,7 @@ ul li {
   font-size: 30px;
   width: 60px;
   height: 60px;
-  background: #2d5ff5;
+  background: #638aff;
   line-height: 60px;
   border-radius: 50%;
   margin: 2px 4px;
@@ -147,7 +149,7 @@ ul li {
 
 ul li:hover {
   opacity: 0.6;
-  background: #3aae6d;
+  background: #ffffff;
   width: 60px;
   height: 60px;
   display: block;
@@ -171,6 +173,7 @@ video {
   align-items: center;
   border-radius: 10px;
   box-shadow: 5px 5px 0px vlack;
+  filter: grayscale(1);
 }
 
 .finaltext {
@@ -179,7 +182,7 @@ video {
 }
 
 .styletext {
-  color: #3aae6d;
+  color: #638aff;
 }
 
 .hidden {
