@@ -187,20 +187,23 @@ video::-webkit-media-controls-start-playback-button {
   margin: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 0px black;
+  filter: grayscale(1);
 }
 
 .foto-web2 {
-  width: 520px;
+  width: 420px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 0px black;
+  filter: grayscale(1);
 }
 
 .foto-web3 {
-  width: 320px;
+  width: 420px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 0px black;
+  filter: grayscale(1);
 }
 
 .video-web {
@@ -208,14 +211,15 @@ video::-webkit-media-controls-start-playback-button {
   display: flex;
   margin: 0 auto;
   opacity: 0.4;
-  filter: grayscale(0);
+  filter: grayscale(1);
 }
 
 .foto-web3d {
-  width: 650px;
+  width: 420px;
   border-radius: 10px;
   margin: 20px;
   box-shadow: 5px 5px 0px black;
+  filter: grayscale(1);
 }
 
 .textweb {
@@ -293,7 +297,6 @@ ul li:hover {
 
 #preloader {
   background: #000;
-  height: 100%;
   width: 100%;
   position: fixed;
   z-index: 100;
