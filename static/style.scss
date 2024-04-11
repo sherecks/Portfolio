@@ -10,22 +10,22 @@
   body {
     background-image: repeating-linear-gradient(
         0deg,
-        rgb(41, 41, 41) 0px,
-        rgb(41, 41, 41) 1px,
+        rgb(32, 32, 32) 0px,
+        rgb(32, 32, 32) 1px,
         transparent 2px,
         transparent 21px
       ),
       repeating-linear-gradient(
         90deg,
-        rgb(41, 41, 41) 0px,
-        rgb(41, 41, 41) 1px,
+        rgb(32, 32, 32) 0px,
+        rgb(32, 32, 32) 1px,
         transparent 2px,
         transparent 21px
       ),
       linear-gradient(
         90deg,
-        rgb(11, 6, 59),
-        rgb(11, 6, 59)
+        rgb(0, 0, 0),
+        rgb(0, 0, 0)
       );
     margin: 0px;
     text-align: center;
@@ -71,7 +71,7 @@
   }
 
   h1:hover{
-    color: #3aae6d;
+    color: #a3a3a3;
 }
   
   h2 {
@@ -127,7 +127,6 @@
   
   .artgtext1 {
     font-size: 40px;
-    font-family: 'Kanit', sans-serif;
     text-align: left;
     margin: 4px;
     color: white;
@@ -145,7 +144,6 @@
   
   .artgtext2 {
     font-size: 22px;
-    font-family: 'Kanit', sans-serif;
     text-align: left;
     margin: 4px;
     color: white;
@@ -157,7 +155,6 @@
   .beach{
     text-decoration: none;
     color: #ffffff;
-    font-family: 'Kanit', sans-serif;
     text-shadow: none;
   }
 
@@ -221,7 +218,6 @@
 
   .textweb{
     font-size: 18px;
-    font-family: 'Kanit', sans-serif;
     margin: 0 auto;
     color: white;
     text-shadow: none;
@@ -241,7 +237,6 @@
 
   .TextProject {
     font-size: 40px;
-    font-family: 'Kanit', sans-serif;
     text-align: left;
     margin: 4px;
     color: white;
