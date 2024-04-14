@@ -147,17 +147,8 @@ video::-webkit-media-controls-start-playback-button {
   margin: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 0px black;
-  opacity: 0.9;
-  filter: grayscale(0);
-}
-
-.foto-web2 {
-  width: 420px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 0px black;
   opacity: 0.8;
-  filter: grayscale(1);
+  filter: grayscale(0);
 }
 
 .foto-web3 {
@@ -165,7 +156,7 @@ video::-webkit-media-controls-start-playback-button {
   margin: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 0px black;
-  opacity: 0.9;
+  opacity: 0.8;
   filter: grayscale(0);
 }
 
@@ -183,6 +174,7 @@ video::-webkit-media-controls-start-playback-button {
 
 .photo-web {
   width: 100%;
+  opacity: 0.8;
 }
 
 .textweb {
