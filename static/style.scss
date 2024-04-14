@@ -146,6 +146,11 @@
     margin: 0 auto;
   }
 
+  .web2 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .webSite {
       width: 600px;
       margin: 10px;
@@ -182,14 +187,22 @@
     filter: grayscale(0);
   }
     
-  .video-web{
-    width: 100%;
-    display: flex;
+  .cont1 {
+    width: 400px;
     margin: 0 auto;
-    opacity: 0.8;
-    filter: grayscale(0);
+    align-items: center;
   }
 
+  .cont3 {
+    width: 400px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  
+  .photo-web {
+    width: 100%;
+  }
+  
   .textweb{
     font-size: 18px;
     margin: 0 auto;

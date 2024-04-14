@@ -71,12 +71,29 @@
                     window.scrollTo(0,0);
                 }
             </script>
-            
-        <div class="web">
-            
-            <a href="" onclick="return false;"><img preload="auto" class="video-web" src="images/capa.png"></a>
+        <div class="web2">
+            <div class="cont1">
+                <img preload="auto" class="photo-web" src="images/tshit1.png">
+            </div>
+    
+            <div class="cont3">
+                <img preload="auto" class="photo-web" src="images/tshit2.png">
+            </div>
+        </div>    
 
-        </div>
+        <script type="text/javascript" src="vanilla-tilt.js"></script>
+        <script type="text/javascript">
+            VanillaTilt.init(document.querySelector(".cont1"), {
+                max: 25,
+                speed: 400
+            });
+        </script>
+        <script type="text/javascript">
+            VanillaTilt.init(document.querySelector(".cont3"), {
+                max: 25,
+                speed: 400
+            });
+        </script>
 
         <h3>Videomaker & Dev Student</h3>
 
