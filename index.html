@@ -64,7 +64,7 @@
 
         <br/>
 
-        <div onclick="ScrolltoTop()" class="ScrolltoTop">UP</div>
+        <div onclick="ScrolltoTop()" class="ScrolltoTop"><img class="scrollIcon"  onclick="btn()" src="images/cima.png" /></div>
     
         <script>
             function ScrolltoTop(){
@@ -72,38 +72,27 @@
             }
         </script>
 
-        <div class="web2">
+        <script src="slide.js"></script> 
             <div class="cont1">
-                <img preload="auto" class="photo-web" src="images/tshit1.png">
+                <img preload="auto" class="photo-web" id="image"  src="images/tshit2.png">
+                <img preload="auto" class="photo-web" id="image"  src="images/tshit3.png">
             </div>
-    
-            <div class="cont3">
-                <img preload="auto" class="photo-web" src="images/tshit2.png">
-            </div>
-        </div>    
+            <div><img class="foto-web" onclick="btn()" src="images/next.png" /></div>
+   
 
         <script type="text/javascript" src="vanilla-tilt.js"></script>
         <script type="text/javascript">
             VanillaTilt.init(document.querySelector(".cont1"), {
-                max: 25,
-                speed: 400
+                max: 15,
+                speed: 1800
             });
         </script>
-        <script type="text/javascript">
-            VanillaTilt.init(document.querySelector(".cont3"), {
-                max: 25,
-                speed: 400
-            });
-        </script>
+
+        <br/><br/>
 
         <h3>Videomaker & Dev Student</h3>
 
         <div class="cont2">
-            <p class="artgtext1">
-            Currently pursuing a Bachelor's degree in Computer Science at UDESC in Joinville.
-            </p>
-
-
             <p class="artgtext1">
                 Hard Skills: React, JavaScript, Three.js, SCSS, Git, Python, Adobe Premiere, Blender.
             </p>
@@ -117,7 +106,7 @@
         <div class="web">
             <div class="webSiteProject">
 
-                <a href="https://peem.netlify.app/index.html" target="_blank" ><img class="foto-web" src="images/program/7.png" /></a>
+                <a href="https://peem.netlify.app/index.html" target="_blank" ><img class="foto-web" src="images/PEEM.png" /></a>
 
                 <p class="textweb">
                     PEEM Brasil Brand's website.
@@ -125,7 +114,7 @@
             </div>
             <div class="webSiteProject">
 
-                <a href="https://orbitsraw.netlify.app/" target="_blank" ><video preload="auto" muted loop autoplay class="foto-web" src="images/siteee.mp4"></a>
+                <a href="https://orbitsraw.netlify.app/" target="_blank" ><img class="foto-web" src="images/siteee.png" /></a>
 
                 <p class="textweb">
                     Three.js, Scss, CLO3D.
@@ -165,7 +154,7 @@
         <div class="web">
             <div class="webSiteProject">
 
-                <a><video preload="auto" muted loop autoplay class="foto-web3" src="images/Teenage.mp4"></a>
+                <a><img preload="auto" class="foto-web3" src="images/control.png"></a>
 
                 <p class="textweb">
                     Blender, Synthesizer
@@ -174,7 +163,7 @@
             </div>
              <div class="webSiteProject">
 
-                <a><video preload="auto" muted loop autoplay class="foto-web3" src="images/Vinyl.mp4"></a>
+                <a><img preload="auto" class="foto-web3" src="images/vinyl.png"></a>
 
                 <p class="textweb">
                     Blender, Vinyl
@@ -183,7 +172,7 @@
             </div>
             <div class="webSiteProject">
 
-                <a><video preload="auto" muted loop autoplay class="foto-web3" src="images/Syn.mp4"></a>
+                <a><img preload="auto" class="foto-web3" src="images/Syn.png"></a>
 
                 <p class="textweb">
                     Blender, Syn

@@ -9,15 +9,15 @@
   body {
     background-image: repeating-linear-gradient(
         0deg,
-        rgb(32, 32, 32) 0px,
-        rgb(32, 32, 32) 1px,
+        rgb(20, 20, 20) 0px,
+        rgb(20, 20, 20) 1px,
         transparent 2px,
         transparent 21px
       ),
       repeating-linear-gradient(
         90deg,
-        rgb(32, 32, 32) 0px,
-        rgb(32, 32, 32) 1px,
+        rgb(20, 20, 20) 0px,
+        rgb(20, 20, 20) 1px,
         transparent 2px,
         transparent 21px
       ),
@@ -250,6 +250,7 @@
   
   video {
     width: 800px;
+    margin: 10px;
     position: relative;
     align-items: center;
     border-radius: 10px;
