@@ -26,7 +26,7 @@ body {
 }
 
 .scrollIcon {
-  width: 60px;
+  width: 120px;
   opacity: 0.6;
 }
 
@@ -141,6 +141,12 @@ video::-webkit-media-controls-start-playback-button {
   margin: 10px;
   opacity: 0.8;
   filter: grayscale(0);
+}
+
+.logo-web {
+  width: 200px;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 button {
