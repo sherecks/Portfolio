@@ -40,7 +40,7 @@ ul li {
   font-size: 30px;
   width: 60px;
   height: 60px;
-  background: #638aff;
+  background: #2a96fc;
   line-height: 60px;
   border-radius: 50%;
   margin: 2px 4px;
@@ -79,26 +79,13 @@ h2 {
 }
 
 a {
-  color: #2d5ff5;
+  color: #2a96fc;
   text-decoration: none;
 }
 
 p {
   font-size: 32px;
   margin-top: 100px;
-}
-
-.textfield {
-  margin: 0 auto;
-  width: 350px;
-  border-radius: 300px;
-  box-shadow: 0 8px 32px 0 rgba(87, 87, 87, 0.45);
-  border: 1px solid rgba(109, 142, 161, 0.2);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  background: linear-gradient(135deg, #3aae6d, #2d5ff5);
-  opacity: 0.8;
-  height: 600px;
 }
 
 #preloader {
@@ -127,7 +114,7 @@ p {
     stroke: #3aae6d;
   }
   100% {
-    stroke: #2d5ff5;
+    stroke: #2a96fc;
   }
 }
 @media (min-width: 300px) and (max-width: 1000px) {
