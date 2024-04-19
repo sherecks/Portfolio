@@ -1,13 +1,12 @@
 var images = [
-    'images/tshit1.png',
     'images/tshit2.png',
-    'images/tshit4.png',
-    'images/tshit3.png',
-    'images/tshit5.png',
-    'images/tshit6.png',
+    'images/berma2.png',
+    'images/berma.png',
     'images/tshit7.png',
-    'images/tshit10.png',
     'images/tshit8.png',
+    'images/Hat.png',
+    'images/HatL.png',
+    'images/tshit3.png',
   ];
 
   var num = 0;
