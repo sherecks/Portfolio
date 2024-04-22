@@ -1,8 +1,12 @@
 var images = [
     'images/berma.png',
     'images/Hat.png',
+    'images/cargo2.png',
     'images/berma2.png',
+    'images/fleece.png',
     'images/HatL.png',
+    'images/cargo.png',
+    'images/fleece2.png',
     'images/tshit1.png',
   ];
 
