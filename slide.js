@@ -10,6 +10,8 @@ var images = [
     'images/tshit2.png',
     'images/cargo3.png',
     'images/fleece3.png',
+    'images/berma3.png',
+    'images/fleece4.png',
     'images/tshit1.png',
   ];
 
