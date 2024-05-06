@@ -166,6 +166,14 @@ button {
   align-items: center;
 }
 
+video {
+  filter: grayscale(1);
+  margin: 0 auto;
+  padding: 10px;
+  width: 40%;
+  border-radius: 10px;
+}
+
 .cont3 {
   width: 400px;
   margin: 0 auto;
@@ -175,6 +183,7 @@ button {
 .photo-web {
   width: 30%;
   opacity: 1;
+  margin: 20px;
 }
 
 .textweb {
@@ -209,6 +218,10 @@ hr {
      -moz-user-select: none;
           user-select: none;
   text-shadow: 3px 3px 0px rgb(54, 54, 54);
+}
+
+.TextProject:hover {
+  opacity: 1;
 }
 
 footer {
