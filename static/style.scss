@@ -185,11 +185,12 @@
   }
 
   video{
+    display: flex;
     filter: grayscale(1);
-    margin: 0 auto;
-    padding: 10px;
+    margin: 20px;
     width: 40%;
     border-radius: 10px;
+    box-shadow: 5px 5px 0px black;
   }
 
   .cont3 {

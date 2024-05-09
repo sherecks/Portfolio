@@ -172,7 +172,7 @@ video {
   position: relative;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 5px 5px 0px vlack;
+  box-shadow: 5px 5px 0px black;
   filter: grayscale(1);
 }
 
