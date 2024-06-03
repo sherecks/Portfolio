@@ -7,7 +7,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-image: repeating-linear-gradient(0deg, rgb(20, 20, 20) 0px, rgb(20, 20, 20) 1px, transparent 2px, transparent 21px), repeating-linear-gradient(90deg, rgb(20, 20, 20) 0px, rgb(20, 20, 20) 1px, transparent 2px, transparent 21px), linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
+  background-color: #000;
   margin: 0px;
   text-align: center;
 }
@@ -139,7 +139,7 @@ ul li {
   font-size: 30px;
   width: 60px;
   height: 60px;
-  background: #2a96fc;
+  background: #b4b4b4;
   line-height: 60px;
   border-radius: 50%;
   margin: 2px 4px;
