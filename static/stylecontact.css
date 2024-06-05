@@ -176,6 +176,19 @@ video {
   filter: grayscale(1);
 }
 
+.VideoLoader {
+  width: 100%;
+}
+
+#preloader {
+  background: #000;
+  background: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
 .finaltext {
   font-size: 30px;
   margin: 10px;

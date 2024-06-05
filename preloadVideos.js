@@ -1,6 +1,7 @@
 function preloadVideos() {
     var videos = [
         'images/Filme-1.mp4',
+        'images/Bird.mp4',
     ];
 
     videos.forEach(function(video) {

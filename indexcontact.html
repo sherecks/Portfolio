@@ -15,6 +15,10 @@
         <meta property="og:title" content="Portfólio João Pedro" />
     </head>
 
+    <div id="preloader">
+        <video class="VideoLoader" preload="auto" muted loop autoplay src="images/Bird.mp4"></video>
+    </div>
+
     <body onload="document.FORM.nome.focus()"> 
 
         <header> 
@@ -95,7 +99,13 @@
             <a href="indexgallery.html"><h1>HOMEMADE</h1> </a> 
         </footer>
 
+        <script>
+            var loader = document.getElementById("preloader");
 
+            window.addEventListener("load", function(){
+                loader.style.display = "none";
+            })
+        </script>
 
     </body>
 
