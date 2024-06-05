@@ -3,7 +3,6 @@
 <html lang="pt-br">
 
     <head>
-        <link rel="preload" href="estilo.css" as="style">
         <link rel="stylesheet" href="static/stylegallery.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,114 +35,7 @@
     <br/>
 
     <main>
-        <script type="module">
-            import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-
-            const INITIAL_WIDTH = 800; // Tamanho inicial da largura da tela
-            const INITIAL_HEIGHT = 600; // Tamanho inicial da altura da tela
-            
-            //Camera
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(
-                25,
-                window.innerWidth / window.innerHeight,
-                0.1,
-                1000
-            );
-            camera.position.set(0, 0, 4);
-
-             //sphere 
-            const top = new THREE.SphereGeometry( 0.3, 25, 15 );
-            const mat = new THREE.PointsMaterial({
-                size: 0.015,
-                color: 0xF5FFFA
-            });
-            const sphere = new THREE.Points(top, mat);
-            scene.add(sphere);
-
-            //sphere 01
-            const top1 = new THREE.TorusGeometry( 0.42, 0.03, 50, 200 );
-            const mat1 = new THREE.MeshPhysicalMaterial({
-                color: 0x575757,
-                emissive: 0x0032FF,
-                wireframe: true
-            });
-            mat1.reflectivity = 2
-            mat1.roughness = 0
-            mat1.metalness = 1
-            mat1.clearcoat = 0.2
-            const sphere01 = new THREE.Mesh(top1, mat1);
-            scene.add(sphere01);
-
-            //sphere 2
-            const txp = new THREE.TorusGeometry( 0.23, 0.035, 20, 200 );
-            const mzt = new THREE.MeshPhysicalMaterial({
-                color: 0xDCDCDC,
-                emissive: 0x808080,
-                
-            });
-            mzt.reflectivity = 0.8
-            mzt.roughness = 0.3
-            mzt.metalness = 2
-            mzt.clearcoat = 0.5
-            const sphere2 = new THREE.Mesh(txp, mzt);
-            scene.add(sphere2);
-
-            //Light
-            const directionalLight = new THREE.DirectionalLight( 0xFFFFFF, 1.68 );
-            scene.add( directionalLight );
-
-            const light = new THREE.PointLight( 0xF, 1.5, 50 );
-            light.position.set( 2.5, 5, 20 );
-            scene.add( light );
-    
-            const light1 = new THREE.PointLight( 0xFFFFFF, 0.85, 50 );
-            light1.position.set( -20, -15, 20 );
-            scene.add( light1 );
-    
-
-            //Renderer
-            const renderer = new THREE.WebGLRenderer();
-            document.body.appendChild(renderer.domElement);
-          
-            function onWindowResize() {
-              const aspectRatio = window.innerWidth / window.innerHeight;
-              camera.aspect = aspectRatio;
-              camera.updateProjectionMatrix();
-          
-              const scale = Math.min(window.innerWidth / INITIAL_WIDTH, window.innerHeight / INITIAL_HEIGHT);
-              sphere.scale.set(scale, scale, scale);
-              sphere01.scale.set(scale, scale, scale);
-              sphere2.scale.set(scale, scale, scale);
-          
-              renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-          
-            window.addEventListener('resize', onWindowResize);
-          
-            onWindowResize();
-
-            //Animate
-            function animate() {
-
-                sphere.rotation.z += 0.01;
-                sphere.rotation.x += 0.01;
-                sphere.rotation.y -= 0.002;
-
-                sphere01.rotation.z += 0.002;
-                sphere01.rotation.x += 0.02;
-                sphere01.rotation.y -= 0.015;
-
-                sphere2.rotation.y -= 0.017;
-                sphere2.rotation.x -= 0.02;
-                sphere2.rotation.z -= 0.002;
-
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
-            }
-
-            animate();
-        </script>
+        <video preload="auto" muted loop autoplay  src="images/Bird.mp4"></video>
     </main>
 
     <script>

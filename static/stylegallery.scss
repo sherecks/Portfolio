@@ -9,8 +9,14 @@ body::-webkit-scrollbar {
 
 body {
   background-color: #000000;
-  margin: 0px;
+  margin: 0px auto;
   text-align: center;
+  overflow: hidden;
+}
+
+video{
+  width: 100%;
+  margin: 0px auto;
   overflow: hidden;
 }
 
@@ -19,15 +25,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 10px 20px;
   flex-wrap: wrap;
-  margin: 0 auto; 
+  margin: 0px auto;
 }
 
 ul {
@@ -78,9 +84,7 @@ h2 {
   text-align: center;
 }
 
-
 a{
-  color: #2a96fc;
   text-decoration: none;  
 }
 
@@ -99,39 +103,22 @@ p{
   width: 100%;
   position: fixed;
   z-index: 100;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
-.triangle {
-  margin: 0 auto;
-  stroke-dasharray: 17;
-  animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
-}
-
-@keyframes dash {
-  from{
-    stroke-dasharray: 17;
-  }
-  to {
-    stroke-dashoffset: 136;
-  }
-  0%{
-    stroke: #3aae6d;
-  }
-  100%{
-    stroke: #2a96fc;
-  }
-}
-
-@media (min-width: 300px) and (max-width: 1000px) {
+@media (max-width: 999px) {
 
   header {
-    display: flex;
+  display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 10px 20px;
   flex-wrap: wrap;
   margin: 0 auto; 
+  }
+
+  video{
+    width: 100%;
+    object-fit: cover;
   }
 
   h2{
@@ -143,7 +130,6 @@ p{
   }
 
   ul li {
- 
     font-size: 40px;
     width: 80px;
     height: 80px;

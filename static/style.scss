@@ -261,27 +261,6 @@
     position: fixed;
     z-index: 100;
   }
-
-  .triangle {
-    margin: 0 auto;
-    stroke-dasharray: 17;
-    animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
-  }
-
-  @keyframes dash {
-    from{
-      stroke-dasharray: 17;
-    }
-    to {
-      stroke-dashoffset: 136;
-    }
-    0%{
-      stroke: #3aae6d;
-    }
-    100%{
-      stroke: #2a96fc;
-    }
-  }
   
   @keyframes into {
     from {
