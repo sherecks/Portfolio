@@ -7,6 +7,8 @@ var images = [
     'images/cargo.png',
     'images/tshit2.png',
     'images/cargo3.png',
+    'images/tshit5.png',
+    'images/tshit6.png',
     'images/berma3.png',
     'images/tshit4.png',
   ];
