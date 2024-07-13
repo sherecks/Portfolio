@@ -161,6 +161,14 @@ button {
   filter: grayscale(0);
 }
 
+.foto-web5 {
+  width: 20%;
+  margin: 10px;
+  opacity: 0.8;
+  border-radius: 10px;
+  filter: grayscale(0);
+}
+
 .cont1 {
   margin: 0 auto;
   align-items: center;
