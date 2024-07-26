@@ -31,6 +31,10 @@ video{
   z-index: 1;
 }
 
+.gif{
+  width: 48%;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -97,7 +101,7 @@ p{
 }
 
 .VideoLoader{
-  width: 100%;
+  width: 48%;
 }
 
 #preloader{
