@@ -238,7 +238,7 @@
   
   ul {
     display: flex;
-  }
+  } 
   
   ul li {
     display: block;
@@ -378,6 +378,14 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
+    }
+
+    .foto-web5{
+      width: 40%;
+    }
+
+    .foto-web4{
+      width: 80%;
     }
 
   }

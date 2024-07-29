@@ -365,4 +365,10 @@ ul li:hover {
        object-fit: cover;
     z-index: -1;
   }
+  .foto-web5 {
+    width: 40%;
+  }
+  .foto-web4 {
+    width: 80%;
+  }
 }/*# sourceMappingURL=style.css.map */
