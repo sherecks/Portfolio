@@ -1,7 +1,7 @@
 var images = [
-    'images/tshit2.png',
-    'images/tshit4.png',
     'images/tshit1.png',
+    'images/tshit4.png',
+    'images/tshit2.png',
   ];
 
   var num = 0;
