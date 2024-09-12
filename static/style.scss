@@ -1,5 +1,5 @@
 * {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; 
   }
 
   body::-webkit-scrollbar {
@@ -10,23 +10,6 @@
     background-color: #000;
     margin: 0px;
     text-align: center;
-    font-family: "Kanit", cursive;
-  }
-
-  .ScrolltoTop{
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    font-size: 20px;
-    padding: 10px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.8s ease;
-  }
-
-  .scrollIcon{
-    width: 120px;
-    opacity: 0.6;
   }
   
   .title { 
@@ -44,15 +27,15 @@
 
   a{
     text-decoration: none;
+    font-family: "Didact Gothic", sans-serif;
   }
   
   h1 {
+    font-family: "Dela Gothic One", sans-serif;
     color: white;
-    text-shadow: 5px 5px 0px black;
     font-size: 65px;
-    padding-top: 15px;
+    padding-top: 5px;
     margin: 0px;
-    font-family: "Staatliches", cursive;
   }
 
   h1:hover{
@@ -60,22 +43,15 @@
 }
   
   h2 {
+    font-family: "Dela Gothic One", sans-serif;
     color: white;
-    text-shadow: 5px 5px 0px black;
-    font-size: 40px;
-    text-align: center;
-  }
-  
-  h3 {
-    color: white;
-    text-shadow: 5px 5px 0px black;
     font-size: 46px;
     text-align: left;
     margin: 15px;
   }
 
-  video::-webkit-media-controls-start-playback-button { 
-    display: none;
+  p{
+    font-family: "Didact Gothic", sans-serif;
   }
   
   .cont2 {
@@ -86,21 +62,6 @@
     opacity: 0.8;
   }
   
-
-  .exptext {
-    margin-bottom: 20px;
-    color: white;
-    font-size: 60px;
-    text-shadow: 5px 5px 0px black;
-  }
-  
-  .artg {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-  }
-  
-  
   .artgtext1 {
     font-size: 40px;
     text-align: left;
@@ -108,13 +69,6 @@
     color: white;
     text-shadow: none;
     user-select: none;
-    text-shadow: 3px 3px 0px rgb(54, 54, 54);
-  }
-
-  .beach{
-    text-decoration: none;
-    color: #ffffff;
-    text-shadow: none;
   }
   
   .web {
@@ -124,33 +78,10 @@
     margin: 0 auto;
   }
 
-  .webSiteProject{
-    margin: 10px;
-  }
-
-  .foto-web{
-    width: 620px;
-    margin: 60px;
-    opacity: 0.8;
-    filter: grayscale(0);
-  }
-
   .logo-web{
     width: 200px;
     cursor: pointer;
     opacity: 0.8;
-  }
-
-  button{
-    height: 40px;
-    margin: 10px;
-  }
-
-  .foto-web3{
-    width: 620px;
-    margin: 10px;
-    opacity: 0.8;
-    filter: grayscale(0);
   }
 
   .foto-web4{
@@ -174,19 +105,11 @@
     align-items: center;
   }
 
-  video{
-    display: flex;
-    margin: 20px auto;
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: 5px 5px 0px black;
-    filter: grayscale(1);
-  }
-
   .cont3 {
-    width: 400px;
+    display: flex;
+    justify-content: center;
     margin: 0 auto;
-    align-items: center;
+    text-align: center;
   }
   
   .photo-web {
@@ -195,75 +118,24 @@
     margin: 20px;
   }
   
-  .textweb{
-    font-size: 18px;
-    margin: 0 auto;
-    color: white;
-    text-shadow: none;
-    user-select: none;
-  }
-
-  hr{
-    border-radius: 100%;
-  }
-
-  .projects {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    margin: 10px;
-  }
-
-  .TextProject {
-    font-size: 40px;
-    text-align: left;
-    margin: 4px;
-    color: white;
-    opacity: 0.8;
-    text-shadow: none;
-    user-select: none;
-    text-shadow: 3px 3px 0px rgb(54, 54, 54);
-  }
-  .TextProject:hover{
-    opacity: 1;
-  }
-
-  footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px; 
-    position: relative;
-    flex-wrap: wrap;
-    margin: 0 auto;
-  }
-  
   ul {
     display: flex;
   } 
   
   ul li {
     display: block;
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 30px;
-    width: 60px;
-    height: 60px;
-    background: #b4b4b4;
-    line-height: 60px;
-    border-radius: 50%;
-    margin: 2px 4px;
-    transition: all 0.2s ease;
-  }
-  
-  ul li:hover {
-    opacity: 0.6;
-    background: #ffffff;
-    width: 60px;
-    height: 60px;
-    display: block;
-    line-height: 65px;
-    border-radius: 50%;
+    padding-top: 20px;
     margin: 2px 8px;
-    transition: all 0.2s ease;
+  }
+
+  i{
+    font-family: "Dela Gothic One", sans-serif;
+  }
+
+  i:hover{
+    color: #a3a3a3;
   }
 
   .VideoLoader{
@@ -306,69 +178,17 @@
       position: relative;
       flex-wrap: wrap; 
     }
-   
-    footer {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      flex-wrap: wrap;
-    }
     
     h1{
       font-size: 70px;
     }
   
     ul li {
-      width: 70px;
-      height: 70px;
-      line-height: 72px;
       font-size: 40px;
-    }
-  
-    ul li:hover {
-      width: 65px;
-      height: 65px;
-      line-height: 60px;
-    }
-  
-    .link {
-      font-size: 40px;
-    }
-  
-    .link:hover {
-      font-size: 40px;
-    }
-  
-    .foto-web{
-      width: 400px;
     }
 
     .photo-web{
       width: 60%;
-    }
-
-    video{
-      width: 80%;
-    }
-
-    .textweb{
-      font-size: 14px;
-    }
-
-    .webSiteText{
-      font-size: 28px;
-    }
-
-    .artgtext2{
-      font-size: 28px;
-    }
-
-    .experience{
-      font-size: 24px;
-    }
-
-    .webSiteProject{
-      margin: 0 auto;
     }
 
     .VideoLoader{

@@ -1,38 +1,65 @@
-*{
-    font-family: "Staatliches", cursive;
-    scroll-behavior: smooth; 
-}
-
-body::-webkit-scrollbar {
-  display: none;
-}
 
 body {
-  background-color: #000000;
+  background-color: #000000; 
   margin: 0px auto;
-  text-align: center;
-  overflow: hidden;
 }
 
-.testHeaderFooter{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.gif{
-  width: 100%;
-  z-index: -1;
-}
-
-header {
+header{
   display: flex;
   justify-content: space-between;
   position: relative;
+  padding: 10px 20px; 
   flex-wrap: wrap;
-  margin: 0px auto;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: "Dela Gothic One", sans-serif;
+  color: white;
+  font-size: 42px;
+  text-align: left;
+  margin: 20px;
+}
+
+p{
+  font-family: "Didact Gothic", sans-serif;
+  text-align: center;
+}
+
+.artgtext1 {
+  opacity: 0.8;
+  font-size: 32px;
+  text-align: left;
+  margin: 20px;
+  color: white;
+  text-shadow: none;
+  user-select: none;
+}
+
+.web {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.foto-web3{
+  width: 420px;
+  margin: 10px;
+  opacity: 0.8;
+  filter: grayscale(0);
+}
+
+.webSiteProject{
+  margin: 10px;
+}
+
+.textweb{
+  font-size: 18px;
+  margin: 0 auto;
+  color: white;
+  text-shadow: none;
+  user-select: none;
 }
 
 ul {
@@ -41,59 +68,34 @@ ul {
   
 ul li {
   display: block;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 30px;
-  width: 60px;
-  height: 60px;
-  background: #b4b4b4;
-  line-height: 60px;
-  border-radius: 50%;
-  margin: 2px 4px;
-  transition: all 0.2s ease;
+  padding-top: 20px;
+  margin: 2px 4px auto;
 }
-  
-ul li:hover {
-  opacity: 0.6;
-  background: #ffffff;
-  width: 60px;
-  height: 60px;
-  display: block;
-  line-height: 65px;
-  border-radius: 50%;
-  margin: 2px 8px;
-  transition: all 0.2s ease;
+
+i{
+  font-family: "Dela Gothic One", sans-serif;
+}
+
+i:hover{
+  color: #a3a3a3;
 }
 
 h1 {
+  font-family: "Dela Gothic One", sans-serif;
   color: white;
-  text-shadow: 5px 5px 0px black;
   font-size: 60px;
+  padding-top: 5px;
   margin: 0px;
-  padding-top: 15px;
 }
 
 h1:hover{
     color: #a3a3a3;
 }
 
-h2 {
-  color: white;
-  text-shadow: 5px 5px 0px black;
-  font-size: 40px;
-  text-align: center;
-}
-
 a{
   text-decoration: none;  
-}
-
-p{
-  font-size: 32px;
-  margin-top: 100px;
-}
-
-.VideoLoader{
-  width: 48%;
 }
 
 #preloader{
@@ -115,14 +117,6 @@ p{
   margin: 0 auto; 
   }
 
-  .VideoLoader{
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    object-fit: cover;
-    z-index: -1;
-  }
-
   h2{
     font-size: 45px;
   }
@@ -133,9 +127,6 @@ p{
 
   ul li {
     font-size: 40px;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
   }
     
 }

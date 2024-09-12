@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="static/stylevideomaker.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <title>Portfólio João Pedro</title>
+        <script src="https://kit.fontawesome.com/0db4c44db2.js" crossorigin="anonymous"></script>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Portfólio João Pedro" />
+    </head>
+
+    <div id="preloader">
+        <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+    </div>
+    
+    <header>
+        <a href="index.html"><h1>João Pedro</h1> </a>  
+        <ul>
+            <a href="contact.html"><li href="#"><i>Contact</i></li></a>  
+        </ul>
+    </header>
+ 
+    <br/>
+
+    <main>
+        <h2>Videomaker</h2>
+        <p class="artgtext1">Hard Skills:  3D Graphics, Video Capture, Photographic, Color Grading, Adobe Premiere, Blender, RawTherapee.</p>
+        
+        <video preload="auto" muted loop autoplay controls src="images/expo.mp4"></video>
+
+        <h2> Video Projects </h2>
+
+        <div class="projects">
+            <a href=" https://www.youtube.com/watch?v=tl3svUUn0ws&ab_channel=Jo%C3%A3oPedro" target="_blank" class="TextProject" >Dirt Lens: Surfing video with athlete Luiz Mendes for Oceano.</a>
+            <a href=" https://www.youtube.com/watch?v=PWvlAW8YhGc&ab_channel=Furafilas" target="_blank" class="TextProject" >FuraFilas: Project developed to create viewers for the band's new album and advertising campaign.</a>
+            <a href="  https://www.youtube.com/watch?v=SK9aGbkZIO8&ab_channel=Ramat%C3%ADs" target="_blank" class="TextProject" >Ramatis: Live show recording and editing.</a>
+        </div>
+    </main>
+
+    <script>
+        var loaderer = document.getElementById("preloader");
+
+        window.addEventListener("load", function(){
+            loaderer.style.display = "none";
+        })
+    </script>
+    
+</body>
+
+</html>
