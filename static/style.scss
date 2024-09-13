@@ -12,9 +12,6 @@
     text-align: center;
   }
   
-  .title { 
-    font-size: 2.5rem;
-  }
   
   header {
     display: flex;
@@ -33,8 +30,8 @@
   h1 {
     font-family: "Dela Gothic One", sans-serif;
     color: white;
-    font-size: 65px;
-    padding-top: 5px;
+    font-size: 48px;
+    padding-top: 10px;
     margin: 0px;
   }
 
@@ -45,77 +42,45 @@
   h2 {
     font-family: "Dela Gothic One", sans-serif;
     color: white;
-    font-size: 46px;
+    font-size: 38px;
+    margin: 8px;
     text-align: left;
-    margin: 15px;
+  }
+
+  h2:hover{
+    opacity: 0.8;
+  }
+
+  h3 {
+    font-family: "Didact Gothic", sans-serif;
+    margin: 10px;
+    color: white;
+    font-size: 22px;
+    text-align: center;
   }
 
   p{
     font-family: "Didact Gothic", sans-serif;
   }
-  
-  .cont2 {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    margin: 10px;
-    opacity: 0.8;
-  }
-  
-  .artgtext1 {
-    font-size: 40px;
-    text-align: left;
-    margin: 4px;
-    color: white;
-    text-shadow: none;
-    user-select: none;
-  }
-  
-  .web {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 auto;
-  }
-
-  .logo-web{
-    width: 200px;
-    cursor: pointer;
-    opacity: 0.8;
-  }
-
-  .foto-web4{
-    width: 60%;
-    margin: 10px;
-    opacity: 0.8;
-    border-radius: 10px;
-    filter: grayscale(0);
-  }
-
-  .foto-web5{
-    width: 20%;
-    margin: 10px;
-    opacity: 0.8;
-    border-radius: 10px;
-    filter: grayscale(0);
-  }
-    
-  .cont1 {
-    margin: 0 auto;
-    align-items: center;
-  }
 
   .cont3 {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+    margin: 2px auto;
     text-align: center;
+  }
+
+  .cont2 {
+    display: flex;
+    justify-content: center;
+    margin: 2px auto;
+    text-align: center;
+    width: 800px;
   }
   
   .photo-web {
-    width: 30%;
+    width: 24%;
     opacity: 1;
-    margin: 20px;
   }
   
   ul {
@@ -131,11 +96,11 @@
   }
 
   i{
-    font-family: "Dela Gothic One", sans-serif;
+    font-family: "Didact Gothic", sans-serif;
   }
 
   i:hover{
-    color: #a3a3a3;
+    opacity: 0.8;
   }
 
   .VideoLoader{
@@ -164,10 +129,6 @@
   
   @media (max-width: 999px) {
     
-    .perfil{
-      display: flex;
-    } 
-
     .ScrolltoTop{
       display: none;
     }
@@ -182,28 +143,21 @@
     h1{
       font-size: 70px;
     }
+
+    h2{
+      margin-top: 62px;
+      font-size: 60px;
+    }
+
+    h3{
+      font-size: 28px;
+    }
   
-    ul li {
+    i{
       font-size: 40px;
     }
 
     .photo-web{
-      width: 60%;
-    }
-
-    .VideoLoader{
-      display: flex;
-      justify-content: center;
-      margin: 0 auto;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .foto-web5{
-      width: 40%;
-    }
-
-    .foto-web4{
       width: 80%;
     }
 

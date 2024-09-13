@@ -20,8 +20,8 @@
   h1 {
     font-family: "Dela Gothic One", sans-serif;
     color: white;
-    font-size: 65px;
-    padding-top: 5px;
+    font-size: 48px;
+    padding-top: 10px;
     margin: 0 auto;
   }
   
@@ -55,7 +55,7 @@
   }
 
   i{
-    font-family: "Dela Gothic One", sans-serif;
+    font-family: "Didact Gothic", sans-serif;
   }
 
   i:hover{
@@ -68,6 +68,10 @@
     color: white;
     font-size: 40px;
     text-align: center;
+  }
+
+  .VideoLoader{
+    width: 48%;
   }
 
   #preloader{

@@ -1,6 +1,7 @@
 body {
   background-color: #000000;
   margin: 0px auto;
+  text-align: center;
 }
 
 body::-webkit-scrollbar {
@@ -84,7 +85,7 @@ ul li {
 }
 
 i {
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "Didact Gothic", sans-serif;
 }
 
 i:hover {
@@ -106,6 +107,10 @@ h1:hover {
 a {
   text-decoration: none;
   font-family: "Didact Gothic", sans-serif;
+}
+
+.VideoLoader {
+  width: 48%;
 }
 
 #preloader {

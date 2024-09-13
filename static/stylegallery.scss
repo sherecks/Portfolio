@@ -2,6 +2,7 @@
 body {
   background-color: #000000; 
   margin: 0px auto;
+  text-align: center;
 }
 
 header{
@@ -75,7 +76,7 @@ ul li {
 }
 
 i{
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "Didact Gothic", sans-serif;
 }
 
 i:hover{
@@ -85,8 +86,8 @@ i:hover{
 h1 {
   font-family: "Dela Gothic One", sans-serif;
   color: white;
-  font-size: 60px;
-  padding-top: 5px;
+  font-size: 48px;
+  padding-top: 10px;
   margin: 0px;
 }
 
@@ -96,6 +97,10 @@ h1:hover{
 
 a{
   text-decoration: none;  
+}
+
+.VideoLoader{
+  width: 48%;
 }
 
 #preloader{
