@@ -80,7 +80,7 @@ i{
 }
 
 i:hover{
-  color: #a3a3a3;
+  opacity: 0.8;
 }
 
 h1 {
@@ -92,7 +92,7 @@ h1 {
 }
 
 h1:hover{
-    color: #a3a3a3;
+    opacity: 0.8;
 }
 
 a{
@@ -120,6 +120,10 @@ a{
   position: relative;
   flex-wrap: wrap;
   margin: 0 auto; 
+  }
+
+  .foto-web3{
+    width: 620px;
   }
 
   h2{
