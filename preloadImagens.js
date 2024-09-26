@@ -1,10 +1,25 @@
 function preloadImages() {
     var images = [
-        'images/tshit2.png',
+        'images/TshitGhost.png',
+        'images/TshitSpace.png',
+        'images/TshitRedLine.png',
+        'images/Tshit.png',
+        'images/2.png',
+        'images/3.png',
+        'images/4.png',
+        'images/1.png',
+        'images/BR1.png',
+        'images/BR3.png',
+        'images/BR2.png',
         'images/tshit1.png',
+        'images/tshit2.png',
+        'images/tshit5.png',
         'images/tshit4.png',
+        'images/l1.png',
+        'images/l2.png',
+        'images/h4.png',
+        'images/h3.png',
         
-
     ];
 
     images.forEach(function(image) {
