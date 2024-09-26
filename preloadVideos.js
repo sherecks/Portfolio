@@ -1,6 +1,5 @@
 function preloadVideos() {
     var videos = [
-        'images/top.mp4',
         'images/expo.mp4',
     ];
 
