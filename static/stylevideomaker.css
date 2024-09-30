@@ -42,10 +42,17 @@ p {
           user-select: none;
 }
 
+.web {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
 video {
   display: flex;
   margin: 20px auto;
-  width: 48%;
+  width: 42%;
   border-radius: 10px;
 }
 

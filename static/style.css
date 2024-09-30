@@ -125,9 +125,6 @@ i:hover {
   }
 }
 @media (max-width: 999px) {
-  .ScrolltoTop {
-    display: none;
-  }
   header {
     display: flex;
     justify-content: space-between;
