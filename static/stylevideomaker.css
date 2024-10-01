@@ -46,12 +46,12 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 video {
   display: flex;
-  margin: 20px auto;
+  margin: 20px;
   width: 42%;
   border-radius: 10px;
 }

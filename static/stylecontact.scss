@@ -74,6 +74,11 @@
     width: 48%;
   }
 
+  .photo-web {
+    width: 14%;
+    opacity: 1;
+  }
+
   #preloader{
     background: #000;
     background: cover;
@@ -122,20 +127,16 @@
     }
   
     ul li {
-      width: 70px;
-      height: 70px;
-      line-height: 72px;
       font-size: 40px;
-    }
-  
-    ul li:hover {
-      width: 65px;
-      height: 65px;
-      line-height: 60px;
     }
   
     .finaltext {
       font-size: 35px;
+    }
+
+    .photo-web {
+      width: 100%;
+      opacity: 1;
     }
 
   }
