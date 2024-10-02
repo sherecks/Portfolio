@@ -1,9 +1,5 @@
 function preloadImages() {
     var images = [
-        'images/TshitGhost.png',
-        'images/TshitSpace.png',
-        'images/TshitRedLine.png',
-        'images/Tshit.png',
         'images/2.png',
         'images/3.png',
         'images/4.png',
