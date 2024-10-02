@@ -18,7 +18,7 @@ header {
 }
 
 h2 {
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "Anton", sans-serif;
   color: white;
   font-size: 42px;
   text-align: left;
@@ -26,7 +26,8 @@ h2 {
 }
 
 p {
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
   text-align: center;
 }
 
@@ -86,7 +87,7 @@ ul li {
 }
 
 i {
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 i:hover {
@@ -94,7 +95,7 @@ i:hover {
 }
 
 h1 {
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "Anton", sans-serif;
   color: white;
   font-size: 58px;
   padding-top: 10px;
