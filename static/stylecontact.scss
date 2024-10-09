@@ -3,18 +3,19 @@
   }
   
   body {
-    background-color: #000;
+    background-color: #a30000;
     margin: 0px;
     text-align: center;
   }
   
   header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
     position: relative;
     padding: 10px 20px; 
-    flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0px 0px;
   }
   
   h1 {
@@ -36,32 +37,18 @@
     letter-spacing: 2px;
     margin: 5px;
     color: white;
-    font-size: 60px;
+    font-size: 58px;
     text-align: center;
   }
   
-  a {
-    text-decoration: none;
-  }
-  
-  ul {
-    display: flex;
-  }
-  
-  ul li {
-    display: block;
+  a{
+    font-family: "Anton", sans-serif;
+    letter-spacing: 2px;
     color: white;
-    font-size: 30px;
-    padding-top: 15px;
-    margin: 2px 8px auto;
-  }
-
-  i{
+    font-size: 28px;
+    text-align: left;
+    text-decoration: none;
     font-family: "Montserrat", sans-serif;
-  }
-
-  i:hover{
-    color: #a3a3a3;
   }
   
   h3 {
@@ -69,17 +56,12 @@
     font-weight: 200;
     margin: 10px;
     color: white;
-    font-size: 40px;
+    font-size: 52px;
     text-align: center;
   }
 
   .VideoLoader{
     width: 48%;
-  }
-
-  .photo-web {
-    width: 14%;
-    opacity: 1;
   }
 
   #preloader{
@@ -92,7 +74,7 @@
   }
   
   .finaltext {
-    font-size: 30px;
+    font-size: 42px;
     margin: 10px;
   }
   
@@ -129,10 +111,6 @@
   
     h2 {
       font-size: 65px;
-    }
-  
-    ul li {
-      font-size: 40px;
     }
   
     .finaltext {

@@ -4,21 +4,22 @@
 
 body::-webkit-scrollbar {
   display: none;
-}
+} 
 
 body {
   background-color: #000000; 
   margin: 0px auto;
-  text-align: center; 
+  text-align: center;
 }
 
-header{
+header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: baseline;
   position: relative;
   padding: 10px 20px; 
-  flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 0px 0px;
 }
 
 h2 {
@@ -47,7 +48,7 @@ p{
 
 .web {
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
   flex-wrap: wrap;
   margin: 0 auto;
 }
@@ -71,26 +72,6 @@ p{
   user-select: none;
 }
 
-ul {
-  display: flex;
-}
-  
-ul li {
-  display: block;
-  color: rgb(255, 255, 255);
-  font-size: 30px;
-  padding-top: 20px;
-  margin: 2px 4px auto;
-}
-
-i{
-  font-family: "Montserrat", sans-serif;
-}
-
-i:hover{
-  opacity: 0.8;
-}
-
 h1 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
@@ -105,7 +86,13 @@ h1:hover{
 }
 
 a{
-  text-decoration: none;  
+  font-family: "Anton", sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  font-size: 28px;
+  text-align: left;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
 }
 
 .VideoLoader{
@@ -141,10 +128,6 @@ a{
 
   h1{
     font-size: 68px;
-  }
-
-  ul li {
-    font-size: 40px;
   }
     
 }

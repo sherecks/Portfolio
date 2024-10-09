@@ -4,6 +4,7 @@ function preloadVideos() {
         'images/Texol.mp4',
         'images/Ecatarina.mp4',
         'images/Vila.mp4',
+        'images/GHOST.mp4',
     ];
 
     videos.forEach(function(video) {

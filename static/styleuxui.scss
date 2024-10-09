@@ -1,5 +1,5 @@
 body {
-    background-color: #000000; 
+    background-color: #244110; 
     margin: 0px auto;
     text-align: center;
   }
@@ -8,13 +8,14 @@ body {
     display: none;
   }
   
-  header{
+  header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
     position: relative;
     padding: 10px 20px; 
-    flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0px 0px;
   }
   
   h2 {
@@ -30,67 +31,29 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 200;
     text-align: center;
-  }
-  
-  .artgtext1 {
     opacity: 0.8;
     font-size: 32px;
     text-align: left;
-    margin: 20px;
+    margin: 10px;
+    width: 600px;
     color: white;
     text-shadow: none;
     user-select: none;
   }
-
+  
   .web {
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     flex-wrap: wrap;
-    margin: 0 auto;
-  }
-  
-  .cont2 {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
     margin: 10px;
-    opacity: 0.8;
   }
 
   .foto-web4{
     width: 60%;
     margin: 10px;
-    opacity: 0.8;
+    opacity: 1;
     border-radius: 10px;
     filter: grayscale(0);
-  }
-
-  .foto-web5{
-    width: 40%;
-    margin: 10px;
-    opacity: 0.8;
-    border-radius: 10px;
-    filter: grayscale(0);
-  }
-  
-  ul {
-    display: flex;
-  }
-    
-  ul li {
-    display: block;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    padding-top: 20px;
-    margin: 2px 4px auto;
-  }
-  
-  i{
-    font-family: "Montserrat", sans-serif;
-  }
-  
-  i:hover{
-    color: #a3a3a3;
   }
   
   h1 {
@@ -107,8 +70,13 @@ body {
   }
   
   a{
+    font-family: "Anton", sans-serif;
+    letter-spacing: 2px;
+    color: white;
+    font-size: 28px;
+    text-align: left;
     text-decoration: none;
-    font-family: "Didact Gothic", sans-serif;  
+    font-family: "Montserrat", sans-serif;
   }
 
   .VideoLoader{
@@ -142,16 +110,8 @@ body {
       font-size: 68px;
     }
   
-    ul li {
-      font-size: 40px;
-    }
-
     .foto-web4{
     width: 92%;
     }
-
-    .foto-web5{
-      width: 46%;
-      }
     
   }
