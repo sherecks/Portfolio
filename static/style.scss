@@ -12,7 +12,6 @@
     text-align: center;
   }
   
-  
   header {
     display: flex;
     flex-direction: column;
@@ -116,7 +115,7 @@
     }
 
     .cont3{
-      position: relative;
+      position: fixed;
     }
     
     h1{
@@ -132,8 +131,8 @@
       font-size: 46px;
     }
 
-    .photo-web{
-      width: 100%;
+    video{
+      width: 60%;
     }
 
   }
