@@ -30,10 +30,9 @@ body {
   p{
     font-family: "Montserrat", sans-serif;
     font-weight: 200;
-    text-align: center;
+    text-align: left;
     opacity: 0.8;
     font-size: 32px;
-    text-align: left;
     margin: 10px;
     width: 600px;
     color: white;
@@ -50,6 +49,14 @@ body {
 
   .foto-web4{
     width: 60%;
+    margin: 10px;
+    opacity: 1;
+    border-radius: 10px;
+    filter: grayscale(0);
+  }
+
+  .foto-web5{
+    width: 40%;
     margin: 10px;
     opacity: 1;
     border-radius: 10px;
@@ -111,7 +118,11 @@ body {
     }
   
     .foto-web4{
-    width: 92%;
+      width: 92%;
+    }
+
+    .foto-web5{
+      width: 82%;
     }
     
   }
