@@ -30,9 +30,9 @@
   p{
     font-family: "Montserrat", sans-serif;
     font-weight: 200;
-    font-size: 40px;
+    font-size: 38px;
     text-align: left;
-    margin: 10px;
+    margin: 20px;
     color: white;
     opacity: 0.8;
     text-shadow: none;
@@ -90,13 +90,7 @@
   }
   
   a{
-    font-family: "Anton", sans-serif;
-    letter-spacing: 2px;
-    color: white;
-    font-size: 28px;
-    text-align: left;
     text-decoration: none;
-    font-family: "Montserrat", sans-serif;
   }
 
   .VideoLoader{
@@ -110,6 +104,24 @@
     position: fixed;
     z-index: 100;
     margin: 0px auto;
+  }
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(0, 183, 255);
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none; /* Impede que interfira com cliques */
+    transition: transform 0.1s linear;
+    z-index: 1;
+    mix-blend-mode: difference;
+  }
+
+  ::selection {
+    background: white;
+    color: black;
+    mix-blend-mode: difference;
   }
   
   @media (max-width: 999px) {
@@ -127,7 +139,7 @@
     }
   
     h2{
-      font-size: 45px;
+      font-size: 45px; 
     }
   
     h1{

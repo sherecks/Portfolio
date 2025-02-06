@@ -20,47 +20,51 @@
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Portfólio João Pedro" />
     </head>
+    <body>
 
-    <div id="preloader">
-        <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
-    </div>
-    
-    <header> 
-        <a href="index.html"><h1>JOÃO PEDRO</h1> </a> 
-    </header>
- 
-    <br/>
-
-    <main>
-        <h2> UX/UI </h2>
-        <p>Hard Skills: Java Script, Python, React, HTML5, SCSS, GIT, Three.js </p>
-
+        <div class="cursor"></div>
         
-        <div class="web">
-            <img preload="auto" class="foto-web4" src="images/l1.png">
-            <p>
-                Creating designs for more responsive e-commerce sites
-                using a clean aesthetic while adhering to WCAG guidelines.
-                In desktop versions, I try to present ideas using Three.js to work with 3D.
-                MODERN
-            </p>
-            <img preload="auto" class="foto-web4" src="images/l2.png">
-            <p>
-                3D tshirts design in Vstitcher and use vanilla-tilt.js in code.
-                DSGN
-            </p>
+        <div id="preloader">
+            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
         </div>
-        <div class="web">
-            <img preload="auto" class="foto-web5" src="images/Galeria.png">
-            <img preload="auto" class="foto-web5" src="images/Galeria2.png">
-            <p>
-                Creation of a website for posting photos after events.
-                In this development, I used the Google Drive API,
-                Python for capturing the access keys, and JavaScript
-                for opening the images through their IDs.
-            </p>
-        </div>
-    </main>
+        
+        <header> 
+            <a href="index.html"><h1>JOÃO PEDRO</h1> </a> 
+        </header>
+    
+        <br/>
+
+        <main>
+            <h2> UX/UI </h2>
+            <p>Hard Skills: Java Script, Python, React, HTML5, SCSS, GIT, Three.js </p>
+
+            
+            <div class="web">
+                <img preload="auto" class="foto-web4" src="images/l1.png">
+                <p>
+                    Creating designs for more responsive e-commerce sites
+                    using a clean aesthetic while adhering to WCAG guidelines.
+                    In desktop versions, I try to present ideas using Three.js to work with 3D.
+                    MODERN
+                </p>
+                <img preload="auto" class="foto-web4" src="images/l2.png">
+                <p>
+                    3D tshirts design in Vstitcher and use vanilla-tilt.js in code.
+                    DSGN
+                </p>
+            </div>
+            <div class="web">
+                <img preload="auto" class="foto-web5" src="images/Galeria.png">
+                <img preload="auto" class="foto-web5" src="images/Galeria2.png">
+                <p>
+                    Creation of a website for posting photos after events.
+                    In this development, I used the Google Drive API,
+                    Python for capturing the access keys, and JavaScript
+                    for opening the images through their IDs.
+                </p>
+            </div>
+        </main>
+    </body>
 
     <script>
         var loaderer = document.getElementById("preloader");
@@ -69,8 +73,18 @@
             loaderer.style.display = "none";
         })
     </script>
+
     <script src="preloadImagens.js"></script> 
     
-</body>
+    <script>
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.pageX;
+            const y = e.pageY;
+            
+            cursor.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
 
 </html>

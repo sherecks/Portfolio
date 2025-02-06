@@ -27,13 +27,15 @@
 
     <body>
 
+        <div class="cursor"></div>
+
         <div id="preloader">
             <img class="VideoLoader" preload="auto" src="images/BBB.png">  
         </div>
 
-            <header> 
-                <h1>JOÃO PEDRO</h1> 
-            </header>
+        <header> 
+            <h1>JOÃO PEDRO</h1> 
+        </header>
  
         <main>
 
@@ -59,7 +61,10 @@
             objects to apply on the web using Three.js.
         </h3>
 
-   
+        </main>
+
+    </body>
+
         <script type="text/javascript" src="vanilla-tilt.js"></script>
         <script type="text/javascript">
             VanillaTilt.init(document.querySelector(""), {
@@ -67,8 +72,6 @@
                 speed: 2800
             });
         </script>
-
-        </main>
        
         <script>
             var loader = document.getElementById("preloader");
@@ -80,7 +83,15 @@
         
         <script src="preloadImagens.js"></script> 
 
-
-    </body>
+        <script>
+            const cursor = document.querySelector('.cursor');
+    
+            document.addEventListener('mousemove', (e) => {
+                const x = e.pageX;
+                const y = e.pageY;
+                
+                cursor.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
 
 </html>

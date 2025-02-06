@@ -33,10 +33,9 @@ body {
     text-align: left;
     opacity: 0.8;
     font-size: 38px;
-    padding: 20px;
+    margin: 20px;
     color: white;
     text-shadow: none;
-    user-select: none;
   }
   
   .web {
@@ -76,13 +75,7 @@ body {
   }
   
   a{
-    font-family: "Anton", sans-serif;
-    letter-spacing: 2px;
-    color: white;
-    font-size: 28px;
-    text-align: left;
     text-decoration: none;
-    font-family: "Montserrat", sans-serif;
   }
 
   .VideoLoader{
@@ -97,12 +90,30 @@ body {
     z-index: 100;
     margin: 0px auto;
   }
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(0, 183, 255);
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none; /* Impede que interfira com cliques */
+    transition: transform 0.1s linear;
+    z-index: 1;
+    mix-blend-mode: difference;
+  }
+
+  ::selection {
+    background: white;
+    color: black;
+    mix-blend-mode: difference;
+  }
   
   @media (max-width: 999px) {
   
     header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     position: relative;
     flex-wrap: wrap;
     margin: 0 auto; 

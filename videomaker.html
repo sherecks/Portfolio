@@ -21,37 +21,41 @@
         <meta property="og:title" content="Portfólio João Pedro" />
     </head>
 
-    <div id="preloader">
-        <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
-    </div>
-    
-    <header> 
-        <a href="index.html"><h1>JOÃO PEDRO</h1> </a> 
-    </header>
- 
-    <br/>
+    <body>
 
-    <main>
-        <h2>VIDEOMAKER</h2>
-        <div class="projects">
+        <div class="cursor"></div>
+
+        <div id="preloader">
+            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+        </div>
+        
+        <header> 
+            <a href="index.html"><h1>JOÃO PEDRO</h1> </a> 
+        </header>
+
+        <br/>
+
+        <main>
+            <h2>VIDEOMAKER</h2>
             <p>Hard Skills:  3D Graphics, Video Capture, Photographic, Color Grading, Adobe Premiere, Blender, RawTherapee.</p>
-        </div>
 
-        <div class="web">
-            <video preload="auto" muted loop autoplay controls src="images/Vila.mp4"></video>
-            <video preload="auto" muted loop autoplay controls src="images/Ecatarina.mp4"></video>
-            <video preload="auto" muted loop autoplay controls src="images/Texol.mp4"></video>
-            <video preload="auto" muted loop autoplay controls src="images/expo.mp4"></video>
-        </div>
 
-        <h2> PROJECTS </h2>
+            <div class="web">
+                <video preload="auto" muted loop autoplay controls src="images/Vila.mp4"></video>
+                <video preload="auto" muted loop autoplay controls src="images/Ecatarina.mp4"></video>
+                <video preload="auto" muted loop autoplay controls src="images/Texol.mp4"></video>
+                <video preload="auto" muted loop autoplay controls src="images/expo.mp4"></video>
+            </div>
 
-        <div class="projects">
-            <a href=" https://www.youtube.com/watch?v=PWvlAW8YhGc&ab_channel=Furafilas" target="_blank" class="TextProject" >FuraFilas: Project developed to create viewers for the band's new album and advertising campaign.</a>
-            <a href="  https://www.youtube.com/watch?v=SK9aGbkZIO8&ab_channel=Ramat%C3%ADs" target="_blank" class="TextProject" >Ramatis: Live show recording and editing.</a>
-        </div>
+            <h2> PROJECTS </h2>
 
-    </main>
+            <div class="projects">
+                <a href=" https://www.youtube.com/watch?v=PWvlAW8YhGc&ab_channel=Furafilas" target="_blank" class="TextProject" >FuraFilas: Project developed to create viewers for the band's new album and advertising campaign.</a>
+                <a href="  https://www.youtube.com/watch?v=SK9aGbkZIO8&ab_channel=Ramat%C3%ADs" target="_blank" class="TextProject" >Ramatis: Live show recording and editing.</a>
+            </div>
+
+        </main>
+    </body>
 
     <script>
         var loaderer = document.getElementById("preloader");
@@ -60,8 +64,18 @@
             loaderer.style.display = "none";
         })
     </script>
-    <script src="preloadVideos.js"></script> 
-    
-</body>
 
+    <script src="preloadVideos.js"></script>
+    
+    <script>
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.pageX;
+            const y = e.pageY;
+            
+            cursor.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+    
 </html> 
