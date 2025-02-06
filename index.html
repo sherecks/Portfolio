@@ -4,7 +4,7 @@
 <html>
 
     <head>
-        <link rel="stylesheet" href="static/Style.css" />
+        <link rel="stylesheet" href="static/style.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,25 +28,29 @@
     <body>
 
         <div id="preloader">
-            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+            <img class="VideoLoader" preload="auto" src="images/BBB.png">  
         </div>
 
             <header> 
-                <h1>JOÃO PEDRO</h1>
-                <a href="contact.html">Contact</a>  
+                <h1>JOÃO PEDRO</h1> 
             </header>
-
+ 
         <main>
 
         <div class="cont3">
-            <a href="gallery3D.html"><h2>3D</h2></a>
             <a href="videomaker.html"><h2>VIDEOMAKER</h2></a>
             <a href="uxui.html"><h2>UX/UI</h2></a>
         </div>
 
         <div class="cont1">
-            <video preload="auto" muted loop autoplay src="images/GHOST.mp4"></video>
-            <video preload="auto" muted loop autoplay src="images/Wearable-1-1.mp4"></video>
+            <video data-tilt data-tilt-max="4" preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
+            <a><img data-tilt data-tilt-max="4" preload="auto" class="foto-web3" src="images/4K_7_2.png"></a>
+            <a><img data-tilt data-tilt-max="4" preload="auto" class="foto-web3" src="images/4K_7_4.png"></a>
+            <a><img data-tilt data-tilt-max="4" preload="auto" class="foto-web3" src="images/TshitBlue2.png"></a>
+            <a><img data-tilt data-tilt-max="4" preload="auto" class="foto-web3" src="images/Tshitblue3.png"></a>
+            <a><img data-tilt data-tilt-max="4" preload="auto" class="foto-web3" src="images/BR4.png"></a>
+            <a><img data-tilt data-tilt-max="4" preload="auto" class="foto-web3" src="images/BR3.png"></a>
+            <video data-tilt data-tilt-max="4" preload="auto" muted loop autoplay src="images/Wearable-1-1.mp4"></video>
         </div>
 
         <h3>
@@ -58,7 +62,7 @@
    
         <script type="text/javascript" src="vanilla-tilt.js"></script>
         <script type="text/javascript">
-            VanillaTilt.init(document.querySelector(".cont1"), {
+            VanillaTilt.init(document.querySelector(""), {
                 max: 4,
                 speed: 2800
             });

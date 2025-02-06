@@ -7,7 +7,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-color: #070b1d;
+  background-color: black;
   margin: 0px;
   text-align: center;
 }
@@ -19,7 +19,6 @@ header {
   align-items: baseline;
   position: static;
   padding: 10px 20px;
-  margin: 0px 0px;
 }
 
 a {
@@ -36,7 +35,7 @@ h1 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
   color: white;
-  font-size: 48px;
+  font-size: 80px;
   padding-top: 10px;
   margin: 0px;
 }
@@ -45,7 +44,7 @@ h2 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
   color: white;
-  font-size: 38px;
+  font-size: 64px;
   margin: 8px;
   text-align: left;
 }
@@ -57,9 +56,9 @@ h2:hover {
 h3 {
   font-family: "Montserrat", sans-serif;
   color: white;
-  font-size: 24px;
+  font-size: 40px;
   font-weight: 200;
-  text-align: left;
+  text-align: center;
   padding: 20px;
   margin-bottom: 0px;
 }
@@ -78,7 +77,13 @@ p {
 }
 
 video {
-  width: 24%;
+  width: 20%;
+  margin: 10px;
+}
+
+.foto-web3 {
+  width: 20%;
+  margin: 10px;
 }
 
 .VideoLoader {
@@ -124,6 +129,9 @@ video {
     font-size: 46px;
   }
   video {
-    width: 60%;
+    width: 40%;
+  }
+  .foto-web3 {
+    width: 40%;
   }
 }/*# sourceMappingURL=style.css.map */

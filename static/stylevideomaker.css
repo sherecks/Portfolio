@@ -1,5 +1,5 @@
 body {
-  background-color: #3b2d19;
+  background-color: black;
   margin: 0px auto;
   text-align: center;
 }
@@ -22,7 +22,7 @@ h2 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
   color: white;
-  font-size: 48px;
+  font-size: 64px;
   text-align: left;
   margin: 20px;
 }
@@ -43,15 +43,15 @@ p {
 
 .web {
   display: flex;
-  justify-content: baseline;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 0px auto;
 }
 
 video {
   display: flex;
-  margin: 20px;
-  width: 32%;
+  margin: 10px auto;
+  width: 48%;
   border-radius: 10px;
 }
 
@@ -84,7 +84,7 @@ h1 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
   color: white;
-  font-size: 58px;
+  font-size: 80px;
   padding-top: 10px;
   margin: 0px;
 }
@@ -125,7 +125,7 @@ a {
     margin: 0 auto;
   }
   video {
-    width: 80%;
+    width: 96%;
   }
   h2 {
     font-size: 45px;

@@ -1,5 +1,5 @@
 body {
-  background-color: #244110;
+  background-color: black;
   margin: 0px auto;
   text-align: center;
 }
@@ -22,7 +22,7 @@ h2 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
   color: white;
-  font-size: 42px;
+  font-size: 64px;
   text-align: left;
   margin: 20px;
 }
@@ -32,9 +32,8 @@ p {
   font-weight: 200;
   text-align: left;
   opacity: 0.8;
-  font-size: 32px;
-  margin: 10px;
-  width: 600px;
+  font-size: 38px;
+  padding: 20px;
   color: white;
   text-shadow: none;
   -webkit-user-select: none;
@@ -44,13 +43,13 @@ p {
 
 .web {
   display: flex;
-  justify-content: baseline;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 10px;
 }
 
 .foto-web4 {
-  width: 60%;
+  width: auto;
   margin: 10px;
   opacity: 1;
   border-radius: 10px;
@@ -58,7 +57,7 @@ p {
 }
 
 .foto-web5 {
-  width: 40%;
+  width: auto;
   margin: 10px;
   opacity: 1;
   border-radius: 10px;
@@ -69,7 +68,7 @@ h1 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
   color: white;
-  font-size: 58px;
+  font-size: 80px;
   padding-top: 10px;
   margin: 0px;
 }
