@@ -46,7 +46,7 @@ p {
 }
 
 .foto-web4 {
-  width: auto;
+  width: 100%;
   margin: 10px;
   opacity: 1;
   border-radius: 10px;
@@ -54,7 +54,7 @@ p {
 }
 
 .foto-web5 {
-  width: auto;
+  width: 100%;
   margin: 10px;
   opacity: 1;
   border-radius: 10px;
