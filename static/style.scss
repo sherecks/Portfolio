@@ -1,169 +1,164 @@
 * {
-    scroll-behavior: smooth; 
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: black;
+  margin: 0px;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: baseline;
+  position: static;
+  padding: 10px 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Anton", sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  font-size: 80px;
+  padding-top: 10px;
+  margin: 0px;
+}
+
+h2 {
+  font-family: "Anton", sans-serif;
+  letter-spacing: 2px;
+  color: rgb(255, 255, 255);
+  font-size: 64px;
+  margin: 0px;
+  text-align: left;
+  transition: 0.2s ease-in-out;
+}
+
+h2:hover {
+  transform: scale(1.1) rotate(2deg);
+  letter-spacing: 6px;
+  opacity: 0.8;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 40px;
+  font-weight: 200;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+.cont3 {
+  z-index: 1;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: baseline;
+  margin: 20px;
+}
+
+video {
+  width: 20%;
+  margin: 10px;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.foto-web3 {
+  width: 20%;
+  margin: 10px;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.VideoLoader {
+  width: 48%;
+}
+
+#preloader {
+  background: #000;
+  background: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(0, 183, 255);
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none; /* Impede que interfira com cliques */
+  transition: transform 0.1s linear;
+  z-index: 1;
+  mix-blend-mode: difference;
+}
+
+::selection {
+  background: white;
+  color: black;
+  mix-blend-mode: difference;
+}
+
+@keyframes into {
+  from {
+    justify-content: center;
+    width: 420px;
   }
 
-  body::-webkit-scrollbar {
-    display: none;
+  to {
+    width: 400px;
   }
-  
-  body {
-    background-color: black;
-    margin: 0px;
-    text-align: center;
-  } 
-  
-  header { 
+}
+
+@media (max-width: 999px) {
+  header {
     display: flex;
-    flex-direction: column;
-    justify-content: baseline;
-    align-items: baseline;
-    position: static;
-    padding: 10px 20px; 
-  }
-
-  a{
-    text-decoration: none;
-  }
-  
-  h1 {
-    font-family: "Anton", sans-serif;
-    letter-spacing: 2px;
-    color: white;
-    font-size: 80px;
-    padding-top: 10px;
-    margin: 0px;
-  }
-  
-  h2 {
-    font-family: "Anton", sans-serif;
-    letter-spacing: 2px;
-    color: rgb(255, 255, 255);
-    font-size: 64px;
-    margin: 0px;
-    text-align: left;
-    transition: 0.2s ease-in-out;
-  }
-
-  h2:hover {
-      transform: scale(1.1) rotate(2deg);
-      letter-spacing: 6px;
-      opacity: 0.8;
-  }
-
-
-  h3 {
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    font-size: 40px;
-    font-weight: 200;
-    text-align: left;
-    padding: 20px;
-    margin-bottom: 0px;
-  }
-
-  p{
-    font-family: "Montserrat", sans-serif;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap;
   }
 
   .cont3 {
-    z-index: 1;
-    display: flex;
     position: fixed;
-    flex-direction: column;
-    justify-content: baseline;
-    margin: 20px;
   }
 
-  video{
-    width: 20%;
-    margin: 10px;
-    border-radius: 10px;
-    z-index: -1;
+  h1 {
+    font-size: 68px;
   }
 
-  .foto-web3{
-    width: 20%;
-    margin: 10px;
-    border-radius: 10px;
-    z-index: -1;
+  h2 {
+    margin-top: 62px;
+    font-size: 60px;
   }
 
-  .VideoLoader{
-    width: 48%;
+  h3 {
+    font-size: 46px;
   }
 
-
-  #preloader{
-    background: #000;
-    background: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 100;
+  video {
+    width: 40%;
   }
 
-  .cursor {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(0, 183, 255);
-    border-radius: 50%;
-    position: absolute;
-    pointer-events: none; /* Impede que interfira com cliques */
-    transition: transform 0.1s linear;
-    z-index: 1;
-    mix-blend-mode: difference;
+  .foto-web3 {
+    width: 40%;
   }
-
-  ::selection {
-    background: white;
-    color: black;
-    mix-blend-mode: difference;
-  }
-  
-  @keyframes into {
-    from {
-      justify-content: center;
-      width: 420px;
-    }
-  
-    to {
-      width: 400px;
-    }
-  }
-  
-  @media (max-width: 999px) {
-   
-    header {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      flex-wrap: wrap; 
-    }
-
-    .cont3{
-      position: fixed;
-    }
-    
-    h1{
-      font-size: 68px;
-    }
-
-    h2{
-      margin-top: 62px;
-      font-size: 60px;
-    }
-
-    h3{
-      font-size: 46px;
-    }
-
-    video{
-      width: 40%;
-    }
-
-    .foto-web3{
-      width: 40%;
-    }
-
-  }
-  
+}
