@@ -1,0 +1,135 @@
+body {
+  background-color: black;
+  margin: 0px auto;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  -webkit-filter: contrast(130%);
+          filter: contrast(130%);
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  position: relative;
+  padding: 10px 20px;
+  margin: 0px 0px;
+}
+
+h1 {
+  font-family: "Anton", sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  font-size: 80px;
+  padding-top: 10px;
+  margin: 0px;
+}
+
+h1:hover {
+  color: #a3a3a3;
+}
+
+a {
+  text-decoration: none;
+}
+
+#controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-family: "Anton", sans-serif;
+}
+
+#camera-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-family: "Anton", sans-serif;
+  cursor: pointer;
+  border: none;
+}
+
+#camera-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#minimap {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.VideoLoader {
+  width: 48%;
+}
+
+#preloader {
+  background: #000;
+  background: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  background-color: #00b7ff;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  /* Impede que interfira com cliques */
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+  z-index: 1;
+  mix-blend-mode: difference;
+}
+
+::-moz-selection {
+  background: white;
+  color: black;
+  mix-blend-mode: difference;
+}
+
+::selection {
+  background: white;
+  color: black;
+  mix-blend-mode: difference;
+}
+/*# sourceMappingURL=styleboat.css.map */

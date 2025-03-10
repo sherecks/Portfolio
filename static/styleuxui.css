@@ -37,13 +37,13 @@ h2 {
 }
 
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Anton", sans-serif;
   font-weight: 200;
   text-align: left;
   opacity: 0.8;
   font-size: 38px;
   margin: 20px;
-  color: white;
+  color: #c2c2c2;
   text-shadow: none;
 }
 
@@ -60,19 +60,17 @@ p {
 }
 
 .foto-web4 {
-  width: 98%;
+  width: 22%;
   margin: 10px;
   opacity: 1;
-  border-radius: 10px;
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
 }
 
 .foto-web5 {
-  width: 40%;
+  width: 32%;
   margin: 10px;
   opacity: 1;
-  border-radius: 10px;
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
 }

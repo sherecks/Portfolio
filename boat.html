@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="static/styleboat.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+        <title>3D</title>
+        
+    </head>
+
+    <body>
+
+        <div class="cursor"></div>
+            
+        <div id="preloader">
+            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+        </div>
+
+        <header> 
+            <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
+        </header>
+
+        <div id="controls">
+            Controles:<br>
+            W / Seta para cima: Avançar<br>
+            S / Seta para baixo: Recuar<br>
+            A / Seta para esquerda: Virar à esquerda<br>
+            D / Seta para direita: Virar à direita
+        </div>
+        <button id="camera-toggle">Alternar Câmera</button>
+        <div id="minimap"></div>
+
+        <script type="module">
+        import * as THREE from './three.module.js';
+        import { OrbitControls } from './OrbitControls.js';
+        import { GLTFLoader } from './GLTFLoader.js';
+
+
+           // Configuração inicial
+        const scene = new THREE.Scene();
+        const mainCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+        const aerialCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+        const minimapCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 2000);
+        
+        // Configuração do renderer principal
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x87CEEB); // Cor do céu
+        document.body.appendChild(renderer.domElement);
+        
+        // Configuração do renderer do minimap
+        const minimapRenderer = new THREE.WebGLRenderer({ antialias: true });
+        minimapRenderer.setSize(200, 200);
+        minimapRenderer.setClearColor(0x87CEEB);
+        document.getElementById('minimap').appendChild(minimapRenderer.domElement);
+
+        // Controle de câmera
+        let currentCamera = mainCamera;
+        let usingAerialCamera = false;
+
+        document.getElementById('camera-toggle').addEventListener('click', function() {
+            usingAerialCamera = !usingAerialCamera;
+            currentCamera = usingAerialCamera ? aerialCamera : mainCamera;
+            
+            // Atualiza o texto do botão
+            this.textContent = usingAerialCamera ? "Câmera do Barco" : "Câmera Aérea";
+        });
+
+        // Posicionamento da câmera aérea
+        aerialCamera.position.set(0, 200, 0);
+        aerialCamera.lookAt(0, 0, 0);
+        aerialCamera.rotation.z = Math.PI; // Inverte a câmera para visualizar corretamente
+
+        // Luzes
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(1, 1, 0.5);
+        scene.add(directionalLight);
+
+        // Variáveis para o mar
+        const seaSegments = 128;
+        const seaWidth = 2000;
+        const seaDepth = 2000;
+        const seaSegmentCount = 5; // Número de segmentos do mar para criar um "mar infinito"
+        const seaSegments2D = [];
+
+        // Criação do mar com múltiplos segmentos
+        for (let z = -Math.floor(seaSegmentCount/2); z <= Math.floor(seaSegmentCount/2); z++) {
+            for (let x = -Math.floor(seaSegmentCount/2); x <= Math.floor(seaSegmentCount/2); x++) {
+                createSeaSegment(x, z);
+            }
+        }
+
+        function createSeaSegment(segX, segZ) {
+            const geometry = new THREE.PlaneGeometry(seaWidth, seaDepth, seaSegments, seaSegments);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x0077be,
+                side: THREE.DoubleSide,
+                transparent: true,
+                opacity: 0.8,
+                flatShading: true
+            });
+
+            const sea = new THREE.Mesh(geometry, material);
+            sea.rotation.x = -Math.PI / 2;
+            sea.position.x = segX * seaWidth;
+            sea.position.z = segZ * seaDepth;
+            scene.add(sea);
+
+            // Armazenar referência ao segmento
+            seaSegments2D.push({
+                mesh: sea,
+                segX: segX,
+                segZ: segZ
+            });
+
+            return sea;
+        }
+
+        // Criação do barco
+        const boatGroup = new THREE.Group();
+        scene.add(boatGroup);
+
+        // Corpo do barco
+        const boatGeometry = new THREE.BoxGeometry(10, 3, 20);
+        const boatMaterial = new THREE.MeshPhongMaterial({ color: 0x8B4513 });
+        const boat = new THREE.Mesh(boatGeometry, boatMaterial);
+        boat.position.y = -1;
+        boatGroup.add(boat);
+
+        // Mastro do barco
+        const mastGeometry = new THREE.CylinderGeometry(0.3, 0.3, 15, 8);
+        const mastMaterial = new THREE.MeshPhongMaterial({ color: 0x8B4513 });
+        const mast = new THREE.Mesh(mastGeometry, mastMaterial);
+        mast.position.set(0, 10, -2);
+        boatGroup.add(mast);
+
+        // Vela do barco
+        const sailGeometry = new THREE.PlaneGeometry(12, 12);
+        const sailMaterial = new THREE.MeshPhongMaterial({ 
+            color: 0xFFFFFF,
+            side: THREE.DoubleSide
+        });
+        const sail = new THREE.Mesh(sailGeometry, sailMaterial);
+        sail.position.set(0, 10, -2);
+        sail.rotation.y = Math.PI / 2;
+        boatGroup.add(sail);
+
+        // Posição e rotação iniciais
+        boatGroup.position.set(0, 0, 0);
+        boatGroup.rotation.y = 0;
+
+        // Posição da câmera
+        mainCamera.position.set(0, 30, 50);
+        mainCamera.lookAt(boatGroup.position);
+        
+        // Configuração da câmera do minimap
+        minimapCamera.position.set(0, 150, 0);
+        minimapCamera.lookAt(0, 0, 0);
+        minimapCamera.rotation.z = Math.PI;
+
+        // Variáveis para o movimento do barco
+        const boat_state = {
+            speed: 0,
+            maxSpeed: 2,
+            rotationSpeed: 0.06,
+            moving: false,
+            turningLeft: false,
+            turningRight: false,
+            velocity: new THREE.Vector3(0, 0, 0)
+        };
+
+        // Controles do teclado
+        const keys = {};
+        document.addEventListener('keydown', (event) => {
+            keys[event.key.toLowerCase()] = true;
+        });
+        document.addEventListener('keyup', (event) => {
+            keys[event.key.toLowerCase()] = false;
+        });
+
+        // Funções para atualizar o mar com efeito de ondas
+        let time = 0;
+        const waveHeight = 4.5;
+        const waveFrequency = 0.5;
+        const waveSpeed = 0.8;
+
+        function updateSea(deltaTime) {
+            time += deltaTime * waveSpeed;
+
+            seaSegments2D.forEach(segInfo => {
+                const vertices = segInfo.mesh.geometry.attributes.position.array;
+                const offsetX = segInfo.segX * seaWidth;
+                const offsetZ = segInfo.segZ * seaDepth;
+                
+                for (let i = 0; i < vertices.length; i += 3) {
+                    const x = vertices[i] + offsetX;
+                    const z = vertices[i + 2] + offsetZ;
+                    
+                    // Calcula a altura da onda usando uma combinação de funções seno
+                    vertices[i + 1] = 
+                        Math.sin(x * 0.05 + time) * 
+                        Math.cos(z * 0.05 + time) * waveHeight * 
+                        Math.sin(time * 0.5) * 0.5 + waveHeight;
+                }
+                
+                segInfo.mesh.geometry.attributes.position.needsUpdate = true;
+                segInfo.mesh.geometry.computeVertexNormals();
+            });
+        }
+
+        // Função para obter a altura da onda em uma posição específica
+        function getWaveHeight(x, z) {
+            return Math.sin(x * 0.05 + time) * 
+                   Math.cos(z * 0.05 + time) * waveHeight * 
+                   Math.sin(time * 0.5) * 0.5 + waveHeight;
+        }
+
+        // Verificar se precisamos reposicionar os segmentos do mar
+        function checkSeaSegmentsPosition() {
+            const boatPos = boatGroup.position;
+            
+            // Verifica qual segmento do mar o barco está atualmente
+            const currentSegX = Math.floor(boatPos.x / seaWidth);
+            const currentSegZ = Math.floor(boatPos.z / seaDepth);
+            
+            // Reposiciona segmentos para criar efeito infinito
+            seaSegments2D.forEach(segInfo => {
+                let needsRepositioning = false;
+                let newX = segInfo.segX;
+                let newZ = segInfo.segZ;
+                
+                // Verifica se o segmento está muito longe na direção X
+                if (segInfo.segX < currentSegX - Math.floor(seaSegmentCount/2)) {
+                    newX = currentSegX + Math.floor(seaSegmentCount/2);
+                    needsRepositioning = true;
+                } else if (segInfo.segX > currentSegX + Math.floor(seaSegmentCount/2)) {
+                    newX = currentSegX - Math.floor(seaSegmentCount/2);
+                    needsRepositioning = true;
+                }
+                
+                // Verifica se o segmento está muito longe na direção Z
+                if (segInfo.segZ < currentSegZ - Math.floor(seaSegmentCount/2)) {
+                    newZ = currentSegZ + Math.floor(seaSegmentCount/2);
+                    needsRepositioning = true;
+                } else if (segInfo.segZ > currentSegZ + Math.floor(seaSegmentCount/2)) {
+                    newZ = currentSegZ - Math.floor(seaSegmentCount/2);
+                    needsRepositioning = true;
+                }
+                
+                // Reposiciona se necessário
+                if (needsRepositioning) {
+                    segInfo.segX = newX;
+                    segInfo.segZ = newZ;
+                    segInfo.mesh.position.x = newX * seaWidth;
+                    segInfo.mesh.position.z = newZ * seaDepth;
+                }
+            });
+        }
+
+        // Atualizar posição da câmera aérea
+        function updateAerialCamera() {
+            aerialCamera.position.x = boatGroup.position.x;
+            aerialCamera.position.z = boatGroup.position.z;
+            aerialCamera.lookAt(boatGroup.position.x, 0, boatGroup.position.z);
+        }
+
+        // Atualizar posição da câmera do minimap
+        function updateMinimapCamera() {
+            minimapCamera.position.x = boatGroup.position.x;
+            minimapCamera.position.z = boatGroup.position.z;
+            minimapCamera.lookAt(boatGroup.position.x, 0, boatGroup.position.z);
+        }
+
+        // Vetor de direção para o barco
+        const direction = new THREE.Vector3();
+        let lastTime = 0;
+
+        // Loop de animação
+        function animate(currentTime) {
+            requestAnimationFrame(animate);
+            
+            const deltaTime = (currentTime - lastTime) / 1000;
+            lastTime = currentTime;
+            
+            // Atualizar o mar
+            updateSea(deltaTime);
+            
+            // Controles do barco
+            if (keys['w'] || keys['arrowup']) {
+                boat_state.speed = Math.min(boat_state.speed + 0.05, boat_state.maxSpeed);
+                boat_state.moving = true;
+            } else if (keys['s'] || keys['arrowdown']) {
+                boat_state.speed = Math.max(boat_state.speed - 0.05, -boat_state.maxSpeed/2);
+                boat_state.moving = true;
+            } else {
+                // Reduzir a velocidade quando não houver input
+                if (Math.abs(boat_state.speed) > 0.01) {
+                    boat_state.speed *= 0.98;
+                } else {
+                    boat_state.speed = 0;
+                    boat_state.moving = false;
+                }
+            }
+            
+            if (keys['a'] || keys['arrowleft']) {
+                boatGroup.rotation.y += boat_state.rotationSpeed;
+                sail.rotation.y = Math.PI / 2 - 0.5;
+            } else if (keys['d'] || keys['arrowright']) {
+                boatGroup.rotation.y -= boat_state.rotationSpeed;
+                sail.rotation.y = Math.PI / 2 + 0.5;
+            } else {
+                sail.rotation.y = Math.PI / 2;
+            }
+            
+            // Atualizar posição do barco
+            if (boat_state.moving) {
+                // Calcular direção com base na rotação do barco
+                direction.set(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), boatGroup.rotation.y);
+                
+                // Aplicar velocidade
+                boatGroup.position.x += direction.x * boat_state.speed;
+                boatGroup.position.z += direction.z * boat_state.speed;
+                
+                // Atualizar a altura do barco com base na altura da onda
+                const waveY = getWaveHeight(boatGroup.position.x, boatGroup.position.z);
+                boatGroup.position.y = waveY;
+                
+                // Inclinar o barco com base nas ondas
+                const frontPos = new THREE.Vector3().copy(boatGroup.position).add(
+                    new THREE.Vector3(direction.x, 0, direction.z).multiplyScalar(10)
+                );
+                const rightPos = new THREE.Vector3().copy(boatGroup.position).add(
+                    new THREE.Vector3(-direction.z, 0, direction.x).multiplyScalar(5)
+                );
+                
+                const frontHeight = getWaveHeight(frontPos.x, frontPos.z);
+                const rightHeight = getWaveHeight(rightPos.x, rightPos.z);
+                
+                boatGroup.rotation.x = (frontHeight - waveY) * 0.05;
+                boatGroup.rotation.z = (waveY - rightHeight) * 0.05;
+            }
+            
+            // Verificar se precisamos reposicionar segmentos do mar
+            checkSeaSegmentsPosition();
+            
+            // Atualizar posição da câmera para seguir o barco
+            const cameraOffset = new THREE.Vector3(0, 30, 50);
+            cameraOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), boatGroup.rotation.y);
+            
+            mainCamera.position.copy(boatGroup.position).add(cameraOffset);
+            mainCamera.lookAt(boatGroup.position);
+            
+            // Atualizar câmera aérea
+            updateAerialCamera();
+            
+            // Atualizar câmera do minimap
+            updateMinimapCamera();
+            
+            // Renderizar a cena com a câmera selecionada
+            renderer.render(scene, currentCamera);
+            
+            // Renderizar o minimap
+            minimapRenderer.render(scene, minimapCamera);
+        }
+
+        // Ajustar tamanho do canvas quando a janela for redimensionada
+        window.addEventListener('resize', function() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            mainCamera.aspect = width / height;
+            mainCamera.updateProjectionMatrix();
+            
+            aerialCamera.aspect = width / height;
+            aerialCamera.updateProjectionMatrix();
+            
+            renderer.setSize(width, height);
+        });
+
+        // Iniciar animação
+        animate(0);
+        </script>
+        <script>
+            var loader = document.getElementById("preloader");
+
+            window.addEventListener("load", function(){
+                loader.style.display = "none";
+            })
+        </script>
+        
+        <script src="preloadImagens.js"></script> 
+
+        <script>
+            const cursor = document.querySelector('.cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                const x = e.pageX;
+                const y = e.pageY;
+                
+                cursor.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
+    </body>
+</html>

@@ -49,6 +49,7 @@ h2 {
   color: white;
   font-size: 64px;
   margin: 0px;
+  opacity: 0.6;
   text-align: left;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -62,8 +63,8 @@ h2:hover {
 }
 
 h3 {
-  font-family: "Montserrat", sans-serif;
-  color: white;
+  font-family: "Anton", sans-serif;
+  color: #c2c2c2;
   font-size: 40px;
   font-weight: 200;
   text-align: left;
@@ -72,7 +73,7 @@ h3 {
 }
 
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Anton", sans-serif;
 }
 
 .cont3 {

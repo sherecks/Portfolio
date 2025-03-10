@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="static/styleuxui.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <title>Portfólio João Pedro</title>
+        <script src="https://kit.fontawesome.com/0db4c44db2.js" crossorigin="anonymous"></script>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Portfólio João Pedro" />
+    </head>
+    <body>
+
+        <div class="cursor"></div>
+        
+        <div id="preloader">
+            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+        </div>
+        
+        <header> 
+            <a href="index.html"><h1>JOÃO PEDRO</h1> </a> 
+        </header>
+    
+        <br/>
+
+        <main>
+            
+            <div class="web">
+
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h1.png">
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h2.png">
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h3.png">
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h4.png">
+
+                <p>
+                    3D tshirts design in Vstitcher and use vanilla-tilt.js in code.
+                </p> 
+            </div>
+
+            <a href="cloth.html"><h1>Cloth in Three.js</h1> </a>
+
+            <div class="web">
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web5" src="images/tshit2.png">
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web5" src="images/tshit5.png">
+            </div>
+
+            <p>Hard Skills: Java Script, Three.js, React, HTML5, SCSS, Python.</p>
+            <div class="web">
+
+            </div>
+        </main>
+    </body>
+
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(""), {
+            max: 4,
+            speed: 2800
+        });
+    </script>
+
+    <script>
+        var loaderer = document.getElementById("preloader");
+
+        window.addEventListener("load", function(){
+            loaderer.style.display = "none";
+        })
+    </script>
+
+    <script src="preloadImagens.js"></script> 
+    
+    <script>
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.pageX;
+            const y = e.pageY;
+            
+            cursor.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+
+</html>

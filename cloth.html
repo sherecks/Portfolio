@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="static/stylecloth.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+        <title>3D</title>
+        
+    </head>
+    <body>
+
+        <div class="cursor"></div>
+            
+        <div id="preloader">
+            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+        </div>
+
+        <header> 
+            <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
+        </header>
+
+        <div id="tshirt-label" class="object-label">MK4.2</div>
+        <div id="shorts-label" class="object-label">MK3.8</div>
+        <div id="zipper-label" class="object-label">MK1.6</div>
+
+        <script type="module">
+        import * as THREE from './three.module.js';
+        import { OrbitControls } from './OrbitControls.js';
+        import { GLTFLoader } from './GLTFLoader.js';
+
+
+            // Configuração inicial
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2000);
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Adiciona luz ambiente
+            const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+            scene.add(ambientLight);
+
+            // Adiciona luz direcional
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            directionalLight.position.set(5, 5, 5);
+            directionalLight.target.position.set(0, 0, 0);
+            scene.add(directionalLight);
+            scene.add(directionalLight.target);
+
+            // Adiciona segunda luz direcional
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+            directionalLight2.position.set(-5, 5, -5);
+            directionalLight2.target.position.set(-1, 0, 0);
+            scene.add(directionalLight2);
+            scene.add(directionalLight2.target);
+
+            // Configuração da câmera
+            camera.position.z = 2;
+            camera.position.y = 0;
+
+            //LOADER!!!
+            function loadObjectTest(gltfPath, scaleFactor, position, initialRotation, scene) {
+            const loader = new GLTFLoader().setPath('./gltf/');
+            return new Promise((resolve) => {
+                loader.load(gltfPath, (gltf) => {
+                const mesh = gltf.scene;
+            
+                mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
+                mesh.position.copy(position);
+                mesh.rotation.y = initialRotation;
+                mesh.receiveShadow = true;
+                mesh.castShadow = true;
+            
+                scene.add(mesh);
+                resolve(mesh);
+                });
+            });
+            }
+
+            let loadedObject = null;
+            loadObjectTest('tshirt.glb', 1, new THREE.Vector3(-1, 0, 0), 0, scene).then(mesh => {
+            loadedObject = mesh;
+            });
+
+            let loadedObject1 = null;
+            loadObjectTest('berma.glb', 1, new THREE.Vector3(1, 0, 0), 0, scene).then(mesh => {
+            loadedObject1 = mesh;
+            });
+
+            let loadedObject2 = null;
+            loadObjectTest('zipper.glb', 1, new THREE.Vector3(0, 0, 0), 0, scene).then(mesh => {
+            loadedObject2 = mesh;
+            });
+
+            // Função de animação
+            function animate() {
+                if (loadedObject, loadedObject1) {
+                    loadedObject.rotation.y += 0.01;
+                    loadedObject1.rotation.y += 0.01;
+                    loadedObject2.rotation.y += 0.01;
+
+                    // Atualiza a posição dos labels
+                    const vector = new THREE.Vector3();
+                    
+                    // T-shirt label
+                    vector.setFromMatrixPosition(loadedObject.matrixWorld);
+                    vector.project(camera);
+                    const tshirtLabel = document.getElementById('tshirt-label');
+                    tshirtLabel.style.left = (vector.x * .5 + .5) * window.innerWidth + 'px';
+                    
+                    // Shorts label
+                    vector.setFromMatrixPosition(loadedObject1.matrixWorld);
+                    vector.project(camera);
+                    const shortsLabel = document.getElementById('shorts-label');
+                    shortsLabel.style.left = (vector.x * .5 + .5) * window.innerWidth + 'px';
+                    
+                    // Zipper label
+                    vector.setFromMatrixPosition(loadedObject2.matrixWorld);
+                    vector.project(camera);
+                    const zipperLabel = document.getElementById('zipper-label');
+                    zipperLabel.style.left = (vector.x * .5 + .5) * window.innerWidth + 'px';
+                }
+
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+
+            // Inicia a animação
+            animate();
+
+            // Ajusta o tamanho da tela quando a janela é redimensionada
+            window.addEventListener('resize', onWindowResize, false);
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            };
+        </script>
+        <script>
+            var loader = document.getElementById("preloader");
+
+            window.addEventListener("load", function(){
+                loader.style.display = "none";
+            })
+        </script>
+        
+        <script src="preloadImagens.js"></script> 
+
+        <script>
+            const cursor = document.querySelector('.cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                const x = e.pageX;
+                const y = e.pageY;
+                
+                cursor.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
+    </body>
+</html>
