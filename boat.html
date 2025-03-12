@@ -62,7 +62,7 @@
 
             // Adicionar céu
             const sky = new Sky();
-            sky.scale.setScalar( 450000 );
+            sky.scale.setScalar( 4500 );
             scene.add( sky );
 
             const sun = new THREE.Vector3();
@@ -70,10 +70,10 @@
             /// GUI
             const effectController = {
                 turbidity: 4.8,
-                rayleigh: 1.2,
-                mieCoefficient: 0.005,
+                rayleigh: 1.8,
+                mieCoefficient: 0.01,
                 mieDirectionalG: 0.4,
-                elevation: 1,
+                elevation: 1.6,
                 azimuth: 180,
                 exposure: renderer.toneMappingExposure
             };
@@ -120,7 +120,7 @@
             // Parâmetros das ondas
             const waveParams = {
                 amplitude: 0.6,
-                frequency: 0.08,
+                frequency: 0.04,
                 speed: 1.8,
                 waveCount: 3
             };
@@ -204,7 +204,7 @@
                     float waveEffect = sin(vUv.x * 10.0 + uTime) * 0.1 + sin(vUv.y * 8.0 - uTime * 0.8) * 0.1;
                     
                     // Gradiente de profundidade baseado na posição
-                    float depth = smoothstep(0.0, 20.0, abs(vPosition.z));
+                    float depth = smoothstep(0.0, 10.0, abs(vPosition.y));
                     vec3 color = mix(uWaterColor, uWaterDeepColor, depth + waveEffect);
                     
                     // Efeito Fresnel para as bordas brilhantes
@@ -234,10 +234,10 @@
                     uFrequency: { value: waveParams.frequency },
                     uSpeed: { value: waveParams.speed },
                     uWaveCount: { value: waveParams.waveCount },
-                    uWaterColor: { value: new THREE.Color(0x6ba7b8) },
-                    uWaterDeepColor: { value: new THREE.Color(0x1a1f85) },
-                    uColorOffset: { value: 0.2 },
-                    uColorMultiplier: { value: 2.0 }
+                    uWaterColor: { value: new THREE.Color(0x499eb0) },
+                    uWaterDeepColor: { value: new THREE.Color(0x22458a) },
+                    uColorOffset: { value: 0.8 },
+                    uColorMultiplier: { value: 1.0 }
                 },
                 transparent: true,
                 side: THREE.DoubleSide
@@ -460,8 +460,8 @@
                 updateBoatWake();
 
                 const cameraOffsetX = 0;
-                const cameraOffsetY = 6;  // Altura da câmera
-                const cameraOffsetZ = 22; // Distância atrás do barco
+                const cameraOffsetY = 4;  // Altura da câmera
+                const cameraOffsetZ = 18; // Distância atrás do barco
                 
                 // Para uma transição mais suave da câmera
                 const lerpFactor = 0.00005; // Ajuste entre 0.01 (muito suave) e 1 (sem suavização)
@@ -495,14 +495,15 @@
                     loadedObject.position.y = waveY + 2.2; // Ajusta a altura do objeto carregado
                     
                     // Calcular a inclinação do objeto com base nas ondas
-                    const frontPos = new THREE.Vector3(loadedObject.position.x, 0, loadedObject.position.z + 2);
-                    const rightPos = new THREE.Vector3(loadedObject.position.x + 0.4, 0, loadedObject.position.z);
+                    const frontPos = new THREE.Vector3(loadedObject.position.x, 2, loadedObject.position.z + 2);
+                    const rightPos = new THREE.Vector3(loadedObject.position.x + 2, 1, loadedObject.position.z);
                     
                     const frontHeight = getWaveHeight(frontPos.x, frontPos.z, time);
                     const rightHeight = getWaveHeight(rightPos.x, rightPos.z, time);
                     
                     // Aplicar rotação ao objeto com base na diferença de altura
-                    loadedObject.rotation.x = (frontHeight - waveY) * 0.2; // Inclinação frente/trás
+                    loadedObject.rotation.z = (frontHeight - waveY) * 0.4; // Inclinação frente/trás
+                    loadedObject.rotation.x = (frontHeight - waveY) * 0.6; // Inclinação laterais
                 }
                 
                 renderer.render(scene, camera);
