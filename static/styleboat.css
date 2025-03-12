@@ -300,7 +300,6 @@ a {
           transform-origin: bottom center;
   -webkit-transform: translateX(-50%) rotate(0deg);
           transform: translateX(-50%) rotate(0deg);
-  z-index: 10;
   -webkit-animation: needle-oscillation 10s ease-in-out infinite;
           animation: needle-oscillation 10s ease-in-out infinite;
 }
