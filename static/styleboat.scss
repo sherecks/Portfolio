@@ -1,5 +1,4 @@
 body {
-    background-color: black;
     margin: 0px auto;
     text-align: center;
     z-index: 1;
@@ -7,13 +6,13 @@ body {
 }
 
 canvas {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    filter: contrast(130%);
+    filter: contrast(110%) saturate(120%);
 }
 
 header {
@@ -36,50 +35,30 @@ h1 {
 }
 
 h1:hover{
-    color: #a3a3a3;
+    color: #cccccc;
 }
 
 a{
     text-decoration: none;
 }
 
-#controls {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
+.controls {
+    position: fixed;
+    font-family: "Anton", sans-serif;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
     border-radius: 5px;
     color: white;
-    font-family: "Anton", sans-serif;
+    min-width: 180px;
 }
-
-#camera-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    font-family: "Anton", sans-serif;
-    cursor: pointer;
-    border: none;
+.controls label {
+    display: block;
+    margin-bottom: 10px;
 }
-
-#camera-toggle:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
-#minimap {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 200px;
-    height: 200px;
-    border: 2px solid white;
-    border-radius: 5px;
-    overflow: hidden;
+.controls input[type="range"] {
+    width: 100%;
 }
 
 .VideoLoader {

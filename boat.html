@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Waves</title>
 
         <link rel="stylesheet" href="static/styleboat.css" />
 
@@ -8,8 +11,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
-        <title>3D</title>
-        
     </head>
 
     <body>
@@ -24,368 +25,507 @@
             <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
         </header>
 
-        <div id="controls">
-            Controles:<br>
-            W / Seta para cima: Avançar<br>
-            S / Seta para baixo: Recuar<br>
-            A / Seta para esquerda: Virar à esquerda<br>
-            D / Seta para direita: Virar à direita
+        <div class="controls">
+            <label>Frequência:
+                <input type="range" id="frequency" min="0.01" max="0.2" step="0.01" value="0.08">
+                <span id="frequency-value">0.08</span>
+            </label>
+            <label>
+                <input type="checkbox" id="wireframe"> Wireframe
+            </label>
         </div>
-        <button id="camera-toggle">Alternar Câmera</button>
-        <div id="minimap"></div>
 
         <script type="module">
-        import * as THREE from './three.module.js';
-        import { OrbitControls } from './OrbitControls.js';
-        import { GLTFLoader } from './GLTFLoader.js';
+            import * as THREE from './three.module.js';
+            import { OrbitControls } from './OrbitControls.js';
+            import { GLTFLoader } from './GLTFLoader.js';
+            import  { Sky } from './Sky.js';
+            import { GUI } from './GUI.js';
 
+            // Configuração inicial
+            const scene = new THREE.Scene();
 
-           // Configuração inicial
-        const scene = new THREE.Scene();
-        const mainCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-        const aerialCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-        const minimapCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 2000);
-        
-        // Configuração do renderer principal
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x87CEEB); // Cor do céu
-        document.body.appendChild(renderer.domElement);
-        
-        // Configuração do renderer do minimap
-        const minimapRenderer = new THREE.WebGLRenderer({ antialias: true });
-        minimapRenderer.setSize(200, 200);
-        minimapRenderer.setClearColor(0x87CEEB);
-        document.getElementById('minimap').appendChild(minimapRenderer.domElement);
+            // Câmera
+            const camera = new THREE.PerspectiveCamera(92, window.innerWidth / window.innerHeight, 0.2, 2000);
 
-        // Controle de câmera
-        let currentCamera = mainCamera;
-        let usingAerialCamera = false;
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-        document.getElementById('camera-toggle').addEventListener('click', function() {
-            usingAerialCamera = !usingAerialCamera;
-            currentCamera = usingAerialCamera ? aerialCamera : mainCamera;
-            
-            // Atualiza o texto do botão
-            this.textContent = usingAerialCamera ? "Câmera do Barco" : "Câmera Aérea";
-        });
+            // Luzes
+            const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+            scene.add(ambientLight);
 
-        // Posicionamento da câmera aérea
-        aerialCamera.position.set(0, 200, 0);
-        aerialCamera.lookAt(0, 0, 0);
-        aerialCamera.rotation.z = Math.PI; // Inverte a câmera para visualizar corretamente
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(0, 1, 1);
+            scene.add(directionalLight);
 
-        // Luzes
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-        scene.add(ambientLight);
+            // Adicionar céu
+            const sky = new Sky();
+            sky.scale.setScalar( 450000 );
+            scene.add( sky );
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(1, 1, 0.5);
-        scene.add(directionalLight);
+            const sun = new THREE.Vector3();
 
-        // Variáveis para o mar
-        const seaSegments = 128;
-        const seaWidth = 2000;
-        const seaDepth = 2000;
-        const seaSegmentCount = 5; // Número de segmentos do mar para criar um "mar infinito"
-        const seaSegments2D = [];
+            /// GUI
+            const effectController = {
+                turbidity: 4.8,
+                rayleigh: 1.2,
+                mieCoefficient: 0.005,
+                mieDirectionalG: 0.4,
+                elevation: 1,
+                azimuth: 180,
+                exposure: renderer.toneMappingExposure
+            };
 
-        // Criação do mar com múltiplos segmentos
-        for (let z = -Math.floor(seaSegmentCount/2); z <= Math.floor(seaSegmentCount/2); z++) {
-            for (let x = -Math.floor(seaSegmentCount/2); x <= Math.floor(seaSegmentCount/2); x++) {
-                createSeaSegment(x, z);
+            function guiChanged() {
+
+                const uniforms = sky.material.uniforms;
+                uniforms[ 'turbidity' ].value = effectController.turbidity;
+                uniforms[ 'rayleigh' ].value = effectController.rayleigh;
+                uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient;
+                uniforms[ 'mieDirectionalG' ].value = effectController.mieDirectionalG;
+
+                const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation );
+                const theta = THREE.MathUtils.degToRad( effectController.azimuth );
+
+                sun.setFromSphericalCoords( 1, phi, theta );
+
+                uniforms[ 'sunPosition' ].value.copy( sun );
+
+                renderer.toneMappingExposure = effectController.exposure;
+                renderer.render( scene, camera );
+
             }
-        }
 
-        function createSeaSegment(segX, segZ) {
-            const geometry = new THREE.PlaneGeometry(seaWidth, seaDepth, seaSegments, seaSegments);
-            const material = new THREE.MeshPhongMaterial({
-                color: 0x0077be,
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.8,
-                flatShading: true
-            });
+            //const gui = new GUI();
 
-            const sea = new THREE.Mesh(geometry, material);
-            sea.rotation.x = -Math.PI / 2;
-            sea.position.x = segX * seaWidth;
-            sea.position.z = segZ * seaDepth;
-            scene.add(sea);
+            //gui.add( effectController, 'turbidity', 0.0, 20.0, 0.1 ).onChange( guiChanged );
+            //gui.add( effectController, 'rayleigh', 0.0, 4, 0.001 ).onChange( guiChanged );
+            //gui.add( effectController, 'mieCoefficient', 0.0, 0.1, 0.001 ).onChange( guiChanged );
+            //gui.add( effectController, 'mieDirectionalG', 0.0, 1, 0.001 ).onChange( guiChanged );
+            //gui.add( effectController, 'elevation', 0, 90, 0.1 ).onChange( guiChanged );
+            //gui.add( effectController, 'azimuth', - 180, 180, 0.1 ).onChange( guiChanged );
+            //gui.add( effectController, 'exposure', 0, 1, 0.0001 ).onChange( guiChanged );
 
-            // Armazenar referência ao segmento
-            seaSegments2D.push({
-                mesh: sea,
-                segX: segX,
-                segZ: segZ
-            });
+            guiChanged();
 
-            return sea;
-        }
+            // Posição da câmera
+            camera.position.set(0, 10, 60);
 
-        // Criação do barco
-        const boatGroup = new THREE.Group();
-        scene.add(boatGroup);
+            // Criar geometria da malha de ondas
+            const waveGeometry = new THREE.PlaneGeometry(1200, 400, 128, 128);
+            waveGeometry.rotateX(-Math.PI / 2); // Rotacionar para ficar na horizontal
 
-        // Corpo do barco
-        const boatGeometry = new THREE.BoxGeometry(10, 3, 20);
-        const boatMaterial = new THREE.MeshPhongMaterial({ color: 0x8B4513 });
-        const boat = new THREE.Mesh(boatGeometry, boatMaterial);
-        boat.position.y = -1;
-        boatGroup.add(boat);
+            // Parâmetros das ondas
+            const waveParams = {
+                amplitude: 0.6,
+                frequency: 0.08,
+                speed: 1.8,
+                waveCount: 3
+            };
 
-        // Mastro do barco
-        const mastGeometry = new THREE.CylinderGeometry(0.3, 0.3, 15, 8);
-        const mastMaterial = new THREE.MeshPhongMaterial({ color: 0x8B4513 });
-        const mast = new THREE.Mesh(mastGeometry, mastMaterial);
-        mast.position.set(0, 10, -2);
-        boatGroup.add(mast);
-
-        // Vela do barco
-        const sailGeometry = new THREE.PlaneGeometry(12, 12);
-        const sailMaterial = new THREE.MeshPhongMaterial({ 
-            color: 0xFFFFFF,
-            side: THREE.DoubleSide
-        });
-        const sail = new THREE.Mesh(sailGeometry, sailMaterial);
-        sail.position.set(0, 10, -2);
-        sail.rotation.y = Math.PI / 2;
-        boatGroup.add(sail);
-
-        // Posição e rotação iniciais
-        boatGroup.position.set(0, 0, 0);
-        boatGroup.rotation.y = 0;
-
-        // Posição da câmera
-        mainCamera.position.set(0, 30, 50);
-        mainCamera.lookAt(boatGroup.position);
-        
-        // Configuração da câmera do minimap
-        minimapCamera.position.set(0, 150, 0);
-        minimapCamera.lookAt(0, 0, 0);
-        minimapCamera.rotation.z = Math.PI;
-
-        // Variáveis para o movimento do barco
-        const boat_state = {
-            speed: 0,
-            maxSpeed: 2,
-            rotationSpeed: 0.06,
-            moving: false,
-            turningLeft: false,
-            turningRight: false,
-            velocity: new THREE.Vector3(0, 0, 0)
-        };
-
-        // Controles do teclado
-        const keys = {};
-        document.addEventListener('keydown', (event) => {
-            keys[event.key.toLowerCase()] = true;
-        });
-        document.addEventListener('keyup', (event) => {
-            keys[event.key.toLowerCase()] = false;
-        });
-
-        // Funções para atualizar o mar com efeito de ondas
-        let time = 0;
-        const waveHeight = 4.5;
-        const waveFrequency = 0.5;
-        const waveSpeed = 0.8;
-
-        function updateSea(deltaTime) {
-            time += deltaTime * waveSpeed;
-
-            seaSegments2D.forEach(segInfo => {
-                const vertices = segInfo.mesh.geometry.attributes.position.array;
-                const offsetX = segInfo.segX * seaWidth;
-                const offsetZ = segInfo.segZ * seaDepth;
+            // Shader de vértice para as ondas
+            const waterVertexShader = `
+                uniform float uTime;
+                uniform float uAmplitude;
+                uniform float uFrequency;
+                uniform float uSpeed;
+                uniform int uWaveCount;
                 
-                for (let i = 0; i < vertices.length; i += 3) {
-                    const x = vertices[i] + offsetX;
-                    const z = vertices[i + 2] + offsetZ;
+                varying vec3 vPosition;
+                varying vec2 vUv;
+                varying vec3 vNormal;
+                varying vec3 vViewDirection;
+                
+                void main() {
+                    vUv = uv;
+                    vPosition = position;
                     
-                    // Calcula a altura da onda usando uma combinação de funções seno
-                    vertices[i + 1] = 
-                        Math.sin(x * 0.05 + time) * 
-                        Math.cos(z * 0.05 + time) * waveHeight * 
-                        Math.sin(time * 0.5) * 0.5 + waveHeight;
+                    // Calcular altura das ondas
+                    float y = 0.0;
+                    
+                    // Múltiplas ondas sobrepostas
+                    for (int w = 1; w <= 5; w++) {
+                        if (w > uWaveCount) break;
+                        
+                        float freq = uFrequency * float(w);
+                        float amp = uAmplitude / float(w);
+                        float speed = uSpeed * float(w) * 0.6;
+                        
+                        // Ondas primárias
+                        y += amp * sin(freq * position.x + uTime * speed);
+                        y += amp * 0.7 * sin(freq * position.z + uTime * speed * 0.8);
+                        
+                        // Ondas circulares
+                        float distance = sqrt(position.x * position.x + position.z * position.z);
+                        y += amp * 0.3 * sin(freq * distance - uTime * speed * 1.2);
+                    }
+                    
+                    vec3 newPosition = position;
+                    newPosition.y = y;
+                    
+                    // Calcular vetor normal considerando as ondas
+                    vec3 tangent = normalize(vec3(1.0, 
+                        uAmplitude * uFrequency * cos(uFrequency * position.x + uTime * uSpeed),
+                        0.0));
+                    vec3 bitangent = normalize(vec3(0.0,
+                        uAmplitude * uFrequency * cos(uFrequency * position.z + uTime * uSpeed),
+                        1.0));
+                    vNormal = normalize(cross(tangent, bitangent));
+                    
+                    // Direção da visualização
+                    vec4 worldPosition = modelMatrix * vec4(newPosition, 1.0);
+                    vViewDirection = normalize(cameraPosition - worldPosition.xyz);
+                    
+                    gl_Position = projectionMatrix * modelMatrix * viewMatrix * vec4(newPosition, 1.0);
+                }
+            `;
+
+            // Shader de fragmento para a água
+            const waterFragmentShader = `
+                uniform float uTime;
+                uniform vec3 uWaterColor;
+                uniform vec3 uWaterDeepColor;
+                uniform float uColorOffset;
+                uniform float uColorMultiplier;
+                
+                varying vec3 vPosition;
+                varying vec2 vUv;
+                varying vec3 vNormal;
+                varying vec3 vViewDirection;
+                
+                float fresnel(vec3 normal, vec3 viewDirection) {
+                    return pow(1.0 - dot(normal, viewDirection), 1.0);
                 }
                 
-                segInfo.mesh.geometry.attributes.position.needsUpdate = true;
-                segInfo.mesh.geometry.computeVertexNormals();
+                void main() {
+                    // Efeito de tempo para movimento do shader
+                    float waveEffect = sin(vUv.x * 10.0 + uTime) * 0.1 + sin(vUv.y * 8.0 - uTime * 0.8) * 0.1;
+                    
+                    // Gradiente de profundidade baseado na posição
+                    float depth = smoothstep(0.0, 20.0, abs(vPosition.z));
+                    vec3 color = mix(uWaterColor, uWaterDeepColor, depth + waveEffect);
+                    
+                    // Efeito Fresnel para as bordas brilhantes
+                    float fresnelFactor = fresnel(vNormal, vViewDirection);
+                    color = mix(color, vec3(0.8, 0.8, 1.0), fresnelFactor * 0.1);
+                    
+                    // Padrão de ondas na textura
+                    float pattern = sin(vUv.x * 40.0 + uTime) * sin(vUv.y * 40.0 - uTime * 0.5) * 0.05;
+                    color += pattern;
+                    
+                    // Brilhos de luz
+                    float specular = pow(max(dot(reflect(-vec3(0.0, 1.0, 0.5), vNormal), vViewDirection), 0.0), 32.0);
+                    color += specular * vec3(1.0, 1.0, 1.0) * 0.5;
+                    
+                    gl_FragColor = vec4(color, 0.9);
+                }
+            `;
+
+            // Material para a água
+            const waveMaterial = new THREE.ShaderMaterial({
+                vertexShader: waterVertexShader,
+                fragmentShader: waterFragmentShader,
+                depthWrite: false, // Evita problemas de renderização com transparência
+                uniforms: {
+                    uTime: { value: 0 },
+                    uAmplitude: { value: waveParams.amplitude },
+                    uFrequency: { value: waveParams.frequency },
+                    uSpeed: { value: waveParams.speed },
+                    uWaveCount: { value: waveParams.waveCount },
+                    uWaterColor: { value: new THREE.Color(0x6ba7b8) },
+                    uWaterDeepColor: { value: new THREE.Color(0x1a1f85) },
+                    uColorOffset: { value: 0.2 },
+                    uColorMultiplier: { value: 2.0 }
+                },
+                transparent: true,
+                side: THREE.DoubleSide
             });
-        }
 
-        // Função para obter a altura da onda em uma posição específica
-        function getWaveHeight(x, z) {
-            return Math.sin(x * 0.05 + time) * 
-                   Math.cos(z * 0.05 + time) * waveHeight * 
-                   Math.sin(time * 0.5) * 0.5 + waveHeight;
-        }
+            // Criar a malha da água
+            const waterMesh = new THREE.Mesh(waveGeometry, waveMaterial);
+            scene.add(waterMesh);
 
-        // Verificar se precisamos reposicionar os segmentos do mar
-        function checkSeaSegmentsPosition() {
-            const boatPos = boatGroup.position;
-            
-            // Verifica qual segmento do mar o barco está atualmente
-            const currentSegX = Math.floor(boatPos.x / seaWidth);
-            const currentSegZ = Math.floor(boatPos.z / seaDepth);
-            
-            // Reposiciona segmentos para criar efeito infinito
-            seaSegments2D.forEach(segInfo => {
-                let needsRepositioning = false;
-                let newX = segInfo.segX;
-                let newZ = segInfo.segZ;
+            // Geração das ondas
+            function updateWaves(time) {
+                const positions = waveGeometry.attributes.position;
                 
-                // Verifica se o segmento está muito longe na direção X
-                if (segInfo.segX < currentSegX - Math.floor(seaSegmentCount/2)) {
-                    newX = currentSegX + Math.floor(seaSegmentCount/2);
-                    needsRepositioning = true;
-                } else if (segInfo.segX > currentSegX + Math.floor(seaSegmentCount/2)) {
-                    newX = currentSegX - Math.floor(seaSegmentCount/2);
-                    needsRepositioning = true;
+                for (let i = 0; i < positions.count; i++) {
+                    const x = positions.getX(i);
+                    const z = positions.getZ(i);
+                    
+                    // Calcular altura das ondas usando várias funções senoidais
+                    let y = 0;
+                    
+                    // Múltiplas ondas sobrepostas
+                    for (let w = 1; w <= waveParams.waveCount; w++) {
+                        const freq = waveParams.frequency * w;
+                        const amp = waveParams.amplitude / w;
+                        const speed = waveParams.speed * w * 0.6;
+                        
+                        // Ondas primárias
+                        y += amp * Math.sin(freq * x + time * speed);
+                        y += amp * 0.7 * Math.sin(freq * z + time * speed * 0.8);
+                        
+                        // Ondas circulares
+                        const distance = Math.sqrt(x * x + z * z);
+                        y += amp * 0.3 * Math.sin(freq * distance - time * speed * 1.2);
+                    }
+                    
+                    positions.setY(i, y);
                 }
                 
-                // Verifica se o segmento está muito longe na direção Z
-                if (segInfo.segZ < currentSegZ - Math.floor(seaSegmentCount/2)) {
-                    newZ = currentSegZ + Math.floor(seaSegmentCount/2);
-                    needsRepositioning = true;
-                } else if (segInfo.segZ > currentSegZ + Math.floor(seaSegmentCount/2)) {
-                    newZ = currentSegZ - Math.floor(seaSegmentCount/2);
-                    needsRepositioning = true;
+                positions.needsUpdate = true;
+                waveGeometry.computeVertexNormals();
+            }
+
+            // Variável para armazenar o objeto carregado
+            let loadedObject = null;
+
+            // Variáveis para o rastro do barco
+            let boatWake = null;
+            const particleCount = 100; // Número de partículas
+
+            // Função para criar o rastro do barco usando partículas
+            function createBoatWake() {
+                // Criar geometria para as partículas
+                const wakeGeometry = new THREE.BufferGeometry();
+                
+                // Criar posições iniciais para as partículas
+                const positions = new Float32Array(particleCount * 2);
+                const sizes = new Float32Array(particleCount);
+                
+                // Inicializar as partículas em uma área atrás do barco
+                for (let i = 0; i < particleCount; i++) {
+                    // Posição X: distribuída atrás do barco (valores negativos)
+                    positions[i * 3] = -Math.random() * 8;
+                    
+                    // Posição Y: ligeiramente acima da água
+                    positions[i * 3 + 1] = 0.1;
+                    
+                    // Posição Z: distribuída em um padrão em V
+                    // Quanto mais longe do barco (X mais negativo), mais largo o V
+                    const distanceFromBoat = Math.abs(positions[i * 3]);
+                    const vWidth = 0.5 + distanceFromBoat * 0.2; // V fica mais largo com a distância
+                    positions[i * 3 + 2] = (Math.random() - 0.8) * vWidth;
+                    
+                    // Tamanho variável das partículas
+                    sizes[i] = Math.random() * 0.2;
                 }
                 
-                // Reposiciona se necessário
-                if (needsRepositioning) {
-                    segInfo.segX = newX;
-                    segInfo.segZ = newZ;
-                    segInfo.mesh.position.x = newX * seaWidth;
-                    segInfo.mesh.position.z = newZ * seaDepth;
+                // Adicionar atributos à geometria
+                wakeGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                wakeGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+                
+                // Material para as partículas
+                const wakeMaterial = new THREE.PointsMaterial({
+                    color: 0xFFFFFF,
+                    size: 0.08,
+                    transparent: true,
+                    opacity: 0.5,
+                    sizeAttenuation: true, // As partículas ficam menores com a distância
+                    depthWrite: false, // Evita problemas de renderização com transparência
+                    blending: THREE.AdditiveBlending // Cria um efeito de brilho
+                });
+                
+                // Criar o sistema de partículas
+                boatWake = new THREE.Points(wakeGeometry, wakeMaterial);
+                
+                // Adicionar à cena
+                scene.add(boatWake);
+            }
+
+            // Função para atualizar o rastro do barco
+            function updateBoatWake() {
+                if (!loadedObject || !boatWake) return;
+                
+                const time = performance.now() * 0.001;
+                const positions = boatWake.geometry.attributes.position.array;
+                const sizes = boatWake.geometry.attributes.size.array;
+                
+                
+                // Obter a posição atual do barco
+                const boatX = loadedObject.position.x;
+                const boatY = loadedObject.position.y;
+                const boatZ = loadedObject.position.z;
+                
+                // Calcular a posição traseira do barco
+                const backOffset = 1; // Distância da parte traseira do barco
+                const trailStartX = boatX - backOffset * Math.cos(loadedObject.rotation.y);
+                const trailStartZ = boatZ - backOffset * Math.sin(loadedObject.rotation.y);
+                
+                // Atualizar cada partícula
+                for (let i = 0; i < particleCount; i++) {
+                    // Índices para acessar as posições X, Y, Z
+                    const ix = i * 3;
+                    const iy = i * 3 + 1;
+                    const iz = i * 3 + 2;
+                    
+                    // Mover as partículas para trás (efeito de rastro)
+                    positions[ix] -= 0.6;
+                    
+                    // Adicionar um movimento ondulante
+                    const waveY = getWaveHeight(positions[ix] + boatX, positions[iz] + boatZ, time);
+                    positions[iy] = waveY - 3 + Math.sin(time * 2 + i) * 0.05;
+                    
+                    // Expandir o V gradualmente
+                    positions[iz] *= 1;
+                    
+                    // Diminuir o tamanho das partículas com o tempo
+                    sizes[i] *= 2;
+                    
+                    // Resetar partículas que ficaram muito pequenas ou muito distantes
+                    if (sizes[i] < 0.1 || positions[ix] < -28 || Math.abs(positions[iz]) > 15) {
+                        // Reposicionar exatamente na parte traseira do barco
+                        positions[ix] = -Math.random() * 2; // Pequena variação atrás do barco
+                        
+                        // Altura baseada na altura da onda na posição do barco
+                        positions[iy] = boatY + 0.4;
+                        
+                        // Distribuição em V atrás do barco
+                        const vSpread = Math.random() * 8; // Largura do V
+                        positions[iz] = (Math.random() - 0.8) * vSpread;
+                        
+                        // Resetar tamanho
+                        sizes[i] = Math.random() * 0.5 + 0.1;
+                    }
                 }
+                
+                // Atualizar a posição do sistema de partículas para seguir o barco
+                boatWake.position.copy(loadedObject.position);
+                
+                // Marcar os atributos para atualização
+                boatWake.geometry.attributes.position.needsUpdate = true;
+                boatWake.geometry.attributes.size.needsUpdate = true;
+            }
+
+            // Função para carregar o objeto do barco
+            function loadObjectTest(gltfPath, scaleFactor, position, initialRotation, scene) {
+                const loader = new GLTFLoader().setPath('./gltf/');
+                return new Promise((resolve) => {
+                    loader.load(gltfPath, (gltf) => {
+                        const mesh = gltf.scene;
+                        mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
+                        mesh.position.copy(position);
+                        mesh.rotation.y = initialRotation;
+                        mesh.receiveShadow = true;
+                        mesh.castShadow = true;
+                        scene.add(mesh);
+                        resolve(mesh);
+                    });
+                });
+            }
+
+            // Carregar o objeto do barco
+            loadObjectTest('boat_cc.glb', 1, new THREE.Vector3(0, 0, 0), 0, scene).then(mesh => {
+                loadedObject = mesh;
+                createBoatWake(); // Criar o rastro após carregar o barco
             });
-        }
 
-        // Atualizar posição da câmera aérea
-        function updateAerialCamera() {
-            aerialCamera.position.x = boatGroup.position.x;
-            aerialCamera.position.z = boatGroup.position.z;
-            aerialCamera.lookAt(boatGroup.position.x, 0, boatGroup.position.z);
-        }
-
-        // Atualizar posição da câmera do minimap
-        function updateMinimapCamera() {
-            minimapCamera.position.x = boatGroup.position.x;
-            minimapCamera.position.z = boatGroup.position.z;
-            minimapCamera.lookAt(boatGroup.position.x, 0, boatGroup.position.z);
-        }
-
-        // Vetor de direção para o barco
-        const direction = new THREE.Vector3();
-        let lastTime = 0;
-
-        // Loop de animação
-        function animate(currentTime) {
-            requestAnimationFrame(animate);
-            
-            const deltaTime = (currentTime - lastTime) / 1000;
-            lastTime = currentTime;
-            
-            // Atualizar o mar
-            updateSea(deltaTime);
-            
-            // Controles do barco
-            if (keys['w'] || keys['arrowup']) {
-                boat_state.speed = Math.min(boat_state.speed + 0.05, boat_state.maxSpeed);
-                boat_state.moving = true;
-            } else if (keys['s'] || keys['arrowdown']) {
-                boat_state.speed = Math.max(boat_state.speed - 0.05, -boat_state.maxSpeed/2);
-                boat_state.moving = true;
-            } else {
-                // Reduzir a velocidade quando não houver input
-                if (Math.abs(boat_state.speed) > 0.01) {
-                    boat_state.speed *= 0.98;
-                } else {
-                    boat_state.speed = 0;
-                    boat_state.moving = false;
+            // Função para obter a altura da onda em uma posição específica
+            function getWaveHeight(x, z, time) {
+                let y = 0;
+                for (let w = 1; w <= waveParams.waveCount; w++) {
+                    const freq = waveParams.frequency * w;
+                    const amp = waveParams.amplitude / w;
+                    const speed = waveParams.speed * w * 0.6;
+                    
+                    // Ondas primárias
+                    y += amp * Math.sin(freq * x + time * speed);
+                    y += amp * 0.7 * Math.sin(freq * z + time * speed * 0.8);
+                    
+                    // Ondas circulares
+                    const distance = Math.sqrt(x * x + z * z);
+                    y += amp * 0.3 * Math.sin(freq * distance - time * speed * 1.2);
                 }
+                return y;
             }
-            
-            if (keys['a'] || keys['arrowleft']) {
-                boatGroup.rotation.y += boat_state.rotationSpeed;
-                sail.rotation.y = Math.PI / 2 - 0.5;
-            } else if (keys['d'] || keys['arrowright']) {
-                boatGroup.rotation.y -= boat_state.rotationSpeed;
-                sail.rotation.y = Math.PI / 2 + 0.5;
-            } else {
-                sail.rotation.y = Math.PI / 2;
-            }
-            
-            // Atualizar posição do barco
-            if (boat_state.moving) {
-                // Calcular direção com base na rotação do barco
-                direction.set(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), boatGroup.rotation.y);
-                
-                // Aplicar velocidade
-                boatGroup.position.x += direction.x * boat_state.speed;
-                boatGroup.position.z += direction.z * boat_state.speed;
-                
-                // Atualizar a altura do barco com base na altura da onda
-                const waveY = getWaveHeight(boatGroup.position.x, boatGroup.position.z);
-                boatGroup.position.y = waveY;
-                
-                // Inclinar o barco com base nas ondas
-                const frontPos = new THREE.Vector3().copy(boatGroup.position).add(
-                    new THREE.Vector3(direction.x, 0, direction.z).multiplyScalar(10)
-                );
-                const rightPos = new THREE.Vector3().copy(boatGroup.position).add(
-                    new THREE.Vector3(-direction.z, 0, direction.x).multiplyScalar(5)
-                );
-                
-                const frontHeight = getWaveHeight(frontPos.x, frontPos.z);
-                const rightHeight = getWaveHeight(rightPos.x, rightPos.z);
-                
-                boatGroup.rotation.x = (frontHeight - waveY) * 0.05;
-                boatGroup.rotation.z = (waveY - rightHeight) * 0.05;
-            }
-            
-            // Verificar se precisamos reposicionar segmentos do mar
-            checkSeaSegmentsPosition();
-            
-            // Atualizar posição da câmera para seguir o barco
-            const cameraOffset = new THREE.Vector3(0, 30, 50);
-            cameraOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), boatGroup.rotation.y);
-            
-            mainCamera.position.copy(boatGroup.position).add(cameraOffset);
-            mainCamera.lookAt(boatGroup.position);
-            
-            // Atualizar câmera aérea
-            updateAerialCamera();
-            
-            // Atualizar câmera do minimap
-            updateMinimapCamera();
-            
-            // Renderizar a cena com a câmera selecionada
-            renderer.render(scene, currentCamera);
-            
-            // Renderizar o minimap
-            minimapRenderer.render(scene, minimapCamera);
-        }
 
-        // Ajustar tamanho do canvas quando a janela for redimensionada
-        window.addEventListener('resize', function() {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            
-            mainCamera.aspect = width / height;
-            mainCamera.updateProjectionMatrix();
-            
-            aerialCamera.aspect = width / height;
-            aerialCamera.updateProjectionMatrix();
-            
-            renderer.setSize(width, height);
-        });
+            scene.add(camera);
 
-        // Iniciar animação
-        animate(0);
+            // Estado das teclas
+            const keysPressed = {
+                ArrowRight: false, // Acelerar
+            };
+
+            // Flag para controlar se o barco já foi acelerado
+            let hasBeenAccelerated = false;
+
+            // Função para atualizar câmera
+            function updateBoatMovement() {
+                if (!loadedObject) return;
+
+                // Atualizar o rastro do barco
+                updateBoatWake();
+
+                const cameraOffsetX = 0;
+                const cameraOffsetY = 6;  // Altura da câmera
+                const cameraOffsetZ = 22; // Distância atrás do barco
+                
+                // Para uma transição mais suave da câmera
+                const lerpFactor = 0.00005; // Ajuste entre 0.01 (muito suave) e 1 (sem suavização)
+                camera.position.x += (loadedObject.position.x + cameraOffsetX - camera.position.x) * lerpFactor;
+                camera.position.y += (cameraOffsetY - camera.position.y) * lerpFactor;
+                camera.position.z += (cameraOffsetZ - camera.position.z) * lerpFactor;
+                
+                // Atualização recursiva (loop de animação)
+                requestAnimationFrame(updateBoatMovement);
+            }
+
+            // Loop de animação
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                const time = performance.now() * 0.001; // Tempo em segundos
+                
+                updateWaves(time);
+                updateBoatMovement();
+
+                // Atualizar uniforms do shader
+                waveMaterial.uniforms.uTime.value = time;
+                waveMaterial.uniforms.uAmplitude.value = waveParams.amplitude;
+                waveMaterial.uniforms.uFrequency.value = waveParams.frequency;
+                waveMaterial.uniforms.uSpeed.value = waveParams.speed;
+                waveMaterial.uniforms.uWaveCount.value = waveParams.waveCount;
+                
+                // Atualizar a altura do objeto carregado com base na altura da onda
+                if (loadedObject) {
+                    const waveY = getWaveHeight(loadedObject.position.x, loadedObject.position.z, time);
+                    loadedObject.position.y = waveY + 2.2; // Ajusta a altura do objeto carregado
+                    
+                    // Calcular a inclinação do objeto com base nas ondas
+                    const frontPos = new THREE.Vector3(loadedObject.position.x, 0, loadedObject.position.z + 2);
+                    const rightPos = new THREE.Vector3(loadedObject.position.x + 0.4, 0, loadedObject.position.z);
+                    
+                    const frontHeight = getWaveHeight(frontPos.x, frontPos.z, time);
+                    const rightHeight = getWaveHeight(rightPos.x, rightPos.z, time);
+                    
+                    // Aplicar rotação ao objeto com base na diferença de altura
+                    loadedObject.rotation.x = (frontHeight - waveY) * 0.2; // Inclinação frente/trás
+                }
+                
+                renderer.render(scene, camera);
+            }
+
+            // Lidar com redimensionamento da janela
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+            
+            document.getElementById('frequency').addEventListener('input', (e) => {
+                waveParams.frequency = parseFloat(e.target.value);
+                document.getElementById('frequency-value').textContent = e.target.value;
+            });
+            
+            document.getElementById('wireframe').addEventListener('change', (e) => {
+                waveMaterial.wireframe = e.target.checked;
+            });
+
+            // Iniciar animação
+            animate();
         </script>
         <script>
             var loader = document.getElementById("preloader");
@@ -394,8 +534,6 @@
                 loader.style.display = "none";
             })
         </script>
-        
-        <script src="preloadImagens.js"></script> 
 
         <script>
             const cursor = document.querySelector('.cursor');

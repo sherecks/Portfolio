@@ -10,6 +10,7 @@ function preloadImages() {
         'images/h2.png',
         'images/h3.png',
         'images/h4.png',
+        'images/tshit2.png',
         'images/TshitBlue2.png',
         'images/TshitBlue3.png',
         'images/favicon.png',
