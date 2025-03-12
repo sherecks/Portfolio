@@ -92,3 +92,236 @@ a{
     mix-blend-mode: difference;
 }
 
+#speedometer-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#speedometer {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    background: #222;
+    border-radius: 50%;
+    border: 5px solid #444;
+    overflow: hidden;
+}
+
+#speed-value {
+    position: absolute;
+    top: 50%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+}
+
+#speed-unit {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    color: #aaa;
+}
+
+#speed-needle {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 4px;
+    height: 40%;
+    background: red;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(0deg);
+    z-index: 10;
+}
+
+#speed-needle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+@keyframes needle-oscillation {
+  0% {
+    transform: translateX(-50%) rotate(65deg);
+  }
+  10% {
+    transform: translateX(-50%) rotate(70deg);
+  }
+  20% {
+    transform: translateX(-50%) rotate(75deg);
+  }
+  30% {
+    transform: translateX(-50%) rotate(85deg);
+  }
+  40% {
+    transform: translateX(-50%) rotate(90deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(120deg);
+  }
+  60% {
+    transform: translateX(-50%) rotate(135deg);
+  }
+  70% {
+    transform: translateX(-50%) rotate(120deg);
+  }
+  80% {
+    transform: translateX(-50%) rotate(90deg);
+  }
+  90% {
+    transform: translateX(-50%) rotate(75deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(65deg);
+  }
+}
+
+#speed-needle {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 4px;
+  height: 40%;
+  background: red;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(0deg);
+  z-index: 10;
+  
+  animation: needle-oscillation 10s ease-in-out infinite;
+  
+  &:hover {
+    animation-duration: 8s;
+  }
+}
+
+@keyframes needle-color-change {
+  0%, 100% {
+    background: green;
+  }
+  40%, 60% {
+    background: orange;
+  }
+  50% {
+    background: red;
+  }
+}
+
+#speed-needle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  
+  animation: needle-color-change 10s ease-in-out infinite;
+}
+
+@keyframes speed-value-change {
+  0%, 100% {
+    content: "0";
+    color: green;
+  }
+  10% {
+    content: "5";
+  }
+  20% {
+    content: "10";
+    color: green;
+  }
+  30% {
+    content: "15";
+    color: orange;
+  }
+  40% {
+    content: "20";
+    color: orange;
+  }
+  50% {
+    content: "30";
+    color: red;
+  }
+  60% {
+    content: "25";
+    color: orange;
+  }
+  70% {
+    content: "20";
+    color: orange;
+  }
+  80% {
+    content: "15";
+    color: orange;
+  }
+  90% {
+    content: "5";
+    color: green;
+  }
+}
+
+#speed-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+  
+  &::after {
+    content: "0";
+    animation: speed-value-change 10s ease-in-out infinite;
+  }
+  
+  font-size: 0;
+}
+
+@keyframes speedometer-vibration {
+  0%, 30%, 70%, 100% {
+    transform: translate(0, 0);
+  }
+  45%, 55% {
+    transform: translate(-1px, 1px);
+  }
+  50% {
+    transform: translate(1px, -1px);
+  }
+}
+
+#speedometer {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  background: #222;
+  border-radius: 50%;
+  border: 5px solid #444;
+  overflow: hidden;
+  
+  animation: speedometer-vibration 10s ease-in-out infinite;
+}
+
+

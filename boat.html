@@ -35,6 +35,15 @@
             </label>
         </div>
 
+         <!-- Adicionar o HTML do velocímetro -->
+         <div id="speedometer-container">
+            <div id="speedometer">
+                <div id="speed-value">0</div>
+                <div id="speed-unit">nós</div>
+                <div id="speed-needle"></div>
+            </div>
+        </div>
+
         <script type="module">
             import * as THREE from './three.module.js';
             import { OrbitControls } from './OrbitControls.js';
@@ -418,7 +427,7 @@
             }
 
             // Carregar o objeto do barco
-            loadObjectTest('boat_cc.glb', 1, new THREE.Vector3(0, 0, 0), 0, scene).then(mesh => {
+            loadObjectTest('boat.glb', 1, new THREE.Vector3(0, 0, 0), 0, scene).then(mesh => {
                 loadedObject = mesh;
                 createBoatWake(); // Criar o rastro após carregar o barco
             });
