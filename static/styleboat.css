@@ -55,12 +55,13 @@ a {
 .controls {
   position: fixed;
   font-family: "Anton", sans-serif;
+  font-size: 18px;
   top: 10px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 15px;
-  border-radius: 5px;
   color: white;
+  letter-spacing: 1px;
   min-width: 180px;
 }
 
@@ -124,7 +125,7 @@ a {
   border-radius: 50%;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 80;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -175,7 +176,7 @@ a {
   left: 50%;
   width: 4px;
   height: 40%;
-  background: red;
+  background: #2852dd;
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
   -webkit-transform: translateX(-50%) rotate(0deg);
@@ -295,11 +296,11 @@ a {
   left: 50%;
   width: 4px;
   height: 40%;
-  background: red;
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
   -webkit-transform: translateX(-50%) rotate(0deg);
           transform: translateX(-50%) rotate(0deg);
+  border-radius: 10px;
   -webkit-animation: needle-oscillation 10s ease-in-out infinite;
           animation: needle-oscillation 10s ease-in-out infinite;
 }
@@ -429,25 +430,6 @@ a {
     content: "5";
     color: green;
   }
-}
-
-#speed-value {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  font-family: 'Anton', sans-serif;
-  font-size: 32px;
-  color: white;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
-  font-size: 0;
-}
-
-#speed-value::after {
-  content: "0";
-  -webkit-animation: speed-value-change 10s ease-in-out infinite;
-          animation: speed-value-change 10s ease-in-out infinite;
 }
 
 @-webkit-keyframes speedometer-vibration {

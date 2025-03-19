@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
-        <title>3D</title>
+        <title>3D Clothing</title>
         
     </head>
     <body>
@@ -23,15 +23,10 @@
             <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
         </header>
 
-        <div id="tshirt-label" class="object-label">MK4.2</div>
-        <div id="shorts-label" class="object-label">MK3.8</div>
-        <div id="zipper-label" class="object-label">MK1.6</div>
-
         <script type="module">
-        import * as THREE from './three.module.js';
-        import { OrbitControls } from './OrbitControls.js';
-        import { GLTFLoader } from './GLTFLoader.js';
-
+        import * as THREE from './three.js/three.module.js';
+        import { OrbitControls } from './three.js/OrbitControls.js';
+        import { GLTFLoader } from './three.js/GLTFLoader.js';
 
             // Configuração inicial
             const scene = new THREE.Scene();
@@ -76,7 +71,21 @@
                 mesh.castShadow = true;
             
                 scene.add(mesh);
+
+                // Remover o preloader quando o modelo for carregado
+                document.getElementById("preloader").style.display = "none";
+
                 resolve(mesh);
+                }, 
+                // Callback de progresso (opcional)
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total * 100) + '% carregado');
+                },
+                // Callback de erro
+                (error) => {
+                    console.error('Erro ao carregar o modelo:', error);
+                    // Remover o preloader mesmo em caso de erro
+                    document.getElementById("preloader").style.display = "none";
                 });
             });
             }
@@ -105,24 +114,6 @@
 
                     // Atualiza a posição dos labels
                     const vector = new THREE.Vector3();
-                    
-                    // T-shirt label
-                    vector.setFromMatrixPosition(loadedObject.matrixWorld);
-                    vector.project(camera);
-                    const tshirtLabel = document.getElementById('tshirt-label');
-                    tshirtLabel.style.left = (vector.x * .5 + .5) * window.innerWidth + 'px';
-                    
-                    // Shorts label
-                    vector.setFromMatrixPosition(loadedObject1.matrixWorld);
-                    vector.project(camera);
-                    const shortsLabel = document.getElementById('shorts-label');
-                    shortsLabel.style.left = (vector.x * .5 + .5) * window.innerWidth + 'px';
-                    
-                    // Zipper label
-                    vector.setFromMatrixPosition(loadedObject2.matrixWorld);
-                    vector.project(camera);
-                    const zipperLabel = document.getElementById('zipper-label');
-                    zipperLabel.style.left = (vector.x * .5 + .5) * window.innerWidth + 'px';
                 }
 
                 requestAnimationFrame(animate);
@@ -141,16 +132,7 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             };
         </script>
-        <script>
-            var loader = document.getElementById("preloader");
-
-            window.addEventListener("load", function(){
-                loader.style.display = "none";
-            })
-        </script>
         
-        <script src="preloadImagens.js"></script> 
-
         <script>
             const cursor = document.querySelector('.cursor');
 

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="./static/stylemap3d.css"/>
+        <title>Smilodon</title>
+    </head>
+
+    <body>
+
+        <div class="cursor"></div>
+                
+        <div id="preloader">
+            <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
+        </div>
+
+        <header>  
+            <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
+        </header>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@500&display=swap');
+        </style>
+
+        <script type="module">
+            import * as THREE from './three.js/three.module.js';
+            import { OrbitControls } from './three.js/OrbitControls.js';
+            import { GLTFLoader } from './three.js/GLTFLoader.js';
+
+            import { isGraphicsCapabilitySufficient } from './three.js/graphicCapability.js'
+            import { createButton } from './three.js/buttonUtils.js'
+            import { createSprite } from './three.js/spriteUtils.js';
+            import { createTextBox } from './three.js/textutils.js';
+            import { onDocumentMouseMove } from './three.js/raycasterUtils.js';
+
+            //Camera
+            const scene = new THREE.Scene();
+
+            scene.background = new THREE.Color( 0x000000 );
+
+            const camera = new THREE.PerspectiveCamera(
+                50,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                10000
+            );
+            camera.position.set(0, 1800, 0);
+
+            let cameraMovedManually = false;
+
+            const canva = document.createElement('canvas');
+            const context = canva.getContext('2d');
+            const width = 50; // Largura do canvas
+            const height = 50; // Altura do canvas
+            canva.width = width;
+            canva.height = height;
+            context.fillStyle = 'black';
+
+            const buttonTexture = new THREE.CanvasTexture(canva);
+
+            const buttonMaterial = new THREE.SpriteMaterial({ map: buttonTexture });
+
+            // Configurar o raio para a interseção do mouse
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+            function render() {
+            raycaster.setFromCamera(mouse, camera);
+        
+            const intersects = raycaster.intersectObjects([buttonSprite, buttonSprite1], true);
+        
+            if (intersects.length > 0) {
+                document.body.style.cursor = 'pointer';
+            } else {
+                document.body.style.cursor = 'auto';
+            }
+        
+            renderer.render(scene, camera);
+            }
+
+            const buttonSprite = createSprite(buttonMaterial, [20, 100, 1], [0, 250, 0], scene);
+            const buttonSprite1 = createSprite(buttonMaterial, [20, 100, 1], [400, 250, 0], scene);
+            const buttonSprite2 = createSprite(buttonMaterial, [20, 100, 1], [800, 250, 0], scene);
+            const buttonSprite3 = createSprite(buttonMaterial, [20, 100, 1], [-900, 250, 0], scene);
+
+            const buttonElement = createButton('Smilodon', '50px', '-10px');
+            const buttonElement1 = createButton('Skeleton', '-50px', '-10px');
+            const buttonElement2 = createButton('Saber Teeth', '-50px', '-10px');
+            const buttonElement3 = createButton('Populator', '-50px', '-10px');
+
+            const buttonSprites = [buttonSprite, buttonSprite1, buttonSprite2, buttonSprite3]; 
+            const buttonElements = [buttonElement, buttonElement1, buttonElement2, buttonElement3];
+
+            function updateButtonPositions(buttonSprites, buttonElements) {
+            buttonSprites.forEach((buttonSprite, index) => {
+                // Mapeia a posição do sprite 3D para as coordenadas de tela
+                const buttonPosition = buttonSprite.position.clone().project(camera);
+                const x = (buttonPosition.x + 1) / 2 * window.innerWidth;
+                const y = -(buttonPosition.y - 1) / 2 * window.innerHeight;
+        
+                // Obtém as dimensões do botão HTML correspondente
+                const buttonElement = buttonElements[index];
+                const buttonWidth = buttonElement.offsetWidth;
+                const buttonHeight = buttonElement.offsetHeight;
+        
+                // Calcula as coordenadas ajustadas para centralizar o botão
+                const adjustedX = x - buttonWidth / 2;
+                const adjustedY = y - buttonHeight / 2;
+        
+                // Ajusta a posição do botão HTML para coincidir com a posição centralizada do sprite na tela
+                buttonElement.style.left = `${adjustedX}px`;
+                buttonElement.style.top = `${adjustedY}px`;
+
+            });
+            }
+        
+            updateButtonPositions(buttonSprites, buttonElements);
+
+            buttonElement.addEventListener('click', function() {
+                createTextBox('The Smilodon was a carnivorous predator.', '130px', '10px');
+            });
+            
+            buttonElement1.addEventListener('click', function() {
+                createTextBox('It hunted large prey, like mammoths.', '180px', '10px');
+            });
+
+            buttonElement2.addEventListener('click', function() {
+            createTextBox('Its saber teeth were used to inflict deep wounds.', '230px', '10px');
+            });
+
+            buttonElement3.addEventListener('click', function() {
+            createTextBox('It likely lived in groups to hunt and defend.', '280px', '10px');
+            });
+
+            // Função para carregar o objeto do barco
+            function loadObjectTest(gltfPath, scaleFactor, position, initialRotation, scene) {
+                const loader = new GLTFLoader().setPath('./gltf/');
+                return new Promise((resolve) => {
+                    loader.load(gltfPath, (gltf) => {
+                        const mesh = gltf.scene;
+                        mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
+                        mesh.position.copy(position);
+                        mesh.rotation.y = initialRotation;
+                        mesh.receiveShadow = true;
+                        mesh.castShadow = true;
+                        scene.add(mesh);
+                        
+                        // Remover o preloader quando o modelo for carregado
+                        document.getElementById("preloader").style.display = "none";
+                        
+                        resolve(mesh);
+                    }, 
+                    // Callback de progresso (opcional)
+                    (xhr) => {
+                        console.log((xhr.loaded / xhr.total * 100) + '% carregado');
+                    },
+                    // Callback de erro
+                    (error) => {
+                        console.error('Erro ao carregar o modelo:', error);
+                        // Remover o preloader mesmo em caso de erro
+                        document.getElementById("preloader").style.display = "none";
+                    });
+                });
+            }
+
+            // Criar uma luz ambiente
+            const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(100, 100, 1);
+            scene.add(directionalLight);
+
+            //Renderer
+            let pixelRatio = window.devicePixelRatio
+            let AA = true
+            if (pixelRatio > 1) {
+            AA = false
+            }
+
+            const renderer = new THREE.WebGLRenderer({
+            antialias: AA,
+            powerPreference: "high-performance",
+            });
+            const controls = new OrbitControls(camera, renderer.domElement);
+            renderer.setSize(innerWidth, innerHeight);
+            camera.aspect = innerWidth / innerHeight;
+            camera.updateProjectionMatrix();
+            document.body.appendChild( renderer.domElement );
+
+            // Lidar com redimensionamento da janela
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            controls.addEventListener('change', function() {
+            cameraMovedManually = true;
+            });
+
+            let loadedObject = loadObjectTest('saber.glb', 1.8, new THREE.Vector3(2.96, -35, 0), 0, scene);
+
+            controls.enableRotate = true; 
+
+            controls.enableZoom = true; 
+            controls.enablePan = true;
+
+            controls.touches = {
+            ONE: THREE.TOUCH.ROTATE,
+            TWO: THREE.TOUCH.DOLLY_PAN
+            }
+
+            controls.listenToKeyEvents(window);
+
+            //Animate
+            function animate() {
+
+                controls.update();
+
+                updateButtonPositions(buttonSprites, buttonElements);
+
+                render();
+
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+
+            }
+
+            animate();
+        </script>
+
+        <script>
+            const cursor = document.querySelector('.cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                const x = e.pageX;
+                const y = e.pageY;
+                
+                cursor.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
+
+
+    </body>
+</html>

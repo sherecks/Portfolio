@@ -3,7 +3,7 @@
 <html lang="pt-br">
 
     <head>
-        <link rel="stylesheet" href="static/styleuxui.css" />
+        <link rel="stylesheet" href="static/style3d.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
     </head>
     <body>
 
-        <div class="cursor"></div>
+        <div class="cursor"></div> 
         
         <div id="preloader">
             <img class="VideoLoader" preload="auto" src="images/BBB.png"> 
@@ -37,42 +37,58 @@
         <main>
             
             <div class="web">
-
                 <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h1.png">
                 <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h2.png">
                 <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h3.png">
-                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h4.png">
-
-                <p>3D tshirts design in VStitcher and use Vanilla-tilt.js in code.</p> 
+                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web4" src="images/h4.png"> 
             </div>
 
-            <a href="cloth.html"><h1>Cloth in Three.js</h1> </a>
+            <a href="cloth.html"><h2>Cloth in Three.js</h2> </a>
 
             <div class="web">
-                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web5" src="images/tshit2.png">
+                <a href="boat.html"><img data-tilt data-tilt-max="4" preload="auto" class="foto-web5" src="images/boat.png"><h2>Water and GLTF in Three.js</h2> </a>
+                <a href="map3d.html"><img data-tilt data-tilt-max="4" preload="auto" class="foto-web5" src="images/smilodon.png"><h2>History in Three.js</h2> </a>
             </div>
 
-            <a href="boat.html"><h1>Water and GLTF in Three.js</h1> </a>
 
-            <div class="web">
-                <img data-tilt data-tilt-max="4" preload="auto" class="foto-web5" src="images/boat.png">
-            </div>
+            <footer>
+                <div class="footer-container">
+    
+                    <div class="footer-content">
+                        <div class="footer-text">
+                            <p class="footer-title">GET IN TOUCH</p>
+                        </div>
+                        <div class="footer-text">
+                            <p>Html</p>
+                            <p>python</p>
+                            <p>Three.js</p>
+                            <p>JavaScript</p>
+                        </div>
+                        <div class="footer-text">
+                            <p>Figma</p>
+                            <p>Blender</p>
+                            <p>Premiere Pro</p>
+                            <p>RawTherapee</p>
+                        </div>
+                        <div class="footer-text">
+                            <p>Notion</p>
+                            <p>AI Agent</p>
+                            <p>make.com</p>
+                            <p>Automation</p>
+                        </div>
+                        
+                        <div class="footer-image">
+                            <img src="images/Blue 1.png" alt="João Pedro">
+                        </div>
+                    </div>
+    
+                </div>
+            </footer>
 
-            <p>Hard Skills: Java Script, Three.js, React, HTML5, SCSS, Python.</p>
-            <div class="web">
-
-            </div>
         </main>
     </body>
 
     <script type="text/javascript" src="vanilla-tilt.js"></script>
-    <script type="text/javascript">
-        VanillaTilt.init(document.querySelector(""), {
-            max: 4,
-            speed: 2800
-        });
-    </script>
-
     <script>
         var loaderer = document.getElementById("preloader");
 

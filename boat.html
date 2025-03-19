@@ -25,31 +25,20 @@
             <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
         </header>
 
-        <div class="controls">
-            <label>Frequência:
-                <input type="range" id="frequency" min="0.01" max="0.2" step="0.01" value="0.08">
-                <span id="frequency-value">0.08</span>
-            </label>
-            <label>
-                <input type="checkbox" id="wireframe"> Wireframe
-            </label>
-        </div>
-
          <!-- Adicionar o HTML do velocímetro -->
          <div id="speedometer-container">
             <div id="speedometer">
-                <div id="speed-value">0</div>
-                <div id="speed-unit">nós</div>
+                <div id="speed-unit">Nós</div>
                 <div id="speed-needle"></div>
             </div>
         </div>
 
         <script type="module">
-            import * as THREE from './three.module.js';
-            import { OrbitControls } from './OrbitControls.js';
-            import { GLTFLoader } from './GLTFLoader.js';
-            import  { Sky } from './Sky.js';
-            import { GUI } from './GUI.js';
+            import * as THREE from './three.js/three.module.js';
+            import { OrbitControls } from './three.js/OrbitControls.js';
+            import { GLTFLoader } from './three.js/GLTFLoader.js';
+            import  { Sky } from './three.js/Sky.js';
+            import { GUI } from './three.js/GUI.js';
 
             // Configuração inicial
             const scene = new THREE.Scene();
@@ -421,7 +410,21 @@
                         mesh.receiveShadow = true;
                         mesh.castShadow = true;
                         scene.add(mesh);
+                        
+                        // Remover o preloader quando o modelo for carregado
+                        document.getElementById("preloader").style.display = "none";
+                        
                         resolve(mesh);
+                    }, 
+                    // Callback de progresso (opcional)
+                    (xhr) => {
+                        console.log((xhr.loaded / xhr.total * 100) + '% carregado');
+                    },
+                    // Callback de erro
+                    (error) => {
+                        console.error('Erro ao carregar o modelo:', error);
+                        // Remover o preloader mesmo em caso de erro
+                        document.getElementById("preloader").style.display = "none";
                     });
                 });
             }
@@ -446,7 +449,7 @@
                     
                     // Ondas circulares
                     const distance = Math.sqrt(x * x + z * z);
-                    y += amp * 0.3 * Math.sin(freq * distance - time * speed * 1.2);
+                    y += amp * 0.3 * Math.sin(freq * distance - time * speed * 1.2); 
                 }
                 return y;
             }
@@ -491,7 +494,7 @@
                 updateWaves(time);
                 updateBoatMovement();
 
-                // Atualizar uniforms do shader
+                // Atualizar uniforms do shader - Movimento do shader
                 waveMaterial.uniforms.uTime.value = time;
                 waveMaterial.uniforms.uAmplitude.value = waveParams.amplitude;
                 waveMaterial.uniforms.uFrequency.value = waveParams.frequency;
@@ -524,27 +527,10 @@
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
-            
-            document.getElementById('frequency').addEventListener('input', (e) => {
-                waveParams.frequency = parseFloat(e.target.value);
-                document.getElementById('frequency-value').textContent = e.target.value;
-            });
-            
-            document.getElementById('wireframe').addEventListener('change', (e) => {
-                waveMaterial.wireframe = e.target.checked;
-            });
 
             // Iniciar animação
             animate();
         </script>
-        <script>
-            var loader = document.getElementById("preloader");
-
-            window.addEventListener("load", function(){
-                loader.style.display = "none";
-            })
-        </script>
-
         <script>
             const cursor = document.querySelector('.cursor');
 

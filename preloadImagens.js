@@ -14,6 +14,7 @@ function preloadImages() {
         'images/TshitBlue2.png',
         'images/TshitBlue3.png',
         'images/favicon.png',
+        'images/dive.png',
     ];
 
     images.forEach(function(image) {
