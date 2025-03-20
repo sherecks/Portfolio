@@ -1,4 +1,5 @@
 body {
+  background-color: black;
   margin: 0px auto;
   text-align: center;
   z-index: 1;
@@ -91,5 +92,11 @@ a {
   background: white;
   color: black;
   mix-blend-mode: difference;
+}
+
+@media (max-width: 999px) {
+  h1 {
+    font-size: 28px;
+  }
 }
 /*# sourceMappingURL=stylemap3d.css.map */

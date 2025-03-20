@@ -170,12 +170,6 @@ footer {
 }
 
 @media (max-width: 999px) {
-  header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    flex-wrap: wrap;
-  }
 
   .cont3 {
     position: fixed;
@@ -186,8 +180,8 @@ footer {
   }
 
   h2 {
-    margin-top: 62px;
-    font-size: 60px;
+    margin-top: 22px;
+    font-size: 62px;
   }
 
   h3 {
@@ -201,4 +195,5 @@ footer {
   .foto-web3 {
     width: 40%;
   }
+  
 }

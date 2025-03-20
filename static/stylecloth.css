@@ -122,4 +122,10 @@ a {
   color: black;
   mix-blend-mode: difference;
 }
+
+@media (max-width: 999px) {
+  h1 {
+    font-size: 28px;
+  }
+}
 /*# sourceMappingURL=stylecloth.css.map */

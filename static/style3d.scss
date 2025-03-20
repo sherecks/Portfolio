@@ -5,7 +5,7 @@
     text-align: center;
   }
 
-  body::-webkit-scrollbar {
+  body::-webkit-scrollbar { 
     display: none;
   }
   
@@ -154,14 +154,6 @@
   }
   
   @media (max-width: 999px) {
-  
-    header {
-      display: flex;
-      justify-content: space-between; 
-      position: relative;
-      flex-wrap: wrap;
-      margin: 0 auto; 
-    }
   
     h2{
       font-size: 45px;
