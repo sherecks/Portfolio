@@ -53,6 +53,7 @@ h2:hover {
   opacity: 1;
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
+  border-radius: 6px;
 }
 
 .foto-web5 {
@@ -195,7 +196,7 @@ footer {
     font-size: 68px;
   }
   .foto-web4 {
-    width: 80%;
+    width: 40%;
   }
   .foto-web5 {
     width: 80%;

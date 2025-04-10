@@ -66,7 +66,7 @@ Sky.SkyShader = {
 	name: 'SkyShader',
 
 	uniforms: {
-		'turbidity': { value: 2 },
+		'turbidity': { value: 1 },
 		'rayleigh': { value: 1 },
 		'mieCoefficient': { value: 0.005 },
 		'mieDirectionalG': { value: 0.8 },

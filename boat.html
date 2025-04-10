@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"> 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
         <title>Waves</title>
 
         <link rel="stylesheet" href="static/styleboat.css" />
@@ -25,12 +26,13 @@
             <a href="3d.html"><h1>JOÃO PEDRO</h1> </a>
         </header>
 
-         <!-- Adicionar o HTML do velocímetro -->
-         <div id="speedometer-container">
-            <div id="speedometer">
-                <div id="speed-unit">Nós</div>
-                <div id="speed-needle"></div>
-            </div>
+        <!-- Adicionar o HTML do velocímetro -->
+        <div id="speedometer-container">
+            <a class="textspeed">Nós:</a>
+            <div id="speed-value">0</div> <!-- Alterado para exibir a velocidade -->
+
+            <div id="latitude">Lat: 0.0</div> <!-- Latitude -->
+            <div id="longitude">Lon: 0.0</div> <!-- Longitude -->
         </div>
 
         <script type="module">
@@ -43,6 +45,9 @@
             // Configuração inicial
             const scene = new THREE.Scene();
 
+            const textureLoader = new THREE.TextureLoader();
+            const waterTexture = textureLoader.load('./images/waternormals.jpg')
+
             // Câmera
             const camera = new THREE.PerspectiveCamera(92, window.innerWidth / window.innerHeight, 0.2, 2000);
 
@@ -51,28 +56,24 @@
             document.body.appendChild(renderer.domElement);
 
             // Luzes
-            const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 3);
             scene.add(ambientLight);
-
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-            directionalLight.position.set(0, 1, 1);
-            scene.add(directionalLight);
 
             // Adicionar céu
             const sky = new Sky();
-            sky.scale.setScalar( 4500 );
+            sky.scale.setScalar( 5500 );
             scene.add( sky );
 
             const sun = new THREE.Vector3();
 
             /// GUI
             const effectController = {
-                turbidity: 4.8,
-                rayleigh: 1.8,
-                mieCoefficient: 0.01,
+                turbidity: 0.1,
+                rayleigh: 1,
+                mieCoefficient: 0.02,
                 mieDirectionalG: 0.4,
-                elevation: 1.6,
-                azimuth: 180,
+                elevation: 2.6,
+                azimuth: 200,
                 exposure: renderer.toneMappingExposure
             };
 
@@ -117,8 +118,8 @@
 
             // Parâmetros das ondas
             const waveParams = {
-                amplitude: 0.6,
-                frequency: 0.04,
+                amplitude: 0.4,
+                frequency: 0.06,
                 speed: 1.8,
                 waveCount: 3
             };
@@ -153,7 +154,7 @@
                         
                         // Ondas primárias
                         y += amp * sin(freq * position.x + uTime * speed);
-                        y += amp * 0.7 * sin(freq * position.z + uTime * speed * 0.8);
+                        y += amp * 0.7 * sin(freq * position.z + uTime * speed * 0.6);
                         
                         // Ondas circulares
                         float distance = sqrt(position.x * position.x + position.z * position.z);
@@ -187,6 +188,7 @@
                 uniform vec3 uWaterDeepColor;
                 uniform float uColorOffset;
                 uniform float uColorMultiplier;
+                uniform sampler2D uTexture;
                 
                 varying vec3 vPosition;
                 varying vec2 vUv;
@@ -205,8 +207,15 @@
                     float depth = smoothstep(0.0, 10.0, abs(vPosition.y));
                     vec3 color = mix(uWaterColor, uWaterDeepColor, depth + waveEffect);
                     
+                    // Adiciona a textura de normais
+                    vec4 normalTexture = texture2D(uTexture, vUv); // Carrega a textura de normais
+                    vec3 normal = normalize(normalTexture.rgb * 12.0 - 1.0); // Converte a textura de normais para o espaço de normal
+
+                    // Ajusta a normal da superfície com a textura de normais
+                    vec3 adjustedNormal = normalize(vNormal + normal); // Ajusta a normal original com a normal da textura
+                    
                     // Efeito Fresnel para as bordas brilhantes
-                    float fresnelFactor = fresnel(vNormal, vViewDirection);
+                    float fresnelFactor = fresnel(adjustedNormal, vViewDirection);
                     color = mix(color, vec3(0.8, 0.8, 1.0), fresnelFactor * 0.1);
                     
                     // Padrão de ondas na textura
@@ -214,7 +223,7 @@
                     color += pattern;
                     
                     // Brilhos de luz
-                    float specular = pow(max(dot(reflect(-vec3(0.0, 1.0, 0.5), vNormal), vViewDirection), 0.0), 32.0);
+                    float specular = pow(max(dot(reflect(-vec3(0.0, 1.0, 0.5), adjustedNormal), vViewDirection), 0.0), 32.0);
                     color += specular * vec3(1.0, 1.0, 1.0) * 0.5;
                     
                     gl_FragColor = vec4(color, 0.9);
@@ -235,7 +244,8 @@
                     uWaterColor: { value: new THREE.Color(0x499eb0) },
                     uWaterDeepColor: { value: new THREE.Color(0x22458a) },
                     uColorOffset: { value: 0.8 },
-                    uColorMultiplier: { value: 1.0 }
+                    uColorMultiplier: { value: 1.0 },
+                    uTexture: { value: waterTexture }
                 },
                 transparent: true,
                 side: THREE.DoubleSide
@@ -305,7 +315,7 @@
                     // Posição Z: distribuída em um padrão em V
                     // Quanto mais longe do barco (X mais negativo), mais largo o V
                     const distanceFromBoat = Math.abs(positions[i * 3]);
-                    const vWidth = 0.5 + distanceFromBoat * 0.2; // V fica mais largo com a distância
+                    const vWidth = 0.6 + distanceFromBoat * 0.6; // V fica mais largo com a distância
                     positions[i * 3 + 2] = (Math.random() - 0.8) * vWidth;
                     
                     // Tamanho variável das partículas
@@ -530,6 +540,30 @@
 
             // Iniciar animação
             animate();
+
+            let speed = 0; // Velocidade inicial
+            let latitude = 0.0; // Latitude inicial
+            let longitude = 0.0; // Longitude inicial
+
+            function updateSpeed() {
+                // Atualiza a velocidade aleatoriamente
+                speed = Math.floor(Math.random() * (120 - 60 + 1)) + 60;
+
+                document.getElementById('speed-value').textContent = speed;
+            }
+
+            function updateCoordinates() {
+                // Atualiza a velocidade aleatoriamente
+                latitude = (Math.random() * 180 - 90).toFixed(6); // Latitude entre -90 e 90
+                longitude = (Math.random() * 360 - 180).toFixed(6); // Longitude entre -180 e 180
+
+                document.getElementById('latitude').textContent = `Lat: ${latitude}`;
+                document.getElementById('longitude').textContent = `Lon: ${longitude}`;
+            }
+
+            // Chama a função a cada segundo
+            setInterval(updateSpeed, 200);
+            setInterval(updateCoordinates, 1000);
         </script>
         <script>
             const cursor = document.querySelector('.cursor');
