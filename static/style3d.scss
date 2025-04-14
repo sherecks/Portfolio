@@ -23,7 +23,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
     color: white;
-    font-size: 32px;
+    font-size: 26px;
     margin: 20px auto;
   }
 
@@ -45,10 +45,10 @@
   }
 
   .foto-web5{
-    width: 44%;
+    width: 88%;
     margin: 10px auto;
     opacity: 1;
-    filter: contrast(120%);
+    filter: brightness(1.1);
   }
   
   h1 {
@@ -157,7 +157,7 @@
   @media (max-width: 999px) {
   
     h2{
-      font-size: 45px;
+      font-size: 32px;
     }
   
     h1{

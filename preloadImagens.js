@@ -14,7 +14,14 @@ function preloadImages() {
         'images/TshitBlue2.png',
         'images/TshitBlue3.png',
         'images/favicon.png',
-        'images/dive.png',
+        'images/smilodon.png',
+        'images/boat.png',
+        'images/carta1.png',
+        'images/carta2.png',
+        'images/carta3.png',
+        'images/screen6.png',
+        'images/screen7.png',
+        'images/screen8.png',
     ];
 
     images.forEach(function(image) {
