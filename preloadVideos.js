@@ -5,6 +5,11 @@ function preloadVideos() {
         'images/Ecatarina.mp4',
         'images/Vila.mp4',
         'images/GHOST.mp4',
+        'images/TWIX5045.mp4',
+        'images/Lycra Soulfins.mp4',
+        'images/Kimarcovid.mp4',
+        'images/Capoeira Reels.mp4',
+        'images/Syn.mp4',
     ];
 
     videos.forEach(function(video) {

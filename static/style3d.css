@@ -47,6 +47,23 @@ h2:hover {
   margin: 0 auto;
 }
 
+.web2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  background-color: #000;
+}
+
+.video-web {
+  width: 56%;
+  margin: 10px auto;
+  opacity: 1;
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  border-radius: 6px;
+}
+
 .foto-web4 {
   width: 22%;
   margin: 10px auto;
