@@ -10,7 +10,6 @@ function preloadImages() {
         'images/h2.png',
         'images/h3.png',
         'images/h4.png',
-        'images/tshit2.png',
         'images/TshitBlue2.png',
         'images/TshitBlue3.png',
         'images/favicon.png',
@@ -19,9 +18,9 @@ function preloadImages() {
         'images/carta1.png',
         'images/carta2.png',
         'images/carta3.png',
-        'images/screen6.png',
-        'images/screen7.png',
-        'images/screen8.png',
+        'images/screen6.jpg',
+        'images/screen7.jpg',
+        'images/screen8.jpg',
     ];
 
     images.forEach(function(image) {
