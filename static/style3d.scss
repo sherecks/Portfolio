@@ -166,6 +166,15 @@
     color: black;
     mix-blend-mode: difference;
   }
+
+  .responsive-iframe {
+    background-color: #000;
+  }
+
+  iframe{
+    border: none;
+    margin: 10px auto;
+  }
   
   @media (max-width: 999px) {
   
