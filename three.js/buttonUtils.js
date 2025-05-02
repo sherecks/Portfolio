@@ -6,6 +6,7 @@ export function createButton(text, top, left) {
     buttonElement.style.left = left;
     buttonElement.style.backgroundColor = 'black';
     buttonElement.style.padding = '5px'
+    buttonElement.style.borderRadius = '5px'
     buttonElement.style.color = 'white';
     buttonElement.style.fontSize = '16px';
     buttonElement.style.border = '2px solid white';

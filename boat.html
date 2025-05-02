@@ -61,17 +61,17 @@
 
             // Adicionar céu
             const sky = new Sky();
-            sky.scale.setScalar( 5500 );
+            sky.scale.setScalar( 4500 );
             scene.add( sky );
 
             const sun = new THREE.Vector3();
 
             /// GUI
             const effectController = {
-                turbidity: 0.1,
-                rayleigh: 1,
+                turbidity: 0.2,
+                rayleigh: 0,
                 mieCoefficient: 0.02,
-                mieDirectionalG: 0.4,
+                mieDirectionalG: 0.5,
                 elevation: 2.6,
                 azimuth: 200,
                 exposure: renderer.toneMappingExposure
@@ -204,7 +204,7 @@
                     float waveEffect = sin(vUv.x * 10.0 + uTime) * 0.1 + sin(vUv.y * 8.0 - uTime * 0.8) * 0.1;
                     
                     // Gradiente de profundidade baseado na posição
-                    float depth = smoothstep(0.0, 10.0, abs(vPosition.y));
+                    float depth = smoothstep(0.0, 6.0, abs(vPosition.y));
                     vec3 color = mix(uWaterColor, uWaterDeepColor, depth + waveEffect);
                     
                     // Adiciona a textura de normais
@@ -216,7 +216,7 @@
                     
                     // Efeito Fresnel para as bordas brilhantes
                     float fresnelFactor = fresnel(adjustedNormal, vViewDirection);
-                    color = mix(color, vec3(0.8, 0.8, 1.0), fresnelFactor * 0.1);
+                    color = mix(color, vec3(0.8, 0.8, 1.0), fresnelFactor * 0.2);
                     
                     // Padrão de ondas na textura
                     float pattern = sin(vUv.x * 40.0 + uTime) * sin(vUv.y * 40.0 - uTime * 0.5) * 0.05;
@@ -226,7 +226,7 @@
                     float specular = pow(max(dot(reflect(-vec3(0.0, 1.0, 0.5), adjustedNormal), vViewDirection), 0.0), 32.0);
                     color += specular * vec3(1.0, 1.0, 1.0) * 0.5;
                     
-                    gl_FragColor = vec4(color, 0.9);
+                    gl_FragColor = vec4(color, 2.0);
                 }
             `;
 

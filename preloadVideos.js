@@ -4,8 +4,6 @@ function preloadVideos() {
         'images/Texol.mp4',
         'images/Ecatarina.mp4',
         'images/Vila.mp4',
-        'images/GHOST.mp4',
-        'images/TWIX5045.mp4',
         'images/Lycra Soulfins.mp4',
         'images/Kimarcovid.mp4',
         'images/Capoeira Reels.mp4',
