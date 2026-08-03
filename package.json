@@ -1,0 +1,14 @@
+{
+  "name": "joaopedro-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "bun run server.js"
+  },
+  "devDependencies": {
+    "vite": "^8.2.0"
+  }
+}

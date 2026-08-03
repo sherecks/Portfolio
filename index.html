@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <link rel="stylesheet" href="static/style.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <title>Portfólio João Pedro</title>
+        <script src="https://kit.fontawesome.com/0db4c44db2.js" crossorigin="anonymous"></script>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Portfólio João Pedro" />
+        <meta property="og:image" content="https://joaopedropn.netlify.app/images/bbb.webp" />
+        <meta name="google-site-verification" content="googlec71b3c208921978c.html" />
+        <meta name="google-site-verification" content="4znhs2GVgMjjTLycNQSc0MD-iuEKTqSxxpyreV_RNow" />
+    </head>
+
+    <body>
+
+        <div class="cursor"></div>
+
+        <div id="preloader">
+            <img class="VideoLoader" src="images/bbb.webp" alt="" loading="eager">
+        </div>
+
+        <header>
+            <h1>JOÃO PEDRO</h1>
+        </header>
+
+        <main>
+
+        <div class="cont3">
+            <a href="videomaker.html"><h2>VIDEOMAKER</h2></a>
+            <a href="3d.html"><h2>3D</h2></a>
+            <a href="curriculo.html"><h2>PDF</h2></a>
+        </div>
+
+        <div class="cont1">
+            <video data-tilt data-tilt-max="4" preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
+            <a><img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web3" src="images/4k_7_2.webp" alt="Renderização 3D em 4K de projeto de motion design"></a>
+            <a><img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web3" src="images/4k_7_4.webp" alt="Renderização 3D em 4K de projeto de motion design"></a>
+            <a><img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web3" src="images/tshitblue2.webp" alt="Modelagem 3D de camiseta em tecido feita no VStitcher"></a>
+            <a><img data-tilt data-tilt-max="0" loading="lazy" decoding="async" class="foto-web2" src="images/sala3.webp" alt="Renderização 3D de ambiente interno"></a>
+        </div>
+
+        </main>
+
+        <footer>
+            <div class="footer-container">
+
+                <div class="footer-content">
+                </div>
+
+            </div>
+        </footer>
+
+    </body>
+
+        <script type="text/javascript" src="vanilla-tilt.js"></script>
+        <script>
+            var loader = document.getElementById("preloader");
+
+            window.addEventListener("load", function(){
+                loader.style.display = "none";
+            })
+        </script>
+        
+        <script src="preloadimagens.js"></script>
+
+        <script>
+            const cursor = document.querySelector('.cursor');
+    
+            document.addEventListener('mousemove', (e) => {
+                const x = e.pageX;
+                const y = e.pageY;
+                
+                cursor.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
+
+</html>

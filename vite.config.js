@@ -1,0 +1,18 @@
+import { defineConfig } from 'vite';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        videomaker: resolve(__dirname, 'videomaker.html'),
+        threed: resolve(__dirname, '3d.html'),
+        curriculo: resolve(__dirname, 'curriculo.html'),
+      },
+    },
+  },
+});
