@@ -8,13 +8,9 @@ function preloadImages() {
         'images/tshitblue2.webp',
         'images/sala2.webp',
         'images/sala3.webp',
-        'images/sand.webp',
         'images/brumed.webp',
         'images/kimarco-1.webp',
         'images/capoeira insta.webp',
-        'images/screen6.webp',
-        'images/screen7.webp',
-        'images/screen8.webp',
     ];
 
     images.forEach(function(image) {
