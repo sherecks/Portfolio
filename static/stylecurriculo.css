@@ -349,30 +349,100 @@ footer {
   }
 
   .cv {
-    padding: 10px 14px 40px;
+    padding: 10px 16px 40px;
+  }
+
+  .cv-hero {
+    padding: 14px 0 20px;
+    margin-bottom: 32px;
   }
 
   .cv-role {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .cv-role-sub {
-    font-size: 22px;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .cv-contact {
+    font-size: 15px;
+    gap: 8px 16px;
+  }
+
+  .cv-section {
+    margin-bottom: 36px;
   }
 
   .cv-section h3 {
-    font-size: 32px;
+    font-size: 26px;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left-width: 4px;
+  }
+
+  .cv-section h3::before {
+    font-size: 14px;
+    margin-right: 8px;
   }
 
   .cv-summary .lede {
-    font-size: 20px;
+    font-size: 17px;
+    margin-bottom: 16px;
+  }
+
+  .cv-summary p {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline-item {
+    padding-bottom: 30px;
+  }
+
+  .timeline-item::before {
+    left: -26px;
+    width: 10px;
+    height: 10px;
   }
 
   .timeline-header h4 {
-    font-size: 22px;
+    font-size: 18px;
+  }
+
+  .timeline-header .company {
+    font-size: 15px;
+  }
+
+  .timeline-date {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .timeline-item ul {
+    font-size: 15px;
+    padding-left: 18px;
   }
 
   .timeline-index {
-    font-size: 64px;
+    font-size: 52px;
+  }
+
+  .tag {
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+
+  .tags {
+    gap: 8px;
+  }
+
+  .education-item {
+    font-size: 15px;
   }
 }

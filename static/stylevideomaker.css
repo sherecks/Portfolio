@@ -252,11 +252,17 @@ footer {
       "contact"
       "skills";
   }
+  .cell {
+    padding: 18px;
+  }
   .cell-media {
     aspect-ratio: 16 / 9;
     height: auto;
   }
+  .cell-info h2 {
+    font-size: 26px;
+  }
   .stat-num {
-    font-size: 52px;
+    font-size: 46px;
   }
 }
