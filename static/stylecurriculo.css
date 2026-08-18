@@ -8,10 +8,9 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-color: rgb(78, 78, 78);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='noisePattern' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.25'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23noisePattern)'/%3E%3C/svg%3E");
+  background-color: #d6d6d6;
   margin: 0px;
-  color: white;
+  color: #111;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -22,30 +21,30 @@ a {
 
 header {
   display: flex;
-  flex-direction: column;
-  justify-content: baseline;
-  align-items: baseline;
-  padding: 10px 20px;
+  align-items: center;
+  padding: 10px 16px;
+  background: #d6d6d6;
+  border-bottom: 2px solid #000;
 }
 
 h1 {
   font-family: "Anton", sans-serif;
   letter-spacing: 2px;
-  color: white;
-  font-size: 120px;
-  padding-top: 10px;
+  font-size: 24px;
+  padding-top: 0;
   margin: 0px;
-  transition: 0.2s ease-in-out;
+  color: #111;
+  transition: color 0.15s ease-in-out;
 }
 
 h1:hover {
-  color: #a3a3a3;
+  color: rgb(0, 110, 230);
 }
 
 .cursor {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(0, 183, 255);
+  width: 18px;
+  height: 18px;
+  background-color: rgb(0, 110, 230);
   border-radius: 50%;
   position: absolute;
   pointer-events: none;
@@ -55,15 +54,13 @@ h1:hover {
 }
 
 ::-moz-selection {
-  background: white;
-  color: black;
-  mix-blend-mode: difference;
+  background: #000;
+  color: #fff;
 }
 
 ::selection {
-  background: white;
-  color: black;
-  mix-blend-mode: difference;
+  background: #000;
+  color: #fff;
 }
 
 /* Layout */
@@ -79,7 +76,6 @@ h1:hover {
 .cv-hero {
   padding: 14px 0 26px;
   margin-bottom: 50px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .cv-role {
@@ -87,7 +83,7 @@ h1:hover {
   letter-spacing: 0.5px;
   font-size: 46px;
   text-transform: uppercase;
-  color: white;
+  color: #111;
   margin: 0 0 22px;
 }
 
@@ -96,7 +92,7 @@ h1:hover {
   font-style: italic;
   font-weight: 200;
   font-size: 27px;
-  color: #b8b8b8;
+  color: #444;
   margin: 0 0 22px;
 }
 
@@ -106,11 +102,11 @@ h1:hover {
   gap: 10px 24px;
   font-size: 18px;
   font-weight: 200;
-  color: #cfcfcf;
+  color: #333;
 }
 
 .cv-contact a:hover {
-  color: rgb(0, 183, 255);
+  color: rgb(0, 110, 230);
 }
 
 /* Main content */
@@ -122,12 +118,12 @@ h1:hover {
 .cv-section h3 {
   font-family: "Anton", sans-serif;
   letter-spacing: 1px;
-  color: white;
   font-size: 46px;
   text-transform: uppercase;
   margin: 0 0 30px;
   padding-left: 18px;
-  border-left: 5px solid rgb(0, 183, 255);
+  border-left: 5px solid rgb(0, 110, 230);
+  color: #111;
 }
 
 .cv-section h3::before {
@@ -136,7 +132,7 @@ h1:hover {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 1px;
-  color: rgb(0, 183, 255);
+  color: rgb(0, 110, 230);
   margin-right: 12px;
   vertical-align: middle;
 }
@@ -144,7 +140,7 @@ h1:hover {
 .cv-summary .lede {
   font-size: 24px;
   font-weight: 300;
-  color: #f0f0f0;
+  color: #111;
   line-height: 1.55;
   margin: 0 0 20px;
 }
@@ -152,7 +148,7 @@ h1:hover {
 .cv-summary p {
   font-size: 18px;
   line-height: 1.7;
-  color: #cacaca;
+  color: #333;
   font-weight: 200;
   margin: 0 0 18px;
 }
@@ -162,7 +158,7 @@ h1:hover {
 .timeline {
   position: relative;
   padding-left: 28px;
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .timeline-item {
@@ -180,13 +176,13 @@ h1:hover {
   font-size: 130px;
   line-height: 1;
   letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.07);
+  color: rgba(0, 0, 0, 0.06);
   user-select: none;
   transition: color 0.4s ease;
 }
 
 .timeline-item:hover .timeline-index {
-  color: rgba(0, 183, 255, 0.2);
+  color: rgba(0, 110, 230, 0.15);
 }
 
 .timeline-item:last-child {
@@ -201,7 +197,7 @@ h1:hover {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: rgb(0, 183, 255);
+  background: rgb(0, 110, 230);
 }
 
 .timeline-header {
@@ -219,11 +215,11 @@ h1:hover {
   letter-spacing: 0.5px;
   font-size: 26px;
   margin: 0;
-  color: white;
+  color: #111;
 }
 
 .timeline-header .company {
-  color: #9fdcff;
+  color: rgb(0, 110, 230);
   font-size: 18px;
   font-weight: 200;
   font-style: italic;
@@ -231,7 +227,7 @@ h1:hover {
 
 .timeline-date {
   font-size: 15px;
-  color: #a3a3a3;
+  color: #555;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 14px;
@@ -241,7 +237,7 @@ h1:hover {
 .timeline-item ul {
   margin: 0;
   padding-left: 20px;
-  color: #dcdcdc;
+  color: #222;
   font-weight: 200;
   font-size: 18px;
 }
@@ -267,7 +263,7 @@ h1:hover {
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #a3a3a3;
+  color: #555;
   margin: 0 0 14px;
 }
 
@@ -278,18 +274,19 @@ h1:hover {
 }
 
 .tag {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #000;
   border-radius: 999px;
   padding: 8px 20px;
   font-size: 16px;
   font-weight: 200;
-  color: #ececec;
+  color: #111;
+  background: #d6d6d6;
   transition: 0.2s ease-in-out;
 }
 
 .tag:hover {
-  border-color: rgb(0, 183, 255);
-  color: rgb(0, 183, 255);
+  border-color: rgb(0, 110, 230);
+  color: rgb(0, 110, 230);
 }
 
 /* Education */
@@ -299,7 +296,7 @@ h1:hover {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 6px 16px;
-  color: #dcdcdc;
+  color: #222;
   font-weight: 200;
   font-size: 18px;
   line-height: 1.6;
@@ -307,7 +304,7 @@ h1:hover {
 
 .education-item strong {
   font-weight: 700;
-  color: white;
+  color: #111;
 }
 
 /* Footer */
@@ -321,8 +318,8 @@ footer {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: rgb(0, 0, 0);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='noisePattern' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.25'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23noisePattern)'/%3E%3C/svg%3E");
+  background-color: #d6d6d6;
+  border-top: 2px solid #000;
 }
 
 .footer-content {
@@ -331,24 +328,24 @@ footer {
   justify-content: center;
   gap: 24px;
   align-items: center;
-  padding: 30px 10px;
+  padding: 24px 10px;
   margin: 0 auto;
 }
 
 .footer-content a {
-  color: white;
+  color: #111;
   font-size: 15px;
   font-weight: 200;
   transition: 0.2s ease-in-out;
 }
 
 .footer-content a:hover {
-  color: rgb(0, 183, 255);
+  color: rgb(0, 110, 230);
 }
 
 @media (max-width: 999px) {
   h1 {
-    font-size: 72px;
+    font-size: 20px;
   }
 
   .cv {

@@ -1,7 +1,6 @@
 function preloadVideos() {
     var videos = [
         'images/expo.mp4',
-        'images/texol.mp4',
         'images/ecatarina.mp4',
         'images/lycra soulfins.mp4',
         'images/capoeira reels.mp4',

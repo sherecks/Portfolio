@@ -30,23 +30,56 @@
         </div>
 
         <header>
-            <h1>JOÃO PEDRO</h1>
+            <a href="index.html"><h1>JOÃO PEDRO</h1></a>
+            <div class="cont3 magazine-index">
+                <a href="videomaker.html"><span class="index-num">01</span><h2>Videomaker</h2></a>
+                <a href="3d.html"><span class="index-num">02</span><h2>3D</h2></a>
+                <a href="curriculo.html"><span class="index-num">03</span><h2>PDF</h2></a>
+            </div>
         </header>
 
         <main>
 
-        <div class="cont3">
-            <a href="videomaker.html"><h2>VIDEOMAKER</h2></a>
-            <a href="3d.html"><h2>3D</h2></a>
-            <a href="curriculo.html"><h2>PDF</h2></a>
-        </div>
+        <div class="panel-grid">
 
-        <div class="cont1">
-            <video data-tilt data-tilt-max="4" preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
-            <a><img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web3" src="images/4k_7_2.webp" alt="Renderização 3D em 4K de projeto de motion design"></a>
-            <a><img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web3" src="images/4k_7_4.webp" alt="Renderização 3D em 4K de projeto de motion design"></a>
-            <a><img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web3" src="images/tshitblue2.webp" alt="Modelagem 3D de camiseta em tecido feita no VStitcher"></a>
-            <a><img data-tilt data-tilt-max="0" loading="lazy" decoding="async" class="foto-web2" src="images/sala3.webp" alt="Renderização 3D de ambiente interno"></a>
+            <section class="cell cell-info area-hero">
+                <span class="cell-label">Sobre</span>
+                <h2>Marketing &amp; AI Specialist</h2>
+                <p>Atuo na intersecção entre vendas, marketing e tecnologia na 300 Franchising com automações, AI SDR e visualização de dados. Antes disso, 7 anos como videomaker e 5 como desenvolvedor Java Script.</p>
+            </section>
+
+            <video class="cell-media area-m1" preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
+            <img class="cell-media area-m2" loading="lazy" decoding="async" src="images/4k_7_2.webp" alt="Renderização 3D em 4K de projeto de motion design">
+
+            <section class="cell cell-stat area-stat1">
+                <span class="stat-num">7+</span>
+                <span class="stat-label">anos como videomaker</span>
+            </section>
+
+            <section class="cell cell-stat area-stat2">
+                <span class="stat-num">5</span>
+                <span class="stat-label">anos de Full Stack JS</span>
+            </section>
+
+            <img class="cell-media area-m3" loading="lazy" decoding="async" src="images/4k_7_4.webp" alt="Renderização 3D em 4K de projeto de motion design">
+            <img class="cell-media area-m4" loading="lazy" decoding="async" src="images/tshitblue2.webp" alt="Modelagem 3D de camiseta em tecido feita no VStitcher">
+            <img class="cell-media area-m5" loading="lazy" decoding="async" src="images/sala3.webp" alt="Renderização 3D de ambiente interno">
+
+            <section class="cell cell-info area-contact">
+                <span class="cell-label">Contato</span>
+                <ul class="cell-list">
+                    <li>Joinville, SC</li>
+                    <li><a href="tel:+5547996923664">(47) 99692-3664</a></li>
+                    <li><a href="mailto:Joaoppn00@gmail.com">Joaoppn00@gmail.com</a></li>
+                    <li><a href="https://linkedin.com/in/joão-pedro-patríciodonascimento-5b042a180" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                </ul>
+            </section>
+
+            <section class="cell cell-info area-skills">
+                <span class="cell-label">Ferramentas</span>
+                <p class="cell-tools">Blender · Premiere · React · Three.js · TouchDesigner · Vstitcher · Python</p>
+            </section>
+
         </div>
 
         </main>
@@ -62,7 +95,6 @@
 
     </body>
 
-        <script type="text/javascript" src="vanilla-tilt.js"></script>
         <script>
             var loader = document.getElementById("preloader");
 
@@ -72,6 +104,7 @@
         </script>
         
         <script src="preloadimagens.js"></script>
+        <script src="ascii-effect.js"></script>
 
         <script>
             const cursor = document.querySelector('.cursor');

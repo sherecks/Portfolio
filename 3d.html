@@ -29,38 +29,47 @@
             <img class="VideoLoader" src="images/bbb.webp" alt="" loading="eager">
         </div>
         
-        <header> 
-            <a href="index.html"><h1>JOÃO PEDRO</h1> </a> 
+        <header>
+            <a href="index.html"><h1>JOÃO PEDRO</h1></a>
         </header>
-    
-        <br/>
 
         <main>
 
-            <div>
-                <video data-tilt data-tilt-max="4" class="foto-web4" preload="auto" muted loop autoplay src="images/doctorfit.mp4"></video>
-                <img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web4" src="images/4k_7_4.webp" alt="Renderização 3D em 4K de projeto de motion design">
-                <img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web4" src="images/sala2.webp" alt="Renderização 3D de ambiente interno">
-                <video data-tilt data-tilt-max="4" class="foto-web4" preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
-            </div>
+        <div class="panel-grid">
 
-            <div>
-                <img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web4" src="images/capoeira insta.webp" alt="Still de vídeo de capoeira para Instagram">
-                <video data-tilt data-tilt-max="4" class="foto-web4" preload="auto" muted loop autoplay src="images/capoeira reels.mp4"></video>
-                <video data-tilt data-tilt-max="4" class="foto-web4" preload="auto" muted loop autoplay src="images/lycra soulfins.mp4"></video>
-                <img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web4" src="images/4k_7_1.webp" alt="Renderização 3D em 4K de projeto de motion design">
-            </div>
+            <section class="cell cell-info area-hero">
+                <span class="cell-label">Sobre</span>
+                <h2>Design &amp; Renderização 3D</h2>
+                <p>Motion design e renderização de produtos com Blender e Vstitcher, de campanhas para painéis de LED a peças de roupa em 3D para redes sociais. Hoje criando projeções mapeadas para festivais e eventos.</p>
+            </section>
 
-            <div>
-                <img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web4" src="images/kimarco-1.webp" alt="Renderização 3D do projeto Kimarco">
-                <video data-tilt data-tilt-max="4" class="foto-web4" preload="auto" muted loop autoplay src="images/flower3d.mp4"></video>
-                <video data-tilt data-tilt-max="4" class="foto-web4" preload="auto" muted loop autoplay src="images/figure3d.mp4"></video>
-                <img data-tilt data-tilt-max="4" loading="lazy" decoding="async" class="foto-web4" src="images/brumed.webp" alt="Renderização 3D do projeto Brumed">
-            </div>
+            <video class="cell-media area-m1" preload="auto" muted loop autoplay src="images/doctorfit.mp4"></video>
+            <img class="cell-media area-m2" loading="lazy" decoding="async" src="images/4k_7_4.webp" alt="Renderização 3D em 4K de projeto de motion design">
 
-            <div class="responsive-iframe">
-                <video class="foto-web5" preload="auto" muted loop autoplay src="images/4beach.mp4"></video>
-            </div>
+            <section class="cell cell-stat area-stat1">
+                <span class="stat-num">4+</span>
+                <span class="stat-label">anos de design 3D e Blender</span>
+            </section>
+
+            <section class="cell cell-stat area-stat2">
+                <span class="stat-num">2+</span>
+                <span class="stat-label">anos como TouchDesigner Developer</span>
+            </section>
+
+        </div>
+
+        <div class="media-grid">
+            <img loading="lazy" decoding="async" src="images/sala2.webp" alt="Renderização 3D de ambiente interno">
+            <video preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
+            <img loading="lazy" decoding="async" src="images/capoeira insta.webp" alt="Still de vídeo de capoeira para Instagram">
+            <video preload="auto" muted loop autoplay src="images/capoeira reels.mp4"></video>
+            <video preload="auto" muted loop autoplay src="images/lycra soulfins.mp4"></video>
+            <img loading="lazy" decoding="async" src="images/4k_7_1.webp" alt="Renderização 3D em 4K de projeto de motion design">
+            <img loading="lazy" decoding="async" src="images/kimarco-1.webp" alt="Renderização 3D do projeto Kimarco">
+            <video preload="auto" muted loop autoplay src="images/flower3d.mp4"></video>
+            <video preload="auto" muted loop autoplay src="images/figure3d.mp4"></video>
+            <img loading="lazy" decoding="async" src="images/brumed.webp" alt="Renderização 3D do projeto Brumed">
+        </div>
 
             <footer>
                 <div class="footer-container">
@@ -74,7 +83,6 @@
         </main>
     </body>
 
-    <script type="text/javascript" src="vanilla-tilt.js"></script>
     <script>
         var loaderer = document.getElementById("preloader");
 
@@ -85,7 +93,8 @@
 
     <script src="preloadimagens.js"></script>
     <script src="preloadvideos.js"></script>
-    
+    <script src="ascii-effect.js"></script>
+
     <script>
         const cursor = document.querySelector('.cursor');
 
