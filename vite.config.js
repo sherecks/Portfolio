@@ -9,8 +9,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        videomaker: resolve(__dirname, 'videomaker.html'),
-        threed: resolve(__dirname, '3d.html'),
         curriculo: resolve(__dirname, 'curriculo.html'),
       },
     },

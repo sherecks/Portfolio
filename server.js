@@ -3,8 +3,11 @@ const dist = new URL('./dist/', import.meta.url);
 
 const PRETTY_ROUTES = {
   '/': 'index.html',
-  '/3d': '3d.html',
-  '/videomaker': 'videomaker.html',
+  // páginas antigas agora são seções da index
+  '/3d': 'index.html',
+  '/videomaker': 'index.html',
+  '/3d.html': 'index.html',
+  '/videomaker.html': 'index.html',
   '/curriculo': 'curriculo.html',
 };
 

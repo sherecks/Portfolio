@@ -1,120 +1,211 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>João Pedro · Marketing, IA, 3D e Arte Generativa</title>
+  <meta name="description" content="João Pedro, Marketing &amp; AI Specialist em Joinville: integra Meta Ads e WhatsApp a agentes de IA e CRMs, cria software de métricas, design 3D, arte generativa em TouchDesigner e vídeo." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="icon" href="/media/favicon.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="João Pedro · Marketing, IA, 3D e Arte Generativa" />
+  <meta property="og:description" content="Meta Ads, WhatsApp e IA ligados ao CRM, além de 3D, arte generativa e vídeo." />
+  <meta property="og:image" content="https://joaopedropn.netlify.app/media/bbb.webp" />
+  <meta name="google-site-verification" content="4znhs2GVgMjjTLycNQSc0MD-iuEKTqSxxpyreV_RNow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
 
-    <head>
-        <link rel="stylesheet" href="static/style.css" />
+  <!-- camadas fixas -->
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-noise"></div>
+    <span class="loader-count mono">000</span>
+    <span class="loader-tag mono">Sintonizando o sinal</span>
+  </div>
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-        <title>Portfólio João Pedro</title>
-        <script src="https://kit.fontawesome.com/0db4c44db2.js" crossorigin="anonymous"></script>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Portfólio João Pedro" />
-        <meta property="og:image" content="https://joaopedropn.netlify.app/images/bbb.webp" />
-        <meta name="google-site-verification" content="googlec71b3c208921978c.html" />
-        <meta name="google-site-verification" content="4znhs2GVgMjjTLycNQSc0MD-iuEKTqSxxpyreV_RNow" />
-    </head>
+  <header class="nav">
+    <a href="#topo" class="nav-logo" aria-label="Início">JP</a>
+    <nav class="nav-links mono" aria-label="Seções">
+      <a href="#sobre">01 Sobre</a>
+      <a href="#rede">02 Meta &amp; IA</a>
+      <a href="#produtos">03 Software</a>
+      <a href="#arte">04 TouchDesigner</a>
+      <a href="#tridimensional">05 3D</a>
+      <a href="#video">06 Vídeo</a>
+    </nav>
+    <span class="nav-status mono"><i class="dot"></i><span class="nav-section">00 Início</span></span>
+    <a href="#contato" class="nav-cta mono">Contato ↗</a>
+  </header>
 
-    <body>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+    <main>
 
-        <div class="cursor"></div>
+      <!-- 00 HERO -->
+      <section id="topo" class="hero" data-accent="#5FF5E0" data-label="00 Início">
+        <h1 class="hero-title">João Pedro</h1>
+        <div class="hero-meta mono">
+          <span>Marketing &amp; AI Specialist</span>
+          <span>Joinville, SC · 26.30°S 48.84°W</span>
+        </div>
+        <nav class="hero-roles" aria-label="Áreas">
+          <a href="#rede" data-c="#7CFF4F">Meta &amp; IA</a>
+          <a href="#produtos" data-c="#5FF5E0">Software</a>
+          <a href="#arte" data-c="#FF5FA2">TouchDesigner</a>
+          <a href="#tridimensional" data-c="#4F7CFF">3D</a>
+          <a href="#video" data-c="#E0182D">Vídeo</a>
+        </nav>
+        <span class="hero-scroll mono">Role para sintonizar ↓</span>
+      </section>
 
-        <div id="preloader">
-            <img class="VideoLoader" src="images/bbb.webp" alt="" loading="eager">
+      <!-- 01 SOBRE -->
+      <section id="sobre" class="about" data-accent="#5FF5E0" data-label="01 Sobre">
+        <span class="kicker mono">01 — Sobre</span>
+        <p class="about-text">Trabalho onde marketing, tecnologia e imagem se encontram. Na parte técnica, ligo os anúncios da Meta e o WhatsApp a agentes de IA e crio painéis que mostram qual anúncio vira venda. Na parte visual, faço renders 3D, vídeos de venda e arte generativa em TouchDesigner para projeção mapeada.</p>
+        <div class="stats">
+          <div class="stat"><span class="stat-num" data-to="7">0</span><span class="stat-plus">+</span><span class="stat-label mono">anos como videomaker</span></div>
+          <div class="stat"><span class="stat-num" data-to="5">0</span><span class="stat-plus">+</span><span class="stat-label mono">anos programando em JavaScript</span></div>
+          <div class="stat"><span class="stat-num" data-to="4">0</span><span class="stat-plus">+</span><span class="stat-label mono">anos de 3D no Blender</span></div>
+          <div class="stat"><span class="stat-num" data-to="100">0</span><span class="stat-plus">+</span><span class="stat-label mono">aulas gravadas e editadas</span></div>
+        </div>
+        <p class="tools mono">Meta Business · WhatsApp Cloud API · HubSpot · React · Three.js · Python · TouchDesigner · Blender · VStitcher · Premiere</p>
+      </section>
+
+      <!-- 02 META & IA -->
+      <section id="rede" class="network" data-accent="#7CFF4F" data-label="02 Meta &amp; IA">
+        <div class="network-pin">
+          <div class="network-head">
+            <span class="kicker mono">02 — Meta &amp; IA</span>
+            <h2 class="section-title">Funil<br />conectado</h2>
+            <p class="network-intro">O caminho de um lead pelos sistemas que integro: nasce num anúncio, conversa com uma IA no WhatsApp, vira oportunidade no CRM e volta para o painel como dado de venda.</p>
+          </div>
+          <svg class="network-graph" viewBox="0 0 1000 500" role="img" aria-label="Diagrama: dentro da Meta Business Manager, Meta Ads gera o lead que segue pela WhatsApp Cloud API até o AI SDR, depois ao CRM e ao painel ADX, que também recebe o gasto por criativo"></svg>
+          <ol class="network-steps"></ol>
+        </div>
+      </section>
+
+      <!-- 03 PRODUTOS -->
+      <section id="produtos" class="products" data-accent="#5FF5E0" data-label="03 Software">
+        <span class="kicker mono">03 — Software</span>
+        <div class="products-head">
+          <h2 class="section-title">Software</h2>
+          <p>Dois produtos meus, no ar: um painel que acompanha o anúncio até a venda e uma IA que atende o lead no WhatsApp.</p>
         </div>
 
-        <header>
-            <a href="index.html"><h1>JOÃO PEDRO</h1></a>
-            <div class="cont3 magazine-index">
-                <a href="videomaker.html"><span class="index-num">01</span><h2>Videomaker</h2></a>
-                <a href="3d.html"><span class="index-num">02</span><h2>3D</h2></a>
-                <a href="curriculo.html"><span class="index-num">03</span><h2>PDF</h2></a>
-            </div>
-        </header>
+        <div class="products-list">
+            <article class="product">
+              <a class="browser shot" href="https://analytics.adx.dev.br/" target="_blank" rel="noopener" data-cursor="Abrir">
+                <div class="browser-bar"><i></i><i></i><i></i><span class="mono">analytics.adx.dev.br</span></div>
+                <div class="shot-view"><img src="/media/adx-analytics.webp" alt="Home do ADX Analytics: seu anúncio gera lead, seu CRM diz se virou venda" loading="lazy" /></div>
+              </a>
+              <div class="product-info">
+                <span class="mono">ADX Analytics · Meta CRM</span>
+                <h3>Meta Ads + CRM no mesmo painel</h3>
+                <p>Junta o gasto no Meta Ads com o que andou no CRM, criativo por criativo. Mostra o funil do lead à venda, compara CPL com CPQL e avisa quando um anúncio gasta sem vender. Feito para agências de tráfego e infoprodutores.</p>
+                <ul class="mono"><li>Conexão pela Business Manager</li><li>Pipedrive · RD · HubSpot · Webhook</li><li>Várias contas, login por cliente</li><li>Tokens criptografados (AES-256)</li></ul>
+                <a class="link" href="https://analytics.adx.dev.br/" target="_blank" rel="noopener" data-cursor="Abrir">analytics.adx.dev.br ↗</a>
+              </div>
+            </article>
 
-        <main>
-
-        <div class="panel-grid">
-
-            <section class="cell cell-info area-hero">
-                <span class="cell-label">Sobre</span>
-                <h2>Marketing &amp; AI Specialist</h2>
-                <p>Atuo na intersecção entre vendas, marketing e tecnologia na 300 Franchising com automações, AI SDR e visualização de dados. Antes disso, 7 anos como videomaker e 5 como desenvolvedor Java Script.</p>
-            </section>
-
-            <video class="cell-media area-m1" preload="auto" muted loop autoplay src="images/running-1.mp4"></video>
-            <img class="cell-media area-m2" loading="lazy" decoding="async" src="images/4k_7_2.webp" alt="Renderização 3D em 4K de projeto de motion design">
-
-            <section class="cell cell-stat area-stat1">
-                <span class="stat-num">7+</span>
-                <span class="stat-label">anos como videomaker</span>
-            </section>
-
-            <section class="cell cell-stat area-stat2">
-                <span class="stat-num">5</span>
-                <span class="stat-label">anos de Full Stack JS</span>
-            </section>
-
-            <img class="cell-media area-m3" loading="lazy" decoding="async" src="images/4k_7_4.webp" alt="Renderização 3D em 4K de projeto de motion design">
-            <img class="cell-media area-m4" loading="lazy" decoding="async" src="images/tshitblue2.webp" alt="Modelagem 3D de camiseta em tecido feita no VStitcher">
-            <img class="cell-media area-m5" loading="lazy" decoding="async" src="images/sala3.webp" alt="Renderização 3D de ambiente interno">
-
-            <section class="cell cell-info area-contact">
-                <span class="cell-label">Contato</span>
-                <ul class="cell-list">
-                    <li>Joinville, SC</li>
-                    <li><a href="tel:+5547996923664">(47) 99692-3664</a></li>
-                    <li><a href="mailto:Joaoppn00@gmail.com">Joaoppn00@gmail.com</a></li>
-                    <li><a href="https://linkedin.com/in/joão-pedro-patríciodonascimento-5b042a180" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-                </ul>
-            </section>
-
-            <section class="cell cell-info area-skills">
-                <span class="cell-label">Ferramentas</span>
-                <p class="cell-tools">Blender · Premiere · React · Three.js · TouchDesigner · Vstitcher · Python</p>
-            </section>
-
+            <article class="product">
+              <a class="browser shot" href="https://app.adx.dev.br/" target="_blank" rel="noopener" data-cursor="Abrir">
+                <div class="browser-bar"><i></i><i></i><i></i><span class="mono">app.adx.dev.br</span></div>
+                <div class="shot-view"><img src="/media/adx-app.webp" alt="Home do ADX App: do anúncio ao CRM, nenhum lead sem resposta" loading="lazy" /></div>
+              </a>
+              <div class="product-info">
+                <span class="mono">ADX App · WhatsApp + IA</span>
+                <h3>Nenhum lead sem resposta</h3>
+                <p>Liga o WhatsApp e os anúncios da Meta ao CRM. A IA responde na hora, qualifica e agenda, e a equipe assume quando o cliente está pronto para comprar. É a mesma tecnologia do AI SDR que implanto no time comercial da 300 Franchising.</p>
+                <ul class="mono"><li>WhatsApp Cloud API</li><li>Meta Business Manager</li><li>IA que qualifica e agenda</li><li>Integração com CRM</li></ul>
+                <a class="link" href="https://app.adx.dev.br/" target="_blank" rel="noopener" data-cursor="Abrir">app.adx.dev.br ↗</a>
+              </div>
+            </article>
         </div>
+      </section>
 
-        </main>
-
-        <footer>
-            <div class="footer-container">
-
-                <div class="footer-content">
-                </div>
-
+      <!-- 04 TOUCHDESIGNER -->
+      <section id="arte" class="art" data-accent="#FF5FA2" data-label="04 TouchDesigner">
+        <div class="h-pin">
+          <div class="h-track">
+            <div class="h-intro">
+              <span class="kicker mono">04 — TouchDesigner</span>
+              <h2 class="section-title">Arte<br />generativa</h2>
+              <p>Nuvens de pontos, corpos e objetos que se transformam em tempo real, criados para projeção mapeada, apresentações de VJ e o Festival das Luzes de Joinville.</p>
             </div>
-        </footer>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/flower3d.mp4" poster="/media/flower3d.webp" muted loop playsinline preload="none"></video></div><figcaption><b>Flor</b><span class="mono">Nuvem de pontos</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/figure3d.mp4" poster="/media/figure3d.webp" muted loop playsinline preload="none"></video></div><figcaption><b>Figura</b><span class="mono">Corpo em movimento</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/cowboy.mp4" poster="/media/cowboy.webp" muted loop playsinline preload="none"></video></div><figcaption><b>Cowboy</b><span class="mono">Silhueta em pontos</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/10.mp4" poster="/media/10.webp" muted loop playsinline preload="none"></video></div><figcaption><b>Cadeiras</b><span class="mono">Objetos 3D</span></figcaption></figure>
+          </div>
+        </div>
+      </section>
 
-    </body>
+      <!-- 05 3D -->
+      <section id="tridimensional" class="three" data-accent="#4F7CFF" data-label="05 3D">
+        <div class="h-pin">
+          <div class="h-track">
+            <div class="h-intro">
+              <span class="kicker mono">05 — 3D &amp; moda</span>
+              <h2 class="section-title">Design<br />3D</h2>
+              <p>Roupas modeladas no VStitcher e produtos, letreiros, personagens e ambientes no Blender, para marcas, redes sociais e painéis de LED.</p>
+            </div>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/wearable-1-1.mp4" poster="/media/wearable-1-1.webp" muted loop playsinline preload="none"></video></div><figcaption><b>BIRDS</b><span class="mono">Jaqueta · VStitcher + Blender</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/running-1.mp4" poster="/media/running-1.webp" muted loop playsinline preload="none"></video></div><figcaption><b>BIRDS Brasil</b><span class="mono">Camiseta · animação</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/lycra-soulfins.mp4" poster="/media/lycra-soulfins.webp" muted loop playsinline preload="none"></video></div><figcaption><b>Soulfins</b><span class="mono">Lycra de surf</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><img src="/media/tshitblue2.webp" alt="Pôster GHOSTTT com camiseta azul modelada em 3D" loading="lazy" /></div><figcaption><b>GHOSTTT</b><span class="mono">Camiseta · render</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><img src="/media/kimarco-1.webp" alt="Tipografia 3D Kimarco em azul" loading="lazy" /></div><figcaption><b>Kimarco</b><span class="mono">Tipografia 3D</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><video data-src="/media/capoeira-reels.mp4" poster="/media/capoeira-reels.webp" muted loop playsinline preload="none"></video></div><figcaption><b>Capoeira</b><span class="mono">Animação de personagem</span></figcaption></figure>
+            <figure class="poster"><div class="poster-media"><img src="/media/brumed.webp" alt="Cena urbana com a fachada do prédio Brumed" loading="lazy" /></div><figcaption><b>Brumed</b><span class="mono">Fachada · arquitetura</span></figcaption></figure>
+            <figure class="poster wide"><div class="poster-media"><img src="/media/sala3.webp" alt="Render 3D de sala com sofá, mesa e plantas" loading="lazy" /></div><figcaption><b>Interiores</b><span class="mono">Ambiente · Blender</span></figcaption></figure>
+          </div>
+        </div>
+      </section>
 
-        <script>
-            var loader = document.getElementById("preloader");
+      <!-- 06 VÍDEO -->
+      <section id="video" class="videos" data-accent="#E0182D" data-label="06 Vídeo">
+        <span class="kicker mono">06 — Vídeo</span>
+        <h2 class="section-title">Captação<br />&amp; edição</h2>
+        <p class="section-lede">VSLs e vídeos de venda com motion graphics, gravados e editados por mim. Antes disso, roteirizei e gravei aulas, webinars e conteúdo para marcas. Clique em um vídeo para assistir com som.</p>
+        <div class="video-grid">
+          <button class="vcard" data-full="/media/vsl-2198.mp4" data-cursor="Assistir"><video data-src="/media/vsl-2198-preview.mp4" poster="/media/vsl-2198.webp" muted loop playsinline preload="none"></video><span class="mono">STLFLIX · VSL marketplace</span></button>
+          <button class="vcard" data-full="/media/upsell.mp4" data-cursor="Assistir"><video data-src="/media/upsell-preview.mp4" poster="/media/upsell.webp" muted loop playsinline preload="none"></video><span class="mono">STLFLIX · Upsell</span></button>
+          <button class="vcard" data-full="/media/dolar.mp4" data-cursor="Assistir"><video data-src="/media/dolar-preview.mp4" poster="/media/dolar.webp" muted loop playsinline preload="none"></video><span class="mono">STLFLIX · VSL em inglês</span></button>
+        </div>
+        <span class="clients-label mono">Clientes e projetos</span>
+        <ul class="clients mono">
+          <li>STLFLIX</li><li>300 Franchising</li><li>Plano 300</li><li>Festival das Luzes Joinville</li><li>SCPAR Porto de Imbituba</li><li>Vila Prinz</li><li>Texol</li><li>Eldorado</li><li>Rocha e Dias</li><li>STARK</li>
+        </ul>
+      </section>
 
-            window.addEventListener("load", function(){
-                loader.style.display = "none";
-            })
-        </script>
-        
-        <script src="preloadimagens.js"></script>
-        <script src="ascii-effect.js"></script>
+      <!-- 07 CONTATO -->
+      <section id="contato" class="contact" data-accent="#5FF5E0" data-label="07 Contato">
+        <span class="kicker mono">07 — Contato</span>
+        <a class="contact-big" href="mailto:Joaoppn00@gmail.com" data-cursor="Escrever">Vamos<br />conversar</a>
+        <div class="contact-links mono">
+          <a href="mailto:Joaoppn00@gmail.com">Joaoppn00@gmail.com</a>
+          <a href="tel:+5547996923664">(47) 99692-3664</a>
+          <a href="https://linkedin.com/in/joão-pedro-patríciodonascimento-5b042a180" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="/curriculo.html">Currículo ↗</a>
+        </div>
+        <footer class="foot mono"><span>© João Pedro</span><span>Joinville, SC</span><a href="#topo">Voltar ao topo ↑</a></footer>
+      </section>
 
-        <script>
-            const cursor = document.querySelector('.cursor');
-    
-            document.addEventListener('mousemove', (e) => {
-                const x = e.pageX;
-                const y = e.pageY;
-                
-                cursor.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        </script>
+    </main>
+    </div>
+  </div>
 
+  <dialog class="player" aria-label="Vídeo">
+    <video controls playsinline></video>
+    <button class="player-close mono" aria-label="Fechar">Fechar ✕</button>
+  </dialog>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
