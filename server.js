@@ -16,7 +16,10 @@ Bun.serve({
   async fetch(req) {
     const { pathname } = new URL(req.url);
     const relative = PRETTY_ROUTES[pathname] ?? pathname.slice(1);
-    const file = Bun.file(new URL(relative, dist));
+    const url = new URL(relative, dist);
+    // "//caminho" viraria um caminho absoluto no disco: só serve o que está dentro de dist/
+    if (!url.href.startsWith(dist.href)) return new Response('Not found', { status: 404 });
+    const file = Bun.file(url);
 
     if (await file.exists()) {
       return new Response(file);
@@ -24,6 +27,8 @@ Bun.serve({
 
     return new Response('Not found', { status: 404 });
   },
+  // caminho malformado (ex.: barra codificada) não pode mostrar a página de erro com detalhes internos
+  error: () => new Response('Not found', { status: 404 }),
 });
 
 console.log(`Portfólio servido em http://localhost:${port}`);
